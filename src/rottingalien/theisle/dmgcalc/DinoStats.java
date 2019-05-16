@@ -1,5 +1,6 @@
 package rottingalien.theisle.dmgcalc;
 
+
 public class DinoStats {
 
     private int bleedStandResist;
@@ -10,6 +11,7 @@ public class DinoStats {
     private int health;
     private int biteForce;
     private int bleedDamage;
+
 
     public void setBleedStandResist(int bleedStandResist) {
         this.bleedStandResist = bleedStandResist;
@@ -73,5 +75,19 @@ public class DinoStats {
 
     public int getBleedDamage() {
         return bleedDamage;
+    }
+
+
+    public DinoStats(int bleedStandResist, int bleedSitResist, int bleedWalkResist, int bleedRunResist,
+                     int weight, int health, int biteForce, int bleedDamage) {
+
+        this.bleedStandResist = bleedStandResist;
+        this.bleedSitResist = bleedSitResist;
+        this.bleedWalkResist = bleedWalkResist;
+        this.bleedRunResist = bleedRunResist;
+        this.weight = weight;
+        this.health = health;
+        this.biteForce = biteForce;
+        this.bleedDamage = bleedDamage;
     }
 }
