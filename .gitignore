@@ -1,0 +1,14 @@
+# Mac OS
+**/.DS_Store
+
+# Windows
+**/Thumbs.db
+
+# IntelliJ
+**/out/
+**/.idea/
+**/*.iml
+**/target/
+
+# Java
+**/*.class
