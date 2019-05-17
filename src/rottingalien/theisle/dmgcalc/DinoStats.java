@@ -28,42 +28,42 @@ public class DinoStats {
     }
 
     public int getBleedStandResist() {
-        return bleedStandResist;
+        return this.bleedStandResist;
     }
 
 
     public int getBleedSitResist() {
-        return bleedSitResist;
+        return this.bleedSitResist;
     }
 
 
     public int getBleedWalkResist() {
-        return bleedWalkResist;
+        return this.bleedWalkResist;
     }
 
 
     public int getBleedRunResist() {
-        return bleedRunResist;
+        return this.bleedRunResist;
     }
 
 
     public int getWeight() {
-        return weight;
+        return this.weight;
     }
 
 
     public int getHealth() {
-        return health;
+        return this.health;
     }
 
 
     public int getBiteForce() {
-        return biteForce;
+        return this.biteForce;
     }
 
 
     public int getBleedDamage() {
-        return bleedDamage;
+        return this.bleedDamage;
     }
 }
 
