@@ -1,8 +1,18 @@
 package rottingalien.theisle.dmgcalc;
 
-public class DinoGrowth {
+public class Carnotaurus {
 
-    DinoStats FreshJuvenile = new DinoStats(
+    public static DinoStats freshJuvi = new DinoStats(
+            30,
+            10,
+            50,
+            100,
+            150,
+            120,
+            50,
+            15
+    );
+    public static DinoStats midJuvi = new DinoStats(
             0,
             0,
             0,
@@ -10,8 +20,9 @@ public class DinoGrowth {
             0,
             0,
             0,
-            0);
-    DinoStats MidJuvenile = new DinoStats(
+            0
+    );
+    public static DinoStats fullJuvi = new DinoStats(
             0,
             0,
             0,
@@ -19,75 +30,66 @@ public class DinoGrowth {
             0,
             0,
             0,
-            0);
-    DinoStats FullJuvenile = new DinoStats(0,
+            0
+    );
+    public static DinoStats freshSubAdult = new DinoStats(
             0,
             0,
             0,
             0,
             0,
             0,
-            0);
-    DinoStats FreshSubAdult = new DinoStats(0,
             0,
+            0
+    );
+    public static DinoStats midSubAdult = new DinoStats(
             0,
             0,
             0,
             0,
             0,
-            0);
-    DinoStats MidSubAdult = new DinoStats(
             0,
             0,
+            0
+    );
+    public static DinoStats fullSubAdult = new DinoStats(
             0,
             0,
             0,
             0,
             0,
-            0);
-    DinoStats FullSubAdult = new DinoStats(
             0,
             0,
+            0
+    );
+    public static DinoStats freshAdult = new DinoStats(
             0,
             0,
             0,
             0,
             0,
-            0);
-    DinoStats FreshAdult = new DinoStats(
             0,
             0,
+            0
+    );
+    public static DinoStats midAdult = new DinoStats(
             0,
             0,
             0,
             0,
             0,
-            0);
-    DinoStats MidAdult = new DinoStats(
             0,
             0,
+            0
+    );
+    public static DinoStats fullAdult = new DinoStats(
             0,
             0,
             0,
             0,
             0,
-            0);
-    DinoStats FullAdult = new DinoStats(
             0,
             0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0);
-    DinoStats Custom = new DinoStats(0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0);
-
+            0
+    );
 }
