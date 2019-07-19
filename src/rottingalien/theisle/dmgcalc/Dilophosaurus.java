@@ -2,7 +2,10 @@ package rottingalien.theisle.dmgcalc;
 
 public class Dilophosaurus {
 
+    private static String name = "Dilophosaurus";
+
     public static DinoStats freshJuvi = new DinoStats(
+            "Fresh Juvi",
             50,
             25,
             80,
@@ -12,84 +15,12 @@ public class Dilophosaurus {
             27,
             20
     );
-    public static DinoStats midJuvi = new DinoStats(
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-    );
-    public static DinoStats fullJuvi = new DinoStats(
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-    );
-    public static DinoStats freshSubAdult = new DinoStats(
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-    );
-    public static DinoStats midSubAdult = new DinoStats(
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-    );
-    public static DinoStats fullSubAdult = new DinoStats(
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-    );
-    public static DinoStats freshAdult = new DinoStats(
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-    );
-    public static DinoStats midAdult = new DinoStats(
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-    );
-    public static DinoStats fullAdult = new DinoStats(
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-    );
+
+    public static String getName() {
+        return name;
+    }
+
+    public static DinoStats getFreshJuvi() {
+        return freshJuvi;
+    }
 }
