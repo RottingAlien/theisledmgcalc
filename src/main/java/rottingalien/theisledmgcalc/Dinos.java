@@ -1,45 +1,57 @@
 package rottingalien.theisledmgcalc;
 
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public enum Dinos {
 
     //Carnies
 
-    CARNOTAURUS("Carnotaurus"),
-    DILOPHOSAURUS("Dilophosaurus"),
-    UTAHRAPTOR("Utahraptor"),
-    ALLOSAURUS("Allosaurus"),
-    CERATOSAURUS("Ceratosaurus"),
-    SUCHOMINUS("Suchominus"),
-    GIGANOTOSAURUS("Giganotosaurus"),
-    TYRANNOSAURUS("Tyrannosaurus"),
+    CARNOTAURUS,
+    DILOPHOSAURUS,
+    UTAHRAPTOR,
+    ALLOSAURUS,
+    CERATOSAURUS,
+    SUCHOMINUS,
+    GIGANOTOSAURUS,
+    TYRANNOSAURUS,
 
     //Veggies
 
-    DRYOSAURUS("Dryosaurus"),
-    GALLIMINUS("Galliminus"),
-    PACHYCEPHALOSAURUS("Pachycephalosaurus"),
-    DIABLOCERATOPS("Diabloceratops"),
-    MAIASAURA("Maiasaura"),
-    PARASAUROLOPHUS("Parasaurolophus"),
-    TRICERATOPS("Triceratops");
+    DRYOSAURUS,
+    GALLIMINUS,
+    PACHYCEPHALOSAURUS,
+    DIABLOCERATOPS,
+    MAIASAURA,
+    PARASAUROLOPHUS,
+    TRICERATOPS;
 
 
     private String name;
 
-    private Map<String, GrowthState> growthStateMap;
 
+    private Map<String, GrowthState> growthStateMap = new HashMap<>();
 
-    Dinos(String name) {
-        this.name = name;
-    }
 
     public String getName() {
         return name;
     }
 
+    public void addGrowth(String growthName, GrowthState growthState){
+        growthStateMap.put(growthName,growthState);
+    }
+
     public Map<String, GrowthState> getGrowthStateMap() {
         return growthStateMap;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setGrowthStateMap(Map<String, GrowthState> growthStateMap) {
+        this.growthStateMap = growthStateMap;
+    }
+
 }

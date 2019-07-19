@@ -1,6 +1,7 @@
 package rottingalien.theisledmgcalc;
 
 import java.util.Map;
+import java.util.Set;
 
 public enum GrowthState {
 
@@ -17,7 +18,7 @@ public enum GrowthState {
 
     private String name;
 
-    private Map<String, DinoProperty> dinoPropertyMap;
+  private Set<DinoProperty> dinoPropertyMap;
 
     GrowthState(String name){
         this.name=name;
@@ -27,7 +28,7 @@ public enum GrowthState {
         return name;
     }
 
-    public Map<String, DinoProperty> getDinoPropertyMap() {
+    public Set<DinoProperty> getDinoPropertyMap() {
         return dinoPropertyMap;
     }
 }
