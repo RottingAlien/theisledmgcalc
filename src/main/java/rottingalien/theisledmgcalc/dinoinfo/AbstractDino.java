@@ -1,4 +1,4 @@
-package rottingalien.theisledmgcalc;
+package rottingalien.theisledmgcalc.dinoinfo;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -4,22 +4,24 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <import resource="carnovalues.xml"/>
 
-
-    <bean id="carnotaurus" class="rottingalien.theisledmgcalc.Dino">
+    <bean id="carnotaurus" class="rottingalien.theisledmgcalc.dinoinfo.Dino">
 
         <property name="name" value="Carnotaurus"/>
         <property name="growthStateMap">
             <map>
-                <entry key="freshJuvi" value-ref="freshJuvi"/>
-                <entry key="fullJuvi" value-ref="fullJuvi"/>
-                <entry key="freshAdult" value-ref="freshAdult"/>
-                <entry key="fullAdult" value-ref="fullAdult"/>
+                <entry key="freshJuvi" value-ref="carnotaurusFreshJuvi"/>
+                <entry key="fullJuvi" value-ref="carnotaurusFullJuvi"/>
+                <entry key="freshAdult" value-ref="carnotaurusFreshAdult"/>
+                <entry key="fullAdult" value-ref="carnotaurusFullAdult"/>
             </map>
         </property>
     </bean>
 
-    <bean id="freshJuvi" class="rottingalien.theisledmgcalc.GrowthState">
+    <!-- JUVENILE !-->
+
+    <bean id="carnotaurusFreshJuvi" class="rottingalien.theisledmgcalc.dinoinfo.GrowthState">
         <property name="name" value="Fresh Juvenile"/>
         <property name="dinoPropertyMap">
             <map>
@@ -36,7 +38,7 @@
         </property>
     </bean>
 
-    <bean id="fullJuvi" class="rottingalien.theisledmgcalc.GrowthState">
+    <bean id="carnotaurusFullJuvi" class="rottingalien.theisledmgcalc.dinoinfo.GrowthState">
         <property name="name" value="Full Juvenile"/>
         <property name="dinoPropertyMap">
             <map>
@@ -52,7 +54,9 @@
         </property>
     </bean>
 
-    <bean id="freshAdult" class="rottingalien.theisledmgcalc.GrowthState">
+    <!-- ADULT !-->
+
+    <bean id="carnotaurusFreshAdult" class="rottingalien.theisledmgcalc.dinoinfo.GrowthState">
         <property name="name" value="Fresh Adult"/>
         <property name="dinoPropertyMap">
             <map>
@@ -68,7 +72,7 @@
         </property>
     </bean>
 
-    <bean id="fullAdult" class="rottingalien.theisledmgcalc.GrowthState">
+    <bean id="carnotaurusFullAdult" class="rottingalien.theisledmgcalc.dinoinfo.GrowthState">
         <property name="name" value="Full Adult"/>
         <property name="dinoPropertyMap">
             <map>

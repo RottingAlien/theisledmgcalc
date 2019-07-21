@@ -1,4 +1,4 @@
-package rottingalien.theisledmgcalc;
+package rottingalien.theisledmgcalc.dinoinfo;
 
 import java.util.Map;
 
@@ -7,7 +7,6 @@ public abstract class AbstractGrowthState {
     private String name;
 
     private Map<String, Integer> dinoPropertyMap;
-
 
     public String getName() {
         return name;

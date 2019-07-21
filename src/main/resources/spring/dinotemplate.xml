@@ -6,24 +6,24 @@
 
 
 
-    <bean id="DINONAME" class="rottingalien.theisledmgcalc.Dino">
+    <bean id="DINONAME" class="rottingalien.theisledmgcalc.dinoinfo.Dino">
 
         <property name="name" value="DINONAME"/>
         <property name="growthStateMap">
             <map>
-                <entry key="freshJuvi" value-ref="freshJuvi"/>
-                <entry key="fullJuvi" value-ref="fullJuvi"/>
-                <entry key="freshSub" value-ref="freshSub"/>
-                <entry key="fullSub" value-ref="fullSub"/>
-                <entry key="freshAdult" value-ref="freshAdult"/>
-                <entry key="fullAdult" value-ref="fullAdult"/>
+                <entry key="freshJuvi" value-ref="DINONAMEFreshJuvi"/>
+                <entry key="fullJuvi" value-ref="DINONAMEFullJuvi"/>
+                <entry key="freshSub" value-ref="DINONAMEFreshSub"/>
+                <entry key="fullSub" value-ref="DINONAMEFullSub"/>
+                <entry key="freshAdult" value-ref="DINONAMEFreshAdult"/>
+                <entry key="fullAdult" value-ref="DINONAMEFullAdult"/>
             </map>
         </property>
     </bean>
 
     <!-- JUVENILE !-->
 
-    <bean id="freshJuvi" class="rottingalien.theisledmgcalc.GrowthState">
+    <bean id="DINONAMEFreshJuvi" class="rottingalien.theisledmgcalc.dinoinfo.GrowthState">
         <property name="name" value="Fresh Juvenile"/>
         <property name="dinoPropertyMap">
             <map>
@@ -40,7 +40,7 @@
         </property>
     </bean>
 
-    <bean id="fullJuvi" class="rottingalien.theisledmgcalc.GrowthState">
+    <bean id="DINONAMEFullJuvi" class="rottingalien.theisledmgcalc.dinoinfo.GrowthState">
         <property name="name" value="Full Juvenile"/>
         <property name="dinoPropertyMap">
             <map>
@@ -58,7 +58,7 @@
 
     <!-- SUB-ADULT !-->
 
-    <bean id="freshSub" class="rottingalien.theisledmgcalc.GrowthState">
+    <bean id="DINONAMEFreshSub" class="rottingalien.theisledmgcalc.dinoinfo.GrowthState">
         <property name="name" value="Fresh Sub-Adult"/>
         <property name="dinoPropertyMap">
             <map>
@@ -75,7 +75,7 @@
         </property>
     </bean>
 
-    <bean id="fullSub" class="rottingalien.theisledmgcalc.GrowthState">
+    <bean id="DINONAMEFullSub" class="rottingalien.theisledmgcalc.dinoinfo.GrowthState">
         <property name="name" value="Full Sub-Adult"/>
         <property name="dinoPropertyMap">
             <map>
@@ -93,7 +93,7 @@
 
     <!-- ADULT !-->
 
-    <bean id="freshAdult" class="rottingalien.theisledmgcalc.GrowthState">
+    <bean id="DINONAMEFreshAdult" class="rottingalien.theisledmgcalc.dinoinfo.GrowthState">
         <property name="name" value="Fresh Adult"/>
         <property name="dinoPropertyMap">
             <map>
@@ -109,7 +109,7 @@
         </property>
     </bean>
 
-    <bean id="fullAdult" class="rottingalien.theisledmgcalc.GrowthState">
+    <bean id="DINONAMEFullAdult" class="rottingalien.theisledmgcalc.dinoinfo.GrowthState">
         <property name="name" value="Full Adult"/>
         <property name="dinoPropertyMap">
             <map>

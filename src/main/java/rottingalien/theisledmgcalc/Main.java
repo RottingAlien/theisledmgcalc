@@ -2,6 +2,11 @@ package rottingalien.theisledmgcalc;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
+import rottingalien.theisledmgcalc.dinoinfo.Dino;
+import rottingalien.theisledmgcalc.dinoinfo.GrowthState;
+import rottingalien.utils.Maths.FindMidValues;
+
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,12 +16,16 @@ public class Main {
                         "/src/main/resources/spring/config.xml"
                 );
 
+
+
         Dino carnotaurus = (Dino) context.getBean("carnotaurus");
 
-        System.out.println(carnotaurus.getGrowthStateMap().get("freshJuvi").getDinoPropertyMap().get("health"));
-        System.out.println(carnotaurus.getGrowthStateMap().get("fullJuvi").getDinoPropertyMap().get("health"));
-        //AbstractDino.CARNOTAURUS.addGrowth("freshJuvenile",AbstractGrowthState.FRESHJUVI);
-        //AbstractDino.CARNOTAURUS.getGrowthStateMap().get("freshJuvenile").addDinoProperty("Weight",AbstractDinoProperty.WEIGHT);
+        for (GrowthState growthState : carnotaurus.getGrowthStateMap().values()){
+            System.out.println(carnotaurus.getName() + " " + growthState.getName());
+            for (Integer value: growthState.getDinoPropertyMap().values()) {
+                System.out.println(value);
+            }
 
+        }
     }
 }

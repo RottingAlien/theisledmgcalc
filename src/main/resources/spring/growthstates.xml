@@ -3,31 +3,31 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="freshJuvi" class="rottingalien.theisledmgcalc.GrowthState">
+    <bean id="freshJuvi" class="rottingalien.theisledmgcalc.dinoinfo.GrowthState">
     </bean>
 
-    <bean id="midJuvi" class="rottingalien.theisledmgcalc.GrowthState">
+    <bean id="midJuvi" class="rottingalien.theisledmgcalc.dinoinfo.GrowthState">
     </bean>
 
-    <bean id="fullJuvi" class="rottingalien.theisledmgcalc.GrowthState">
+    <bean id="fullJuvi" class="rottingalien.theisledmgcalc.dinoinfo.GrowthState">
     </bean>
 
-    <bean id="freshSub" class="rottingalien.theisledmgcalc.GrowthState">
+    <bean id="freshSub" class="rottingalien.theisledmgcalc.dinoinfo.GrowthState">
     </bean>
 
-    <bean id="midSub" class="rottingalien.theisledmgcalc.GrowthState">
+    <bean id="midSub" class="rottingalien.theisledmgcalc.dinoinfo.GrowthState">
     </bean>
 
-    <bean id="fullSub" class="rottingalien.theisledmgcalc.GrowthState">
+    <bean id="fullSub" class="rottingalien.theisledmgcalc.dinoinfo.GrowthState">
     </bean>
 
-    <bean id="freshAdult" class="rottingalien.theisledmgcalc.GrowthState">
+    <bean id="freshAdult" class="rottingalien.theisledmgcalc.dinoinfo.GrowthState">
     </bean>
 
-    <bean id="midAdult" class="rottingalien.theisledmgcalc.GrowthState">
+    <bean id="midAdult" class="rottingalien.theisledmgcalc.dinoinfo.GrowthState">
     </bean>
 
-    <bean id="fullAdult" class="rottingalien.theisledmgcalc.GrowthState">
+    <bean id="fullAdult" class="rottingalien.theisledmgcalc.dinoinfo.GrowthState">
     </bean>
 
 </beans>
