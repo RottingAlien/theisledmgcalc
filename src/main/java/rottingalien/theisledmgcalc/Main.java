@@ -11,8 +11,12 @@ public class Main {
                         "/src/main/resources/spring/config.xml"
                 );
 
-        Dinos.CARNOTAURUS.addGrowth("freshJuvenile",GrowthState.FRESHJUVI);
-        Dinos.CARNOTAURUS.getGrowthStateMap().get("freshJuvenile").getDinoPropertyMap().add(new DinoProperty("damage",50));
+        Dino carnotaurus = (Dino) context.getBean("carnotaurus");
+
+        System.out.println(carnotaurus.getGrowthStateMap().get("freshJuvi").getDinoPropertyMap().get("health"));
+        System.out.println(carnotaurus.getGrowthStateMap().get("fullJuvi").getDinoPropertyMap().get("health"));
+        //AbstractDino.CARNOTAURUS.addGrowth("freshJuvenile",AbstractGrowthState.FRESHJUVI);
+        //AbstractDino.CARNOTAURUS.getGrowthStateMap().get("freshJuvenile").addDinoProperty("Weight",AbstractDinoProperty.WEIGHT);
 
     }
 }

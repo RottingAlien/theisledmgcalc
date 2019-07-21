@@ -4,13 +4,83 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="carnotaurus" class="rottingalien.theisledmgcalc.Dinos">
+
+
+    <bean id="carnotaurus" class="rottingalien.theisledmgcalc.Dino">
+
         <property name="name" value="Carnotaurus"/>
         <property name="growthStateMap">
             <map>
-                <entry key="freshJuvenile" value-type="rottingalien.theisledmgcalc.GrowthState"/>
+                <entry key="freshJuvi" value-ref="freshJuvi"/>
+                <entry key="fullJuvi" value-ref="fullJuvi"/>
+                <entry key="freshAdult" value-ref="freshAdult"/>
+                <entry key="fullAdult" value-ref="fullAdult"/>
             </map>
         </property>
     </bean>
 
+    <bean id="freshJuvi" class="rottingalien.theisledmgcalc.GrowthState">
+        <property name="name" value="Fresh Juvenile"/>
+        <property name="dinoPropertyMap">
+            <map>
+                <entry key="weight" value="150"/>
+                <entry key="health" value="120"/>
+                <entry key="biteforce" value="50"/>
+                <entry key="bleed" value="15"/>
+                <entry key="bleedStandResist" value="30"/>
+                <entry key="bleedSitResist" value="10"/>
+                <entry key="bleedWalkResist" value="50"/>
+                <entry key="bleedRunResist" value="100"/>
+
+            </map>
+        </property>
+    </bean>
+
+    <bean id="fullJuvi" class="rottingalien.theisledmgcalc.GrowthState">
+        <property name="name" value="Full Juvenile"/>
+        <property name="dinoPropertyMap">
+            <map>
+                <entry key="weight" value="850"/>
+                <entry key="health" value="350"/>
+                <entry key="biteforce" value="75"/>
+                <entry key="bleed" value="15"/>
+                <entry key="bleedStandResist" value="30"/>
+                <entry key="bleedSitResist" value="10"/>
+                <entry key="bleedWalkResist" value="50"/>
+                <entry key="bleedRunResist" value="100"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="freshAdult" class="rottingalien.theisledmgcalc.GrowthState">
+        <property name="name" value="Fresh Adult"/>
+        <property name="dinoPropertyMap">
+            <map>
+                <entry key="weight" value="880"/>
+                <entry key="health" value="350"/>
+                <entry key="biteforce" value="75"/>
+                <entry key="bleed" value="15"/>
+                <entry key="bleedStandResist" value="70"/>
+                <entry key="bleedSitResist" value="20"/>
+                <entry key="bleedWalkResist" value="50"/>
+                <entry key="bleedRunResist" value="60"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="fullAdult" class="rottingalien.theisledmgcalc.GrowthState">
+        <property name="name" value="Full Adult"/>
+        <property name="dinoPropertyMap">
+            <map>
+                <entry key="weight" value="2170"/>
+                <entry key="health" value="2170"/>
+                <entry key="biteforce" value="200"/>
+                <entry key="bleed" value="15"/>
+                <entry key="bleedStandResist" value="70"/>
+                <entry key="bleedSitResist" value="20"/>
+                <entry key="bleedWalkResist" value="50"/>
+                <entry key="bleedRunResist" value="60"/>
+            </map>
+        </property>
+    </bean>
 </beans>
