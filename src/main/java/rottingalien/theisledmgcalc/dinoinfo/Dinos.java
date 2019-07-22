@@ -31,6 +31,7 @@ public enum Dinos {
 
     Dinos(String name) {
         this.name=name;
+        growthStateMap = new HashMap<>();
     }
 
     public String getName() {

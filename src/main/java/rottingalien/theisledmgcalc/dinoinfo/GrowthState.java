@@ -18,6 +18,7 @@ public enum GrowthState {
 
     GrowthState(String name){
         this.name=name;
+        dinoPropertyMap = new HashMap<>();
 
     }
 

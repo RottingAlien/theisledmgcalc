@@ -7,7 +7,8 @@ import rottingalien.theisledmgcalc.dinoinfo.Property;
 public class App {
 
     public void init(){
-        System.out.println(showStat(Dinos.CARNOTAURUS,GrowthState.FULLADULT,Property.BLEEDRUNRESIST));
+        System.out.println(showStat(Dinos.CARNOTAURUS,GrowthState.FRESHJUVI,Property.BLEEDSTANDRESIST));
+        System.out.println(showStat(Dinos.CARNOTAURUS,GrowthState.FULLADULT,Property.BLEEDSTANDRESIST));
     }
 
     public double showStat(Dinos dino, GrowthState growthState, Property property){
