@@ -4,8 +4,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <import resource="juvenile/carnovaluesjuvi.xml"/>
-    <import resource="adult/carnovaluesadult.xml"/>
+    <import resource="juvenile/carnotaurusvaluesjuvi.xml"/>
+    <import resource="adult/carnotaurusvaluesadult.xml"/>
 
     <bean id="carnotaurus" class="rottingalien.theisledmgcalc.dinoinfo.Dino">
 
