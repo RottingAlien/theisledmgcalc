@@ -1,31 +1,19 @@
 package rottingalien.theisledmgcalc;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
-import rottingalien.theisledmgcalc.dinoinfo.Dino;
+import rottingalien.theisledmgcalc.dinoinfo.Dinos;
 import rottingalien.theisledmgcalc.dinoinfo.GrowthState;
-import rottingalien.utils.Maths.FindMidValues;
-
-import java.util.Map;
+import rottingalien.theisledmgcalc.dinoinfo.Property;
 
 public class Main {
     public static void main(String[] args) {
 
-        ApplicationContext context =
-                new FileSystemXmlApplicationContext(
-                        "/src/main/resources/spring/config.xml"
-                );
+        Bootstrap bootstrap = new Bootstrap();
+        App app = new App();
+        bootstrap.init();
+        app.init();
 
 
-
-        Dino carnotaurus = (Dino) context.getBean("carnotaurus");
-
-        for (GrowthState growthState : carnotaurus.getGrowthStateMap().values()){
-            System.out.println(carnotaurus.getName() + " " + growthState.getName());
-            for (Integer value: growthState.getDinoPropertyMap().values()) {
-                System.out.println(value);
-            }
-
-        }
     }
+
+
 }
