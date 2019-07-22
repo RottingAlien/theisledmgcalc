@@ -9,15 +9,13 @@ import java.util.Map;
 
 public class DinosaurList {
 
-    DilophosaurusWire
-
     private Map<String,Dino> dinoMap = new HashMap<>();
 
 
     public void makeList(){
         dinoMap.put("Carnotaurus",new CarnotaurusWire().wireCarnotaurus());
+        dinoMap.put("Dilophosaurus", new DilophosaurusWire().wiredilophosaurus());
         dinoMap.put("DINOSAUR", new DINOSAURWire().wireDINOSAUR());
-        dinoMap.put("Dilophosaurus", new DilophosaurusWire())
     }
 
     public Map<String,Dino> getDinoMap(){
