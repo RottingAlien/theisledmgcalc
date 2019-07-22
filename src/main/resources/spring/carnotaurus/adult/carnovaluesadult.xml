@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- ADULT !-->
+
+    <bean id="carnotaurusFreshAdultWeight" class="rottingalien.theisledmgcalc.dinoinfo.Property">
+        <property name="name" value="Weight"/>
+        <property name="value" value="150"/>
+    </bean>
+
+    <bean id="carnotaurusFreshAdultHealth" class="rottingalien.theisledmgcalc.dinoinfo.Property">
+        <property name="name" value="Health"/>
+        <property name="value" value="120"/>
+    </bean>
+
+    <bean id="carnotaurusFreshAdultBiteForce" class="rottingalien.theisledmgcalc.dinoinfo.Property">
+        <property name="name" value="Bite Force"/>
+        <property name="value" value="50"/>
+    </bean>
+
+    <bean id="carnotaurusFreshAdultBleed" class="rottingalien.theisledmgcalc.dinoinfo.Property">
+        <property name="name" value="Bleed"/>
+        <property name="value" value="15"/>
+    </bean>
+
+    <bean id="carnotaurusFreshAdultBleedStandResist" class="rottingalien.theisledmgcalc.dinoinfo.Property">
+        <property name="name" value="Standing Bleed Resistance"/>
+        <property name="value" value="30"/>
+    </bean>
+
+    <bean id="carnotaurusFreshAdultBleedSitResist" class="rottingalien.theisledmgcalc.dinoinfo.Property">
+        <property name="name" value="Sitting Bleed Resistance"/>
+        <property name="value" value="10"/>
+    </bean>
+
+    <bean id="carnotaurusFreshAdultBleedWalkResist" class="rottingalien.theisledmgcalc.dinoinfo.Property">
+        <property name="name" value="Walking Bleed Resistance"/>
+        <property name="value" value="50"/>
+    </bean>
+
+    <bean id="carnotaurusFreshAdultBleedRunResist" class="rottingalien.theisledmgcalc.dinoinfo.Property">
+        <property name="name" value="Running Bleed resistance"/>
+        <property name="value" value="100"/>
+    </bean>
+
+</beans>
