@@ -33,29 +33,6 @@ public class CarnotaurusWire {
                 0,
                 0));
 
-        //----- SUB-ADULT
-
-        carnotaurus.getGrowthStates().put("Fresh Sub-Adult", new GrowthState(
-                "Fresh Sub-Adult",
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0));
-
-        carnotaurus.getGrowthStates().put("Full Sub-Adult", new GrowthState(
-                "Full Sub-Adult",
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0));
 
         //----- ADULT
 

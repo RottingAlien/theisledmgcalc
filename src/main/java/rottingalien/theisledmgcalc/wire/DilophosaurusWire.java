@@ -33,29 +33,6 @@ public class DilophosaurusWire {
                 0,
                 0));
 
-        //----- SUB-ADULT
-
-        dilophosaurus.getGrowthStates().put("Fresh Sub-Adult", new GrowthState(
-                "Fresh Sub-Adult",
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0));
-
-        dilophosaurus.getGrowthStates().put("Full Sub-Adult", new GrowthState(
-                "Full Sub-Adult",
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0));
 
         //----- ADULT
 
