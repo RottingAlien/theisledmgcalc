@@ -9,7 +9,7 @@ public class Main {
         dinosaurList.makeList();
 
         for (Dino dino : dinosaurList.getDinoMap().values()) {
-            System.out.println(dino.getName());
+            System.out.println("--- " + dino.getName() + " ---");
             for (GrowthState growthstate : dino.getGrowthStates().values()) {
                 System.out.println(growthstate.getName());
             }

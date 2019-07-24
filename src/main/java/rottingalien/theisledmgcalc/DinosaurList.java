@@ -1,8 +1,6 @@
 package rottingalien.theisledmgcalc;
 
-import rottingalien.theisledmgcalc.wire.CarnotaurusWire;
-import rottingalien.theisledmgcalc.wire.DINOSAURWire;
-import rottingalien.theisledmgcalc.wire.DilophosaurusWire;
+import rottingalien.theisledmgcalc.wire.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,9 +11,11 @@ public class DinosaurList {
 
 
     public void makeList(){
-        dinoMap.put("Carnotaurus",new CarnotaurusWire().wireCarnotaurus());
-        dinoMap.put("Dilophosaurus", new DilophosaurusWire().wiredilophosaurus());
-        dinoMap.put("DINOSAUR", new DINOSAURWire().wireDINOSAUR());
+        dinoMap.put("Carnotaurus",new CarnotaurusWire().wire());
+        dinoMap.put("Dilophosaurus", new DilophosaurusWire().wire());
+        dinoMap.put("Utahraptor", new UtahraptorWire().wire());
+        dinoMap.put("Allosaurus", new AllosaurusWire().wire());
+        dinoMap.put("DINOSAUR", new DINOSAURWire().wire());
     }
 
     public Map<String,Dino> getDinoMap(){

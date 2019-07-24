@@ -7,7 +7,7 @@ public class CarnotaurusWire {
 
     private Dino carnotaurus = new Dino("Carnotaurus");
 
-    public Dino wireCarnotaurus(){
+    public Dino wire(){
 
         //----- JUVENILE
 

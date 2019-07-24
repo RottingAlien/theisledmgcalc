@@ -7,7 +7,7 @@ public class DilophosaurusWire {
 
     private Dino dilophosaurus = new Dino("Dilophosaurus");
 
-    public Dino wiredilophosaurus(){
+    public Dino wire(){
 
         //----- JUVENILE
 

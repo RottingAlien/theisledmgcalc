@@ -5,9 +5,9 @@ import rottingalien.theisledmgcalc.GrowthState;
 
 public class DINOSAURWire {
 
-    private Dino DINOSAUR = new Dino("Dinosaur");
+    private Dino DINOSAUR = new Dino("DINOSAUR");
 
-    public Dino wireDINOSAUR(){
+    public Dino wire(){
 
         //----- JUVENILE
 
@@ -33,6 +33,7 @@ public class DINOSAURWire {
                 0,
                 0));
 
+
         //----- SUB-ADULT
 
         DINOSAUR.getGrowthStates().put("Fresh Sub-Adult", new GrowthState(
@@ -47,7 +48,7 @@ public class DINOSAURWire {
                 0));
 
         DINOSAUR.getGrowthStates().put("Full Sub-Adult", new GrowthState(
-                "Full Sub-Adult",
+                "Full Juvenile",
                 0,
                 0,
                 0,
@@ -83,5 +84,6 @@ public class DINOSAURWire {
 
         return DINOSAUR;
     }
+
 
 }
