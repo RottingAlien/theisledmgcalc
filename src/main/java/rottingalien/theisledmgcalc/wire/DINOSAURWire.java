@@ -48,7 +48,7 @@ public class DINOSAURWire {
                 0));
 
         DINOSAUR.getGrowthStates().put("Full Sub-Adult", new GrowthState(
-                "Full Juvenile",
+                "Full Sub-Adult",
                 0,
                 0,
                 0,
