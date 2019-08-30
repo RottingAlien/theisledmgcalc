@@ -2,7 +2,7 @@ package rottingalien.theisledmgcalc;
 
 import java.util.*;
 
-public class Dino {
+public abstract class Dino {
 
     private String name;
 
@@ -13,14 +13,17 @@ public class Dino {
     private double growthDurationAdult;
     private double growthDurationTotal;
 
-    private int tier;
+    private double tier;
 
     private Map<String,GrowthState> growthStates;
 
 
-    public Dino(String name){
-        this.name=name;
-        growthStates = new HashMap<>();
+    public Dino(){
+        growthStates = new LinkedHashMap<>();
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Map<String,GrowthState> getGrowthStates() {
@@ -67,11 +70,11 @@ public class Dino {
         return growthDurationSub!=0;
     }
 
-    public int getTier() {
+    public double getTier() {
         return tier;
     }
 
-    public void setTier(int tier) {
+    public void setTier(double tier) {
         this.tier = tier;
     }
 

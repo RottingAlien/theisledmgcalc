@@ -7,8 +7,7 @@ public class Main {
 
         FightSimulator fightSimulator = new FightSimulator();
 
-        fightSimulator.fight("Triceratops","Mid Adult",
-                "Tyrannosaurus","Full Adult");
+        fightSimulator.fight();
 
 
     }
