@@ -10,10 +10,19 @@ public class GallimimusWire {
 
     public Dino wire(){
 
+        gallimimus.setCarnivore(false);
+        gallimimus.setTier(3);
+        gallimimus.setGrowthDurationJuvi(40);
+        gallimimus.setGrowthDurationSub(0);
+        gallimimus.setGrowthDurationAdult(50);
+        gallimimus.setGrowthDurationTotal(gallimimus.getGrowthDurationJuvi() + gallimimus.getGrowthDurationSub() + gallimimus.getGrowthDurationAdult());
+
         //----- JUVENILE
 
         gallimimus.getGrowthStates().put("Fresh Juvenile", new GrowthState(
                 "Fresh Juvenile",
+                48.6,
+                0,
                 70,
                 25,
                 100,
@@ -25,6 +34,8 @@ public class GallimimusWire {
 
         gallimimus.getGrowthStates().put("Full Juvenile", new GrowthState(
                 "Full Juvenile",
+                48.6,
+                0,
                 70,
                 25,
                 100,
@@ -36,6 +47,12 @@ public class GallimimusWire {
 
         gallimimus.getGrowthStates().put("Mid Juvenile", new GrowthState(
                 "Mid Juvenile",
+                FindMidValues.findMidValue(gallimimus.getGrowthStates().get("Fresh Juvenile").getSpeed(),
+                        gallimimus.getGrowthStates().get("Full Juvenile").getSpeed(),
+                        50),
+                FindMidValues.findMidValue(gallimimus.getGrowthStates().get("Fresh Juvenile").getAmbush(),
+                        gallimimus.getGrowthStates().get("Full Juvenile").getAmbush(),
+                        50),
                 FindMidValues.findMidValue(gallimimus.getGrowthStates().get("Fresh Juvenile").getBleedStandResist(),
                         gallimimus.getGrowthStates().get("Full Juvenile").getBleedStandResist(),
                         50),
@@ -66,6 +83,8 @@ public class GallimimusWire {
 
         gallimimus.getGrowthStates().put("Fresh Adult", new GrowthState(
                 "Fresh Adult",
+                48.6,
+                0,
                 70,
                 25,
                 100,
@@ -77,6 +96,8 @@ public class GallimimusWire {
 
         gallimimus.getGrowthStates().put("Full Adult", new GrowthState(
                 "Full Adult",
+                48.6,
+                0,
                 70,
                 25,
                 100,
@@ -88,6 +109,12 @@ public class GallimimusWire {
 
         gallimimus.getGrowthStates().put("Mid Adult", new GrowthState(
                 "Mid Adult",
+                FindMidValues.findMidValue(gallimimus.getGrowthStates().get("Fresh Adult").getSpeed(),
+                        gallimimus.getGrowthStates().get("Full Adult").getSpeed(),
+                        50),
+                FindMidValues.findMidValue(gallimimus.getGrowthStates().get("Fresh Adult").getAmbush(),
+                        gallimimus.getGrowthStates().get("Full Adult").getAmbush(),
+                        50),
                 FindMidValues.findMidValue(gallimimus.getGrowthStates().get("Fresh Adult").getBleedStandResist(),
                         gallimimus.getGrowthStates().get("Full Adult").getBleedStandResist(),
                         50),

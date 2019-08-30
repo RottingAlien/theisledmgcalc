@@ -10,10 +10,19 @@ public class DryosaurusWire {
 
     public Dino wire(){
 
+        dryosaurus.setCarnivore(false);
+        dryosaurus.setTier(2);
+        dryosaurus.setGrowthDurationJuvi(15);
+        dryosaurus.setGrowthDurationSub(0);
+        dryosaurus.setGrowthDurationAdult(15);
+        dryosaurus.setGrowthDurationTotal(dryosaurus.getGrowthDurationJuvi() + dryosaurus.getGrowthDurationSub() + dryosaurus.getGrowthDurationAdult());
+
         //----- JUVENILE
 
         dryosaurus.getGrowthStates().put("Fresh Juvenile", new GrowthState(
                 "Fresh Juvenile",
+                41.5,
+                0,
                 40,
                 20,
                 100,
@@ -25,6 +34,8 @@ public class DryosaurusWire {
 
         dryosaurus.getGrowthStates().put("Full Juvenile", new GrowthState(
                 "Full Juvenile",
+                41.5,
+                0,
                 40,
                 20,
                 100,
@@ -36,6 +47,12 @@ public class DryosaurusWire {
 
         dryosaurus.getGrowthStates().put("Mid Juvenile", new GrowthState(
                 "Mid Juvenile",
+                FindMidValues.findMidValue(dryosaurus.getGrowthStates().get("Fresh Juvenile").getSpeed(),
+                        dryosaurus.getGrowthStates().get("Full Juvenile").getSpeed(),
+                        50),
+                FindMidValues.findMidValue(dryosaurus.getGrowthStates().get("Fresh Juvenile").getAmbush(),
+                        dryosaurus.getGrowthStates().get("Full Juvenile").getAmbush(),
+                        50),
                 FindMidValues.findMidValue(dryosaurus.getGrowthStates().get("Fresh Juvenile").getBleedStandResist(),
                         dryosaurus.getGrowthStates().get("Full Juvenile").getBleedStandResist(),
                         50),
@@ -66,6 +83,8 @@ public class DryosaurusWire {
 
         dryosaurus.getGrowthStates().put("Fresh Adult", new GrowthState(
                 "Fresh Adult",
+                41.5,
+                0,
                 50,
                 20,
                 100,
@@ -77,6 +96,8 @@ public class DryosaurusWire {
 
         dryosaurus.getGrowthStates().put("Full Adult", new GrowthState(
                 "Full Adult",
+                41.5,
+                0,
                 50,
                 25,
                 100,
@@ -88,6 +109,12 @@ public class DryosaurusWire {
 
         dryosaurus.getGrowthStates().put("Mid Adult", new GrowthState(
                 "Mid Adult",
+                FindMidValues.findMidValue(dryosaurus.getGrowthStates().get("Fresh Adult").getSpeed(),
+                        dryosaurus.getGrowthStates().get("Full Adult").getSpeed(),
+                        50),
+                FindMidValues.findMidValue(dryosaurus.getGrowthStates().get("Fresh Adult").getAmbush(),
+                        dryosaurus.getGrowthStates().get("Full Adult").getAmbush(),
+                        50),
                 FindMidValues.findMidValue(dryosaurus.getGrowthStates().get("Fresh Adult").getBleedStandResist(),
                         dryosaurus.getGrowthStates().get("Full Adult").getBleedStandResist(),
                         50),

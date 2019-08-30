@@ -10,6 +10,7 @@ public class Main {
         fightSimulator.fight("Triceratops","Mid Adult",
                 "Tyrannosaurus","Full Adult");
 
+
     }
 
 }

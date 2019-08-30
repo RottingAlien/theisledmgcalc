@@ -41,6 +41,8 @@ public class FightSimulator {
 
         System.out.println(chosenDino1.getName() + " " + dino1GrowthState.getName() + " Kills " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " with " + numberOfBites1 + " Bites.");
         System.out.println(chosenDino2.getName() + " " + dino2GrowthState.getName() + " Kills " + chosenDino1.getName() + " " + dino1GrowthState.getName() + " with " + numberOfBites2 + " Bites.");
+        System.out.println(dinosaurList.getDinoMap().get("Austroraptor").getGrowthDurationTotal());
+
 
     }
 

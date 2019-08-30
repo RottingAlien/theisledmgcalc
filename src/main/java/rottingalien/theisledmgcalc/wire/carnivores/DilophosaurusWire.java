@@ -10,10 +10,19 @@ public class DilophosaurusWire {
 
     public Dino wire(){
 
+        dilophosaurus.setCarnivore(true);
+        dilophosaurus.setTier(3);
+        dilophosaurus.setGrowthDurationJuvi(50);
+        dilophosaurus.setGrowthDurationSub(0);
+        dilophosaurus.setGrowthDurationAdult(60);
+        dilophosaurus.setGrowthDurationTotal(dilophosaurus.getGrowthDurationJuvi() + dilophosaurus.getGrowthDurationSub() + dilophosaurus.getGrowthDurationAdult());
+
         //----- JUVENILE
 
         dilophosaurus.getGrowthStates().put("Fresh Juvenile", new GrowthState(
                 "Fresh Juvenile",
+                38.9,
+                0,
                 50,
                 25,
                 80,
@@ -25,6 +34,8 @@ public class DilophosaurusWire {
 
         dilophosaurus.getGrowthStates().put("Full Juvenile", new GrowthState(
                 "Full Juvenile",
+                38.9,
+                0,
                 50,
                 25,
                 80,
@@ -36,6 +47,12 @@ public class DilophosaurusWire {
 
         dilophosaurus.getGrowthStates().put("Mid Juvenile", new GrowthState(
                 "Mid Juvenile",
+                FindMidValues.findMidValue(dilophosaurus.getGrowthStates().get("Fresh Juvenile").getSpeed(),
+                        dilophosaurus.getGrowthStates().get("Full Juvenile").getSpeed(),
+                        50),
+                FindMidValues.findMidValue(dilophosaurus.getGrowthStates().get("Fresh Juvenile").getAmbush(),
+                        dilophosaurus.getGrowthStates().get("Full Juvenile").getAmbush(),
+                        50),
                 FindMidValues.findMidValue(dilophosaurus.getGrowthStates().get("Fresh Juvenile").getBleedStandResist(),
                         dilophosaurus.getGrowthStates().get("Full Juvenile").getBleedStandResist(),
                         50),
@@ -66,6 +83,8 @@ public class DilophosaurusWire {
 
         dilophosaurus.getGrowthStates().put("Fresh Adult", new GrowthState(
                 "Fresh Adult",
+                38.9,
+                45.5,
                 25,
                 10,
                 50,
@@ -77,6 +96,8 @@ public class DilophosaurusWire {
 
         dilophosaurus.getGrowthStates().put("Full Adult", new GrowthState(
                 "Full Adult",
+                38.9,
+                45.5,
                 25,
                 10,
                 50,
@@ -88,6 +109,12 @@ public class DilophosaurusWire {
 
         dilophosaurus.getGrowthStates().put("Mid Adult", new GrowthState(
                 "Mid Adult",
+                FindMidValues.findMidValue(dilophosaurus.getGrowthStates().get("Fresh Adult").getSpeed(),
+                        dilophosaurus.getGrowthStates().get("Full Adult").getSpeed(),
+                        50),
+                FindMidValues.findMidValue(dilophosaurus.getGrowthStates().get("Fresh Adult").getAmbush(),
+                        dilophosaurus.getGrowthStates().get("Full Adult").getAmbush(),
+                        50),
                 FindMidValues.findMidValue(dilophosaurus.getGrowthStates().get("Fresh Adult").getBleedStandResist(),
                         dilophosaurus.getGrowthStates().get("Full Adult").getBleedStandResist(),
                         50),

@@ -10,10 +10,19 @@ public class DINOSAURWire {
 
     public Dino wire(){
 
+        DINOSAUR.setCarnivore(true);
+        DINOSAUR.setTier(0);
+        DINOSAUR.setGrowthDurationJuvi(0);
+        DINOSAUR.setGrowthDurationSub(0);
+        DINOSAUR.setGrowthDurationAdult(0);
+        DINOSAUR.setGrowthDurationTotal(DINOSAUR.getGrowthDurationJuvi() + DINOSAUR.getGrowthDurationSub() + DINOSAUR.getGrowthDurationAdult());
+
         //----- JUVENILE
 
         DINOSAUR.getGrowthStates().put("Fresh Juvenile", new GrowthState(
                 "Fresh Juvenile",
+                0,
+                0,
                 0,
                 0,
                 0,
@@ -32,10 +41,18 @@ public class DINOSAURWire {
                 0,
                 0,
                 0,
+                0,
+                0,
                 0));
 
         DINOSAUR.getGrowthStates().put("Mid Juvenile", new GrowthState(
                 "Mid Juvenile",
+                FindMidValues.findMidValue(DINOSAUR.getGrowthStates().get("Fresh Juvenile").getSpeed(),
+                        DINOSAUR.getGrowthStates().get("Full Juvenile").getSpeed(),
+                        50),
+                FindMidValues.findMidValue(DINOSAUR.getGrowthStates().get("Fresh Juvenile").getAmbush(),
+                        DINOSAUR.getGrowthStates().get("Full Juvenile").getAmbush(),
+                        50),
                 FindMidValues.findMidValue(DINOSAUR.getGrowthStates().get("Fresh Juvenile").getBleedStandResist(),
                         DINOSAUR.getGrowthStates().get("Full Juvenile").getBleedStandResist(),
                         50),
@@ -75,6 +92,8 @@ public class DINOSAURWire {
                 0,
                 0,
                 0,
+                0,
+                0,
                 0));
 
         DINOSAUR.getGrowthStates().put("Full Sub-Adult", new GrowthState(
@@ -86,10 +105,18 @@ public class DINOSAURWire {
                 0,
                 0,
                 0,
+                0,
+                0,
                 0));
 
         DINOSAUR.getGrowthStates().put("Mid Sub-Adult", new GrowthState(
                 "Mid Sub-Adult",
+                FindMidValues.findMidValue(DINOSAUR.getGrowthStates().get("Fresh Sub-Adult").getSpeed(),
+                        DINOSAUR.getGrowthStates().get("Full Sub-Adult").getSpeed(),
+                        50),
+                FindMidValues.findMidValue(DINOSAUR.getGrowthStates().get("Fresh Sub-Adult").getAmbush(),
+                        DINOSAUR.getGrowthStates().get("Full Sub-Adult").getAmbush(),
+                        50),
                 FindMidValues.findMidValue(DINOSAUR.getGrowthStates().get("Fresh Sub-Adult").getBleedStandResist(),
                         DINOSAUR.getGrowthStates().get("Full Sub-Adult").getBleedStandResist(),
                         50),
@@ -128,6 +155,8 @@ public class DINOSAURWire {
                 0,
                 0,
                 0,
+                0,
+                0,
                 0));
 
         DINOSAUR.getGrowthStates().put("Full Adult", new GrowthState(
@@ -139,10 +168,18 @@ public class DINOSAURWire {
                 0,
                 0,
                 0,
+                0,
+                0,
                 0));
 
         DINOSAUR.getGrowthStates().put("Mid Adult", new GrowthState(
                 "Mid Adult",
+                FindMidValues.findMidValue(DINOSAUR.getGrowthStates().get("Fresh Adult").getSpeed(),
+                        DINOSAUR.getGrowthStates().get("Full Adult").getSpeed(),
+                        50),
+                FindMidValues.findMidValue(DINOSAUR.getGrowthStates().get("Fresh Adult").getAmbush(),
+                        DINOSAUR.getGrowthStates().get("Full Adult").getAmbush(),
+                        50),
                 FindMidValues.findMidValue(DINOSAUR.getGrowthStates().get("Fresh Adult").getBleedStandResist(),
                         DINOSAUR.getGrowthStates().get("Full Adult").getBleedStandResist(),
                         50),

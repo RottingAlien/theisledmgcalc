@@ -10,10 +10,19 @@ public class MaiasauraWire {
 
     public Dino wire(){
 
+        maiasaura.setCarnivore(false);
+        maiasaura.setTier(3);
+        maiasaura.setGrowthDurationJuvi(50);
+        maiasaura.setGrowthDurationSub(0);
+        maiasaura.setGrowthDurationAdult(60);
+        maiasaura.setGrowthDurationTotal(maiasaura.getGrowthDurationJuvi() + maiasaura.getGrowthDurationSub() + maiasaura.getGrowthDurationAdult());
+
         //----- JUVENILE
 
         maiasaura.getGrowthStates().put("Fresh Juvenile", new GrowthState(
                 "Fresh Juvenile",
+                44.6,
+                0,
                 50,
                 25,
                 100,
@@ -25,6 +34,8 @@ public class MaiasauraWire {
 
         maiasaura.getGrowthStates().put("Full Juvenile", new GrowthState(
                 "Full Juvenile",
+                44.6,
+                0,
                 50,
                 25,
                 100,
@@ -36,6 +47,12 @@ public class MaiasauraWire {
 
         maiasaura.getGrowthStates().put("Mid Juvenile", new GrowthState(
                 "Mid Juvenile",
+                FindMidValues.findMidValue(maiasaura.getGrowthStates().get("Fresh Juvenile").getSpeed(),
+                        maiasaura.getGrowthStates().get("Full Juvenile").getSpeed(),
+                        50),
+                FindMidValues.findMidValue(maiasaura.getGrowthStates().get("Fresh Juvenile").getAmbush(),
+                        maiasaura.getGrowthStates().get("Full Juvenile").getAmbush(),
+                        50),
                 FindMidValues.findMidValue(maiasaura.getGrowthStates().get("Fresh Juvenile").getBleedStandResist(),
                         maiasaura.getGrowthStates().get("Full Juvenile").getBleedStandResist(),
                         50),
@@ -67,6 +84,8 @@ public class MaiasauraWire {
 
         maiasaura.getGrowthStates().put("Fresh Adult", new GrowthState(
                 "Fresh Adult",
+                44.6,
+                0,
                 25,
                 20,
                 100,
@@ -78,6 +97,8 @@ public class MaiasauraWire {
 
         maiasaura.getGrowthStates().put("Full Adult", new GrowthState(
                 "Full Adult",
+                44.6,
+                0,
                 25,
                 20,
                 100,
@@ -89,6 +110,12 @@ public class MaiasauraWire {
 
         maiasaura.getGrowthStates().put("Mid Adult", new GrowthState(
                 "Mid Adult",
+                FindMidValues.findMidValue(maiasaura.getGrowthStates().get("Fresh Adult").getSpeed(),
+                        maiasaura.getGrowthStates().get("Full Adult").getSpeed(),
+                        50),
+                FindMidValues.findMidValue(maiasaura.getGrowthStates().get("Fresh Adult").getAmbush(),
+                        maiasaura.getGrowthStates().get("Full Adult").getAmbush(),
+                        50),
                 FindMidValues.findMidValue(maiasaura.getGrowthStates().get("Fresh Adult").getBleedStandResist(),
                         maiasaura.getGrowthStates().get("Full Adult").getBleedStandResist(),
                         50),

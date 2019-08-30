@@ -4,6 +4,9 @@ public class GrowthState {
 
     private String name;
 
+    private double speed;
+    private double ambush;
+
     private double bleedStandResist;
     private double bleedSitResist;
     private double bleedWalkResist;
@@ -17,10 +20,12 @@ public class GrowthState {
     private double special;
     private double specialBleed;
 
-    private boolean hasSpecial;
+    private boolean hasTrample;
 
-    public GrowthState(String name, double bleedStandResist, double bleedSitResist, double bleedWalkResist, double bleedRunResist, double weight, double health, double biteForce, double bleed) {
+    public GrowthState(String name, double speed, double ambush, double bleedStandResist, double bleedSitResist, double bleedWalkResist, double bleedRunResist, double weight, double health, double biteForce, double bleed) {
         this.name = name;
+        this.speed = speed;
+        this.ambush = ambush;
         this.bleedStandResist = bleedStandResist;
         this.bleedSitResist = bleedSitResist;
         this.bleedWalkResist = bleedWalkResist;
@@ -31,8 +36,10 @@ public class GrowthState {
         this.bleed = bleed;
     }
 
-    public GrowthState(String name, double bleedStandResist, double bleedSitResist, double bleedWalkResist, double bleedRunResist, double weight, double health, double biteForce, double bleed, double special, double specialBleed) {
+    public GrowthState(String name, double speed, double ambush, double bleedStandResist, double bleedSitResist, double bleedWalkResist, double bleedRunResist, double weight, double health, double biteForce, double bleed, double special, double specialBleed) {
         this.name = name;
+        this.speed = speed;
+        this.ambush = ambush;
         this.bleedStandResist = bleedStandResist;
         this.bleedSitResist = bleedSitResist;
         this.bleedWalkResist = bleedWalkResist;
@@ -47,6 +54,14 @@ public class GrowthState {
 
     public String getName() {
         return name;
+    }
+
+    public double getSpeed() {
+        return speed;
+    }
+
+    public double getAmbush() {
+        return ambush;
     }
 
     public double getBleedStandResist() {
@@ -90,10 +105,18 @@ public class GrowthState {
     }
 
     public boolean hasSpecial() {
-        return hasSpecial;
+        return special!=0;
     }
 
-    public void setHasSpecial(boolean hasSpecial) {
-        this.hasSpecial = hasSpecial;
+    public boolean hasAmbush() {
+        return ambush!=0;
+    }
+
+    public boolean hasTrample() {
+        return hasTrample;
+    }
+
+    public void setHasTrample(boolean hasTrample) {
+        this.hasTrample = hasTrample;
     }
 }

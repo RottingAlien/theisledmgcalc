@@ -10,10 +10,19 @@ public class SuchomimusWire {
 
     public Dino wire(){
 
+        suchomimus.setCarnivore(true);
+        suchomimus.setTier(4);
+        suchomimus.setGrowthDurationJuvi(85);
+        suchomimus.setGrowthDurationSub(0);
+        suchomimus.setGrowthDurationAdult(150);
+        suchomimus.setGrowthDurationTotal(suchomimus.getGrowthDurationJuvi() + suchomimus.getGrowthDurationSub() + suchomimus.getGrowthDurationAdult());
+
         //----- JUVENILE
 
         suchomimus.getGrowthStates().put("Fresh Juvenile", new GrowthState(
                 "Fresh Juvenile",
+                30.9,
+                39.3,
                 60,
                 25,
                 80,
@@ -25,6 +34,8 @@ public class SuchomimusWire {
 
         suchomimus.getGrowthStates().put("Full Juvenile", new GrowthState(
                 "Full Juvenile",
+                30.9,
+                39.3,
                 60,
                 25,
                 80,
@@ -36,6 +47,12 @@ public class SuchomimusWire {
 
         suchomimus.getGrowthStates().put("Mid Juvenile", new GrowthState(
                 "Mid Juvenile",
+                FindMidValues.findMidValue(suchomimus.getGrowthStates().get("Fresh Juvenile").getSpeed(),
+                        suchomimus.getGrowthStates().get("Full Juvenile").getSpeed(),
+                        50),
+                FindMidValues.findMidValue(suchomimus.getGrowthStates().get("Fresh Juvenile").getAmbush(),
+                        suchomimus.getGrowthStates().get("Full Juvenile").getAmbush(),
+                        50),
                 FindMidValues.findMidValue(suchomimus.getGrowthStates().get("Fresh Juvenile").getBleedStandResist(),
                         suchomimus.getGrowthStates().get("Full Juvenile").getBleedStandResist(),
                         50),
@@ -66,6 +83,8 @@ public class SuchomimusWire {
 
         suchomimus.getGrowthStates().put("Fresh Adult", new GrowthState(
                 "Fresh Adult",
+                30.9,
+                39.3,
                 25,
                 20,
                 80,
@@ -77,6 +96,8 @@ public class SuchomimusWire {
 
         suchomimus.getGrowthStates().put("Full Adult", new GrowthState(
                 "Full Adult",
+                30.9,
+                39.3,
                 25,
                 20,
                 80,
@@ -88,6 +109,12 @@ public class SuchomimusWire {
 
         suchomimus.getGrowthStates().put("Mid Adult", new GrowthState(
                 "Mid Adult",
+                FindMidValues.findMidValue(suchomimus.getGrowthStates().get("Fresh Adult").getSpeed(),
+                        suchomimus.getGrowthStates().get("Full Adult").getSpeed(),
+                        50),
+                FindMidValues.findMidValue(suchomimus.getGrowthStates().get("Fresh Adult").getAmbush(),
+                        suchomimus.getGrowthStates().get("Full Adult").getAmbush(),
+                        50),
                 FindMidValues.findMidValue(suchomimus.getGrowthStates().get("Fresh Adult").getBleedStandResist(),
                         suchomimus.getGrowthStates().get("Full Adult").getBleedStandResist(),
                         50),

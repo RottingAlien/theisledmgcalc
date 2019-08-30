@@ -10,10 +10,19 @@ public class TyrannosaurusWire {
 
     public Dino wire(){
 
+        tyrannosaurus.setCarnivore(true);
+        tyrannosaurus.setTier(5);
+        tyrannosaurus.setGrowthDurationJuvi(100);
+        tyrannosaurus.setGrowthDurationSub(180);
+        tyrannosaurus.setGrowthDurationAdult(100);
+        tyrannosaurus.setGrowthDurationTotal(tyrannosaurus.getGrowthDurationJuvi() + tyrannosaurus.getGrowthDurationSub() + tyrannosaurus.getGrowthDurationAdult());
+
         //----- JUVENILE
 
         tyrannosaurus.getGrowthStates().put("Fresh Juvenile", new GrowthState(
                 "Fresh Juvenile",
+                36,
+                0,
                 70,
                 25,
                 100,
@@ -25,6 +34,8 @@ public class TyrannosaurusWire {
 
         tyrannosaurus.getGrowthStates().put("Full Juvenile", new GrowthState(
                 "Full Juvenile",
+                36,
+                0,
                 70,
                 25,
                 100,
@@ -36,6 +47,12 @@ public class TyrannosaurusWire {
 
         tyrannosaurus.getGrowthStates().put("Mid Juvenile", new GrowthState(
                 "Mid Juvenile",
+                FindMidValues.findMidValue(tyrannosaurus.getGrowthStates().get("Fresh Juvenile").getSpeed(),
+                        tyrannosaurus.getGrowthStates().get("Full Juvenile").getSpeed(),
+                        50),
+                FindMidValues.findMidValue(tyrannosaurus.getGrowthStates().get("Fresh Juvenile").getAmbush(),
+                        tyrannosaurus.getGrowthStates().get("Full Juvenile").getAmbush(),
+                        50),
                 FindMidValues.findMidValue(tyrannosaurus.getGrowthStates().get("Fresh Juvenile").getBleedStandResist(),
                         tyrannosaurus.getGrowthStates().get("Full Juvenile").getBleedStandResist(),
                         50),
@@ -66,6 +83,8 @@ public class TyrannosaurusWire {
 
         tyrannosaurus.getGrowthStates().put("Fresh Sub-Adult", new GrowthState(
                 "Fresh Sub-Adult",
+                33.7,
+                44,
                 40,
                 10,
                 50,
@@ -77,6 +96,8 @@ public class TyrannosaurusWire {
 
         tyrannosaurus.getGrowthStates().put("Full Sub-Adult", new GrowthState(
                 "Full Sub-Adult",
+                33.7,
+                44,
                 40,
                 10,
                 50,
@@ -88,6 +109,12 @@ public class TyrannosaurusWire {
 
         tyrannosaurus.getGrowthStates().put("Mid Sub-Adult", new GrowthState(
                 "Mid Sub-Adult",
+                FindMidValues.findMidValue(tyrannosaurus.getGrowthStates().get("Fresh Sub-Adult").getSpeed(),
+                        tyrannosaurus.getGrowthStates().get("Full Sub-Adult").getSpeed(),
+                        50),
+                FindMidValues.findMidValue(tyrannosaurus.getGrowthStates().get("Fresh Sub-Adult").getAmbush(),
+                        tyrannosaurus.getGrowthStates().get("Full Sub-Adult").getAmbush(),
+                        50),
                 FindMidValues.findMidValue(tyrannosaurus.getGrowthStates().get("Fresh Sub-Adult").getBleedStandResist(),
                         tyrannosaurus.getGrowthStates().get("Full Sub-Adult").getBleedStandResist(),
                         50),
@@ -117,6 +144,8 @@ public class TyrannosaurusWire {
 
         tyrannosaurus.getGrowthStates().put("Fresh Adult", new GrowthState(
                 "Fresh Adult",
+                33.2,
+                43.1,
                 30,
                 10,
                 50,
@@ -128,6 +157,8 @@ public class TyrannosaurusWire {
 
         tyrannosaurus.getGrowthStates().put("Full Adult", new GrowthState(
                 "Full Adult",
+                33.2,
+                43.1,
                 30,
                 10,
                 50,
@@ -139,6 +170,12 @@ public class TyrannosaurusWire {
 
         tyrannosaurus.getGrowthStates().put("Mid Adult", new GrowthState(
                 "Mid Adult",
+                FindMidValues.findMidValue(tyrannosaurus.getGrowthStates().get("Fresh Adult").getSpeed(),
+                        tyrannosaurus.getGrowthStates().get("Full Adult").getSpeed(),
+                        50),
+                FindMidValues.findMidValue(tyrannosaurus.getGrowthStates().get("Fresh Adult").getAmbush(),
+                        tyrannosaurus.getGrowthStates().get("Full Adult").getAmbush(),
+                        50),
                 FindMidValues.findMidValue(tyrannosaurus.getGrowthStates().get("Fresh Adult").getBleedStandResist(),
                         tyrannosaurus.getGrowthStates().get("Full Adult").getBleedStandResist(),
                         50),

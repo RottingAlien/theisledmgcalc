@@ -10,10 +10,19 @@ public class CeratosaurusWire {
 
     public Dino wire(){
 
+        ceratosaurus.setCarnivore(true);
+        ceratosaurus.setTier(4);
+        ceratosaurus.setGrowthDurationJuvi(50);
+        ceratosaurus.setGrowthDurationSub(0);
+        ceratosaurus.setGrowthDurationAdult(100);
+        ceratosaurus.setGrowthDurationTotal(ceratosaurus.getGrowthDurationJuvi() + ceratosaurus.getGrowthDurationSub() + ceratosaurus.getGrowthDurationAdult());
+
         //----- JUVENILE
 
         ceratosaurus.getGrowthStates().put("Fresh Juvenile", new GrowthState(
                 "Fresh Juvenile",
+                36.6,
+                0,
                 80,
                 25,
                 100,
@@ -25,6 +34,8 @@ public class CeratosaurusWire {
 
         ceratosaurus.getGrowthStates().put("Full Juvenile", new GrowthState(
                 "Full Juvenile",
+                36.6,
+                0,
                 80,
                 25,
                 100,
@@ -36,6 +47,12 @@ public class CeratosaurusWire {
 
         ceratosaurus.getGrowthStates().put("Mid Juvenile", new GrowthState(
                 "Mid Juvenile",
+                FindMidValues.findMidValue(ceratosaurus.getGrowthStates().get("Fresh Juvenile").getSpeed(),
+                        ceratosaurus.getGrowthStates().get("Full Juvenile").getSpeed(),
+                        50),
+                FindMidValues.findMidValue(ceratosaurus.getGrowthStates().get("Fresh Juvenile").getAmbush(),
+                        ceratosaurus.getGrowthStates().get("Full Juvenile").getAmbush(),
+                        50),
                 FindMidValues.findMidValue(ceratosaurus.getGrowthStates().get("Fresh Juvenile").getBleedStandResist(),
                         ceratosaurus.getGrowthStates().get("Full Juvenile").getBleedStandResist(),
                         50),
@@ -65,6 +82,8 @@ public class CeratosaurusWire {
 
         ceratosaurus.getGrowthStates().put("Fresh Adult", new GrowthState(
                 "Fresh Adult",
+                36.6,
+                40.3,
                 80,
                 25,
                 100,
@@ -76,6 +95,8 @@ public class CeratosaurusWire {
 
         ceratosaurus.getGrowthStates().put("Full Adult", new GrowthState(
                 "Full Adult",
+                36.6,
+                40.3,
                 80,
                 25,
                 100,
@@ -87,6 +108,12 @@ public class CeratosaurusWire {
 
         ceratosaurus.getGrowthStates().put("Mid Adult", new GrowthState(
                 "Mid Adult",
+                FindMidValues.findMidValue(ceratosaurus.getGrowthStates().get("Fresh Adult").getSpeed(),
+                        ceratosaurus.getGrowthStates().get("Full Adult").getSpeed(),
+                        50),
+                FindMidValues.findMidValue(ceratosaurus.getGrowthStates().get("Fresh Adult").getAmbush(),
+                        ceratosaurus.getGrowthStates().get("Full Adult").getAmbush(),
+                        50),
                 FindMidValues.findMidValue(ceratosaurus.getGrowthStates().get("Fresh Adult").getBleedStandResist(),
                         ceratosaurus.getGrowthStates().get("Full Adult").getBleedStandResist(),
                         50),

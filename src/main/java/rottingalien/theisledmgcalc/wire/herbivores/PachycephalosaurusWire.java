@@ -10,10 +10,19 @@ public class PachycephalosaurusWire {
 
     public Dino wire(){
 
+        pachycephalosaurus.setCarnivore(false);
+        pachycephalosaurus.setTier(3);
+        pachycephalosaurus.setGrowthDurationJuvi(70);
+        pachycephalosaurus.setGrowthDurationSub(0);
+        pachycephalosaurus.setGrowthDurationAdult(60);
+        pachycephalosaurus.setGrowthDurationTotal(pachycephalosaurus.getGrowthDurationJuvi() + pachycephalosaurus.getGrowthDurationSub() + pachycephalosaurus.getGrowthDurationAdult());
+
         //----- JUVENILE
 
         pachycephalosaurus.getGrowthStates().put("Fresh Juvenile", new GrowthState(
                 "Fresh Juvenile",
+                40,
+                0,
                 50,
                 25,
                 100,
@@ -25,6 +34,8 @@ public class PachycephalosaurusWire {
 
         pachycephalosaurus.getGrowthStates().put("Full Juvenile", new GrowthState(
                 "Full Juvenile",
+                40,
+                0,
                 50,
                 25,
                 100,
@@ -36,6 +47,12 @@ public class PachycephalosaurusWire {
 
         pachycephalosaurus.getGrowthStates().put("Mid Juvenile", new GrowthState(
                 "Mid Juvenile",
+                FindMidValues.findMidValue(pachycephalosaurus.getGrowthStates().get("Fresh Juvenile").getSpeed(),
+                        pachycephalosaurus.getGrowthStates().get("Full Juvenile").getSpeed(),
+                        50),
+                FindMidValues.findMidValue(pachycephalosaurus.getGrowthStates().get("Fresh Juvenile").getAmbush(),
+                        pachycephalosaurus.getGrowthStates().get("Full Juvenile").getAmbush(),
+                        50),
                 FindMidValues.findMidValue(pachycephalosaurus.getGrowthStates().get("Fresh Juvenile").getBleedStandResist(),
                         pachycephalosaurus.getGrowthStates().get("Full Juvenile").getBleedStandResist(),
                         50),
@@ -66,6 +83,8 @@ public class PachycephalosaurusWire {
 
         pachycephalosaurus.getGrowthStates().put("Fresh Adult", new GrowthState(
                 "Fresh Adult",
+                40.1,
+                0,
                 30,
                 25,
                 100,
@@ -77,6 +96,8 @@ public class PachycephalosaurusWire {
 
         pachycephalosaurus.getGrowthStates().put("Full Adult", new GrowthState(
                 "Full Adult",
+                40.1,
+                0,
                 30,
                 25,
                 100,
@@ -88,6 +109,12 @@ public class PachycephalosaurusWire {
 
         pachycephalosaurus.getGrowthStates().put("Mid Adult", new GrowthState(
                 "Mid Adult",
+                FindMidValues.findMidValue(pachycephalosaurus.getGrowthStates().get("Fresh Adult").getSpeed(),
+                        pachycephalosaurus.getGrowthStates().get("Full Adult").getSpeed(),
+                        50),
+                FindMidValues.findMidValue(pachycephalosaurus.getGrowthStates().get("Fresh Adult").getAmbush(),
+                        pachycephalosaurus.getGrowthStates().get("Full Adult").getAmbush(),
+                        50),
                 FindMidValues.findMidValue(pachycephalosaurus.getGrowthStates().get("Fresh Adult").getBleedStandResist(),
                         pachycephalosaurus.getGrowthStates().get("Full Adult").getBleedStandResist(),
                         50),

@@ -10,10 +10,19 @@ public class GiganotosaurusWire {
 
     public Dino wire(){
 
+        giganotosaurus.setCarnivore(true);
+        giganotosaurus.setTier(5);
+        giganotosaurus.setGrowthDurationJuvi(110);
+        giganotosaurus.setGrowthDurationSub(220);
+        giganotosaurus.setGrowthDurationAdult(60);
+        giganotosaurus.setGrowthDurationTotal(giganotosaurus.getGrowthDurationJuvi() + giganotosaurus.getGrowthDurationSub() + giganotosaurus.getGrowthDurationAdult());
+
         //----- JUVENILE
 
         giganotosaurus.getGrowthStates().put("Fresh Juvenile", new GrowthState(
                 "Fresh Juvenile",
+                28.8,
+                0,
                 70,
                 25,
                 70,
@@ -25,6 +34,8 @@ public class GiganotosaurusWire {
 
         giganotosaurus.getGrowthStates().put("Full Juvenile", new GrowthState(
                 "Full Juvenile",
+                28.8,
+                0,
                 70,
                 25,
                 70,
@@ -36,6 +47,12 @@ public class GiganotosaurusWire {
 
         giganotosaurus.getGrowthStates().put("Mid Juvenile", new GrowthState(
                 "Mid Juvenile",
+                FindMidValues.findMidValue(giganotosaurus.getGrowthStates().get("Fresh Juvenile").getSpeed(),
+                        giganotosaurus.getGrowthStates().get("Full Juvenile").getSpeed(),
+                        50),
+                FindMidValues.findMidValue(giganotosaurus.getGrowthStates().get("Fresh Juvenile").getAmbush(),
+                        giganotosaurus.getGrowthStates().get("Full Juvenile").getAmbush(),
+                        50),
                 FindMidValues.findMidValue(giganotosaurus.getGrowthStates().get("Fresh Juvenile").getBleedStandResist(),
                         giganotosaurus.getGrowthStates().get("Full Juvenile").getBleedStandResist(),
                         50),
@@ -66,6 +83,8 @@ public class GiganotosaurusWire {
 
         giganotosaurus.getGrowthStates().put("Fresh Sub-Adult", new GrowthState(
                 "Fresh Sub-Adult",
+                30.6,
+                39.8,
                 30,
                 15,
                 50,
@@ -77,6 +96,8 @@ public class GiganotosaurusWire {
 
         giganotosaurus.getGrowthStates().put("Full Sub-Adult", new GrowthState(
                 "Full Sub-Adult",
+                30.6,
+                39.8,
                 30,
                 15,
                 50,
@@ -88,6 +109,12 @@ public class GiganotosaurusWire {
 
         giganotosaurus.getGrowthStates().put("Mid Sub-Adult", new GrowthState(
                 "Mid Sub-Adult",
+                FindMidValues.findMidValue(giganotosaurus.getGrowthStates().get("Fresh Sub-Adult").getSpeed(),
+                        giganotosaurus.getGrowthStates().get("Full Sub-Adult").getSpeed(),
+                        50),
+                FindMidValues.findMidValue(giganotosaurus.getGrowthStates().get("Fresh Sub-Adult").getAmbush(),
+                        giganotosaurus.getGrowthStates().get("Full Sub-Adult").getAmbush(),
+                        50),
                 FindMidValues.findMidValue(giganotosaurus.getGrowthStates().get("Fresh Sub-Adult").getBleedStandResist(),
                         giganotosaurus.getGrowthStates().get("Full Sub-Adult").getBleedStandResist(),
                         50),
@@ -117,6 +144,8 @@ public class GiganotosaurusWire {
 
         giganotosaurus.getGrowthStates().put("Fresh Adult", new GrowthState(
                 "Fresh Adult",
+                30.6,
+                39.8,
                 30,
                 15,
                 50,
@@ -128,6 +157,8 @@ public class GiganotosaurusWire {
 
         giganotosaurus.getGrowthStates().put("Full Adult", new GrowthState(
                 "Full Adult",
+                30.6,
+                39.8,
                 30,
                 15,
                 50,
@@ -139,6 +170,12 @@ public class GiganotosaurusWire {
 
         giganotosaurus.getGrowthStates().put("Mid Adult", new GrowthState(
                 "Mid Adult",
+                FindMidValues.findMidValue(giganotosaurus.getGrowthStates().get("Fresh Adult").getSpeed(),
+                        giganotosaurus.getGrowthStates().get("Full Adult").getSpeed(),
+                        50),
+                FindMidValues.findMidValue(giganotosaurus.getGrowthStates().get("Fresh Adult").getAmbush(),
+                        giganotosaurus.getGrowthStates().get("Full Adult").getAmbush(),
+                        50),
                 FindMidValues.findMidValue(giganotosaurus.getGrowthStates().get("Fresh Adult").getBleedStandResist(),
                         giganotosaurus.getGrowthStates().get("Full Adult").getBleedStandResist(),
                         50),

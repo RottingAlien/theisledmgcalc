@@ -10,10 +10,19 @@ public class UtahraptorWire {
 
     public Dino wire(){
 
+        utahraptor.setCarnivore(true);
+        utahraptor.setTier(3);
+        utahraptor.setGrowthDurationJuvi(50);
+        utahraptor.setGrowthDurationSub(0);
+        utahraptor.setGrowthDurationAdult(60);
+        utahraptor.setGrowthDurationTotal(utahraptor.getGrowthDurationJuvi() + utahraptor.getGrowthDurationSub() + utahraptor.getGrowthDurationAdult());
+
         //----- JUVENILE
 
         utahraptor.getGrowthStates().put("Fresh Juvenile", new GrowthState(
                 "Fresh Juvenile",
+                21.6,
+                0,
                 50,
                 25,
                 80,
@@ -25,6 +34,8 @@ public class UtahraptorWire {
 
         utahraptor.getGrowthStates().put("Full Juvenile", new GrowthState(
                 "Full Juvenile",
+                21.6,
+                0,
                 50,
                 25,
                 80,
@@ -36,6 +47,12 @@ public class UtahraptorWire {
 
         utahraptor.getGrowthStates().put("Mid Juvenile", new GrowthState(
                 "Mid Juvenile",
+                FindMidValues.findMidValue(utahraptor.getGrowthStates().get("Fresh Juvenile").getSpeed(),
+                        utahraptor.getGrowthStates().get("Full Juvenile").getSpeed(),
+                        50),
+                FindMidValues.findMidValue(utahraptor.getGrowthStates().get("Fresh Juvenile").getAmbush(),
+                        utahraptor.getGrowthStates().get("Full Juvenile").getAmbush(),
+                        50),
                 FindMidValues.findMidValue(utahraptor.getGrowthStates().get("Fresh Juvenile").getBleedStandResist(),
                         utahraptor.getGrowthStates().get("Full Juvenile").getBleedStandResist(),
                         50),
@@ -66,6 +83,8 @@ public class UtahraptorWire {
 
         utahraptor.getGrowthStates().put("Fresh Adult", new GrowthState(
                 "Fresh Adult",
+                43.2,
+                56,
                 20,
                 10,
                 50,
@@ -77,6 +96,8 @@ public class UtahraptorWire {
 
         utahraptor.getGrowthStates().put("Full Adult", new GrowthState(
                 "Full Adult",
+                43.2,
+                56,
                 20,
                 10,
                 50,
@@ -88,6 +109,12 @@ public class UtahraptorWire {
 
         utahraptor.getGrowthStates().put("Mid Adult", new GrowthState(
                 "Mid Adult",
+                FindMidValues.findMidValue(utahraptor.getGrowthStates().get("Fresh Adult").getSpeed(),
+                        utahraptor.getGrowthStates().get("Full Adult").getSpeed(),
+                        50),
+                FindMidValues.findMidValue(utahraptor.getGrowthStates().get("Fresh Adult").getAmbush(),
+                        utahraptor.getGrowthStates().get("Full Adult").getAmbush(),
+                        50),
                 FindMidValues.findMidValue(utahraptor.getGrowthStates().get("Fresh Adult").getBleedStandResist(),
                         utahraptor.getGrowthStates().get("Full Adult").getBleedStandResist(),
                         50),

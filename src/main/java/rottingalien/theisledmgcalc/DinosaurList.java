@@ -20,6 +20,7 @@ public class DinosaurList {
         dinoMap.put("Suchomimus", new SuchomimusWire().wire());
         dinoMap.put("Giganotosaurus", new GiganotosaurusWire().wire());
         dinoMap.put("Tyrannosaurus", new TyrannosaurusWire().wire());
+        dinoMap.put("Austroraptor", new AustroraptorWire().wire());
 
         dinoMap.put("Dryosaurus", new DryosaurusWire().wire());
         dinoMap.put("Gallimimus",new GallimimusWire().wire());

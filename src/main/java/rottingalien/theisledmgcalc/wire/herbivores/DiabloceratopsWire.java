@@ -10,10 +10,19 @@ public class DiabloceratopsWire {
 
     public Dino wire(){
 
+        diabloceratops.setCarnivore(false);
+        diabloceratops.setTier(4);
+        diabloceratops.setGrowthDurationJuvi(80);
+        diabloceratops.setGrowthDurationSub(0);
+        diabloceratops.setGrowthDurationAdult(100);
+        diabloceratops.setGrowthDurationTotal(diabloceratops.getGrowthDurationJuvi() + diabloceratops.getGrowthDurationSub() + diabloceratops.getGrowthDurationAdult());
+
         //----- JUVENILE
 
         diabloceratops.getGrowthStates().put("Fresh Juvenile", new GrowthState(
                 "Fresh Juvenile",
+                30.2,
+                0,
                 30,
                 25,
                 100,
@@ -25,6 +34,8 @@ public class DiabloceratopsWire {
 
         diabloceratops.getGrowthStates().put("Full Juvenile", new GrowthState(
                 "Full Juvenile",
+                30.2,
+                0,
                 30,
                 25,
                 100,
@@ -36,6 +47,12 @@ public class DiabloceratopsWire {
 
         diabloceratops.getGrowthStates().put("Mid Juvenile", new GrowthState(
                 "Mid Juvenile",
+                FindMidValues.findMidValue(diabloceratops.getGrowthStates().get("Fresh Juvenile").getSpeed(),
+                        diabloceratops.getGrowthStates().get("Full Juvenile").getSpeed(),
+                        50),
+                FindMidValues.findMidValue(diabloceratops.getGrowthStates().get("Fresh Juvenile").getAmbush(),
+                        diabloceratops.getGrowthStates().get("Full Juvenile").getAmbush(),
+                        50),
                 FindMidValues.findMidValue(diabloceratops.getGrowthStates().get("Fresh Juvenile").getBleedStandResist(),
                         diabloceratops.getGrowthStates().get("Full Juvenile").getBleedStandResist(),
                         50),
@@ -66,6 +83,8 @@ public class DiabloceratopsWire {
 
         diabloceratops.getGrowthStates().put("Fresh Adult", new GrowthState(
                 "Fresh Adult",
+                31.6,
+                0,
                 30,
                 25,
                 100,
@@ -77,6 +96,8 @@ public class DiabloceratopsWire {
 
         diabloceratops.getGrowthStates().put("Full Adult", new GrowthState(
                 "Full Adult",
+                31.6,
+                0,
                 30,
                 25,
                 100,
@@ -88,6 +109,12 @@ public class DiabloceratopsWire {
 
         diabloceratops.getGrowthStates().put("Mid Adult", new GrowthState(
                 "Mid Adult",
+                FindMidValues.findMidValue(diabloceratops.getGrowthStates().get("Fresh Adult").getSpeed(),
+                        diabloceratops.getGrowthStates().get("Full Adult").getSpeed(),
+                        50),
+                FindMidValues.findMidValue(diabloceratops.getGrowthStates().get("Fresh Adult").getAmbush(),
+                        diabloceratops.getGrowthStates().get("Full Adult").getAmbush(),
+                        50),
                 FindMidValues.findMidValue(diabloceratops.getGrowthStates().get("Fresh Adult").getBleedStandResist(),
                         diabloceratops.getGrowthStates().get("Full Adult").getBleedStandResist(),
                         50),

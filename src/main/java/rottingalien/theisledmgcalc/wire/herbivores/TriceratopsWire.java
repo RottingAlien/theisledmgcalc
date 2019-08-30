@@ -10,10 +10,19 @@ public class TriceratopsWire {
 
     public Dino wire(){
 
+        triceratops.setCarnivore(false);
+        triceratops.setTier(5);
+        triceratops.setGrowthDurationJuvi(60);
+        triceratops.setGrowthDurationSub(200);
+        triceratops.setGrowthDurationAdult(100);
+        triceratops.setGrowthDurationTotal(triceratops.getGrowthDurationJuvi() + triceratops.getGrowthDurationSub() + triceratops.getGrowthDurationAdult());
+
         //----- JUVENILE
 
         triceratops.getGrowthStates().put("Fresh Juvenile", new GrowthState(
                 "Fresh Juvenile",
+                13,
+                0,
                 50,
                 25,
                 100,
@@ -25,6 +34,8 @@ public class TriceratopsWire {
 
         triceratops.getGrowthStates().put("Full Juvenile", new GrowthState(
                 "Full Juvenile",
+                13,
+                0,
                 50,
                 25,
                 100,
@@ -36,6 +47,12 @@ public class TriceratopsWire {
 
         triceratops.getGrowthStates().put("Mid Juvenile", new GrowthState(
                 "Mid Juvenile",
+                FindMidValues.findMidValue(triceratops.getGrowthStates().get("Fresh Juvenile").getSpeed(),
+                        triceratops.getGrowthStates().get("Full Juvenile").getSpeed(),
+                        50),
+                FindMidValues.findMidValue(triceratops.getGrowthStates().get("Fresh Juvenile").getAmbush(),
+                        triceratops.getGrowthStates().get("Full Juvenile").getAmbush(),
+                        50),
                 FindMidValues.findMidValue(triceratops.getGrowthStates().get("Fresh Juvenile").getBleedStandResist(),
                         triceratops.getGrowthStates().get("Full Juvenile").getBleedStandResist(),
                         50),
@@ -68,6 +85,8 @@ public class TriceratopsWire {
 
         triceratops.getGrowthStates().put("Fresh Sub-Adult", new GrowthState(
                 "Fresh Sub-Adult",
+                23.4,
+                0,
                 50,
                 10,
                 50,
@@ -79,10 +98,10 @@ public class TriceratopsWire {
                 680,
                 4));
 
-        triceratops.getGrowthStates().get("Fresh Sub-Adult").setHasSpecial(true);
-
         triceratops.getGrowthStates().put("Full Sub-Adult", new GrowthState(
                 "Full Sub-Adult",
+                23.4,
+                0,
                 50,
                 10,
                 50,
@@ -94,10 +113,14 @@ public class TriceratopsWire {
                 1380,
                 8));
 
-        triceratops.getGrowthStates().get("Full Sub-Adult").setHasSpecial(true);
-
         triceratops.getGrowthStates().put("Mid Sub-Adult", new GrowthState(
                 "Mid Sub-Adult",
+                FindMidValues.findMidValue(triceratops.getGrowthStates().get("Fresh Sub-Adult").getSpeed(),
+                        triceratops.getGrowthStates().get("Full Sub-Adult").getSpeed(),
+                        50),
+                FindMidValues.findMidValue(triceratops.getGrowthStates().get("Fresh Sub-Adult").getAmbush(),
+                        triceratops.getGrowthStates().get("Full Sub-Adult").getAmbush(),
+                        50),
                 FindMidValues.findMidValue(triceratops.getGrowthStates().get("Fresh Sub-Adult").getBleedStandResist(),
                         triceratops.getGrowthStates().get("Full Sub-Adult").getBleedStandResist(),
                         50),
@@ -129,14 +152,14 @@ public class TriceratopsWire {
                         triceratops.getGrowthStates().get("Full Sub-Adult").getSpecialBleed(),
                         50)));
 
-        triceratops.getGrowthStates().get("Mid Sub-Adult").setHasSpecial(true);
-
 
 
         //----- ADULT
 
         triceratops.getGrowthStates().put("Fresh Adult", new GrowthState(
                 "Fresh Adult",
+                25.3,
+                0,
                 40,
                 20,
                 90,
@@ -148,10 +171,10 @@ public class TriceratopsWire {
                 700,
                 15));
 
-        triceratops.getGrowthStates().get("Fresh Adult").setHasSpecial(true);
-
         triceratops.getGrowthStates().put("Full Adult", new GrowthState(
                 "Full Adult",
+                25.3,
+                0,
                 40,
                 20,
                 90,
@@ -163,10 +186,14 @@ public class TriceratopsWire {
                 850,
                 25));
 
-        triceratops.getGrowthStates().get("Full Adult").setHasSpecial(true);
-
         triceratops.getGrowthStates().put("Mid Adult", new GrowthState(
                 "Mid Adult",
+                FindMidValues.findMidValue(triceratops.getGrowthStates().get("Fresh Adult").getSpeed(),
+                        triceratops.getGrowthStates().get("Full Adult").getSpeed(),
+                        50),
+                FindMidValues.findMidValue(triceratops.getGrowthStates().get("Fresh Adult").getAmbush(),
+                        triceratops.getGrowthStates().get("Full Adult").getAmbush(),
+                        50),
                 FindMidValues.findMidValue(triceratops.getGrowthStates().get("Fresh Adult").getBleedStandResist(),
                         triceratops.getGrowthStates().get("Full Adult").getBleedStandResist(),
                         50),
@@ -197,8 +224,6 @@ public class TriceratopsWire {
                 FindMidValues.findMidValue(triceratops.getGrowthStates().get("Fresh Adult").getSpecialBleed(),
                         triceratops.getGrowthStates().get("Full Adult").getSpecialBleed(),
                         50)));
-
-        triceratops.getGrowthStates().get("Mid Adult").setHasSpecial(true);
 
 
         return triceratops;

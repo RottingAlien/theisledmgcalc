@@ -10,10 +10,19 @@ public class ParasaurolophusWire {
 
     public Dino wire(){
 
+        parasaurolophus.setCarnivore(false);
+        parasaurolophus.setTier(0);
+        parasaurolophus.setGrowthDurationJuvi(0);
+        parasaurolophus.setGrowthDurationSub(0);
+        parasaurolophus.setGrowthDurationAdult(0);
+        parasaurolophus.setGrowthDurationTotal(parasaurolophus.getGrowthDurationJuvi() + parasaurolophus.getGrowthDurationSub() + parasaurolophus.getGrowthDurationAdult());
+
         //----- JUVENILE
 
         parasaurolophus.getGrowthStates().put("Fresh Juvenile", new GrowthState(
                 "Fresh Juvenile",
+                24.4,
+                0,
                 50,
                 25,
                 100,
@@ -25,12 +34,10 @@ public class ParasaurolophusWire {
                 525,
                 0));
 
-        parasaurolophus.getGrowthStates().get("Fresh Juvenile").setHasSpecial(true);
-
         parasaurolophus.getGrowthStates().put("Full Juvenile", new GrowthState(
                 "Full Juvenile",
-                50,
-                25,
+                24.4,
+                0,
                 100,
                 100,
                 1800,
@@ -40,10 +47,14 @@ public class ParasaurolophusWire {
                 525,
                 0));
 
-        parasaurolophus.getGrowthStates().get("Full Juvenile").setHasSpecial(true);
-
         parasaurolophus.getGrowthStates().put("Mid Juvenile", new GrowthState(
                 "Mid Juvenile",
+                FindMidValues.findMidValue(parasaurolophus.getGrowthStates().get("Fresh Juvenile").getSpeed(),
+                        parasaurolophus.getGrowthStates().get("Full Juvenile").getSpeed(),
+                        50),
+                FindMidValues.findMidValue(parasaurolophus.getGrowthStates().get("Fresh Juvenile").getAmbush(),
+                        parasaurolophus.getGrowthStates().get("Full Juvenile").getAmbush(),
+                        50),
                 FindMidValues.findMidValue(parasaurolophus.getGrowthStates().get("Fresh Juvenile").getBleedStandResist(),
                         parasaurolophus.getGrowthStates().get("Full Juvenile").getBleedStandResist(),
                         50),
@@ -75,13 +86,12 @@ public class ParasaurolophusWire {
                         parasaurolophus.getGrowthStates().get("Full Juvenile").getSpecialBleed(),
                         50)));
 
-        parasaurolophus.getGrowthStates().get("Mid Juvenile").setHasSpecial(true);
-
-
         //----- ADULT
 
         parasaurolophus.getGrowthStates().put("Fresh Adult", new GrowthState(
                 "Fresh Adult",
+                34.2,
+                0,
                 30,
                 20,
                 50,
@@ -93,10 +103,10 @@ public class ParasaurolophusWire {
                 750,
                 0));
 
-        parasaurolophus.getGrowthStates().get("Fresh Adult").setHasSpecial(true);
-
         parasaurolophus.getGrowthStates().put("Full Adult", new GrowthState(
                 "Full Adult",
+                34.2,
+                0,
                 30,
                 20,
                 50,
@@ -108,10 +118,14 @@ public class ParasaurolophusWire {
                 750,
                 0));
 
-        parasaurolophus.getGrowthStates().get("Full Adult").setHasSpecial(true);
-
         parasaurolophus.getGrowthStates().put("Mid Adult", new GrowthState(
                 "Mid Adult",
+                FindMidValues.findMidValue(parasaurolophus.getGrowthStates().get("Fresh Adult").getSpeed(),
+                        parasaurolophus.getGrowthStates().get("Full Adult").getSpeed(),
+                        50),
+                FindMidValues.findMidValue(parasaurolophus.getGrowthStates().get("Fresh Adult").getAmbush(),
+                        parasaurolophus.getGrowthStates().get("Full Adult").getAmbush(),
+                        50),
                 FindMidValues.findMidValue(parasaurolophus.getGrowthStates().get("Fresh Adult").getBleedStandResist(),
                         parasaurolophus.getGrowthStates().get("Full Adult").getBleedStandResist(),
                         50),
@@ -142,8 +156,6 @@ public class ParasaurolophusWire {
                 FindMidValues.findMidValue(parasaurolophus.getGrowthStates().get("Fresh Adult").getSpecialBleed(),
                         parasaurolophus.getGrowthStates().get("Full Adult").getSpecialBleed(),
                         50)));
-
-        parasaurolophus.getGrowthStates().get("Mid Adult").setHasSpecial(true);
 
 
 
