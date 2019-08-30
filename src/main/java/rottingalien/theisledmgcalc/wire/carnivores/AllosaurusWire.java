@@ -1,6 +1,5 @@
 package rottingalien.theisledmgcalc.wire.carnivores;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import rottingalien.theisledmgcalc.Dino;
 import rottingalien.theisledmgcalc.GrowthState;
 import rottingalien.utils.Maths.FindMidValues;
