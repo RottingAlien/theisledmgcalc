@@ -23,6 +23,7 @@ public class DinosaurList {
         dinoMap.put("Austroraptor", new Austroraptor());
         dinoMap.put("Herrerasaurus", new Herrerasaurus());
         dinoMap.put("Baryonyx", new Baryonyx());
+        dinoMap.put("Spinosaurus", new Spinosaurus());
 
         dinoMap.put("Dryosaurus", new Dryosaurus());
         dinoMap.put("Gallimimus", new Gallimimus());

@@ -42,31 +42,23 @@ public class FightSimulator {
     }
 
     public void init() {
-        for (Dino dino : dinosaurList.getDinoMap().values()) {
-            System.out.println("--- " + dino.getName() + " ---");
-            for (GrowthState growthstate : dino.getGrowthStates().values()) {
-                if (growthstate.hasSpecial()){
-                    System.out.println(growthstate.getName() + " (Has Special)");
-                    continue;
-                }
-                System.out.println(growthstate.getName());
-            }
-        }
+        fight();
 
     }
 
     public void fight(){
         chosenDino1 = dinosaurList.getDinoMap().get(dinoStringArr[askDino()-1]);
         int userInput1 = askGrowState(chosenDino1)-1;
-        String grow1 = growStringArr[userInput1];
-        dino1GrowthState = chosenDino1.getGrowthStates().get(grow1);
+        dino1GrowthState = chosenDino1.getGrowthStates().get(growStringArr[userInput1]);
         chosenDino2 = dinosaurList.getDinoMap().get(dinoStringArr[askDino()-1]);
         int userInput2 = askGrowState(chosenDino2)-1;
-        String grow2 = growStringArr[userInput2];
-        dino2GrowthState = chosenDino2.getGrowthStates().get(grow2);
+        dino2GrowthState = chosenDino2.getGrowthStates().get(growStringArr[userInput2]);
 
         double actualDino1Damage = actualDamage(dino1GrowthState.getBiteForce(),dino1GrowthState.getWeight(),dino2GrowthState.getWeight());
         double actualDino2Damage = actualDamage(dino2GrowthState.getBiteForce(),dino2GrowthState.getWeight(),dino1GrowthState.getWeight());
+
+        double actualDino1Bleed = actualDamage(dino1GrowthState.getBleed(),dino1GrowthState.getWeight(),dino2GrowthState.getWeight());
+        double actualDino2Bleed = actualDamage(dino2GrowthState.getBleed(),dino2GrowthState.getWeight(),dino1GrowthState.getWeight());
 
         int numberOfBites1 = ((int) (Math.ceil(dino2GrowthState.getHealth()/actualDino1Damage)));
         int numberOfBites2 = ((int) (Math.ceil(dino1GrowthState.getHealth()/actualDino2Damage)));
@@ -78,5 +70,8 @@ public class FightSimulator {
 
     private double actualDamage(double damage, double weight1, double weight2){
         return damage*(weight1/weight2);
+    }
+    private double actualBleed(double bleed, double weight1, double weight2){
+        return bleed*(weight1/weight2);
     }
 }

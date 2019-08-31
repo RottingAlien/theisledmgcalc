@@ -7,7 +7,7 @@ public class Main {
 
         FightSimulator fightSimulator = new FightSimulator();
 
-        fightSimulator.fight();
+        fightSimulator.init();
 
 
     }
