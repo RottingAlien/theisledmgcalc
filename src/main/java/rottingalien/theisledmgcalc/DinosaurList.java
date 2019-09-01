@@ -24,6 +24,8 @@ public class DinosaurList {
         dinoMap.put("Herrerasaurus", new Herrerasaurus());
         dinoMap.put("Baryonyx", new Baryonyx());
         dinoMap.put("Spinosaurus", new Spinosaurus());
+        dinoMap.put("Albertosaurus", new Albertosaurus());
+        dinoMap.put("Acrocanthosaurus" , new Acrocanthosaurus());
 
         dinoMap.put("Dryosaurus", new Dryosaurus());
         dinoMap.put("Gallimimus", new Gallimimus());
@@ -33,6 +35,11 @@ public class DinosaurList {
         dinoMap.put("Parasaurolophus", new Parasaurolophus());
         dinoMap.put("Triceratops", new Triceratops());
         dinoMap.put("Camarasaurus", new Camarasaurus());
+        dinoMap.put("Shantungosaurus", new Shantungosaurus());
+        dinoMap.put("Puertasaurus", new Puertasaurus());
+        dinoMap.put("Ankylosaurus" , new Ankylosaurus());
+        dinoMap.put("Stegosaurus" , new Stegosaurus());
+        dinoMap.put("Therizinosaurus", new Therizinosaurus());
 
         dinoMap.put("DINOSAUR", new DINOSAUR());
 
