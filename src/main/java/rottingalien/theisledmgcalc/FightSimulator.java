@@ -104,11 +104,11 @@ public class FightSimulator {
     public void fight() {
 
 
-        double actualDino1Damage = actualDamage(dino1GrowthState.getBiteForce(), dino1GrowthState.getWeight(), dino2GrowthState.getWeight());
-        double actualDino2Damage = actualDamage(dino2GrowthState.getBiteForce(), dino2GrowthState.getWeight(), dino1GrowthState.getWeight());
+        double actualDino1Damage = Math.round(actualDamage(dino1GrowthState.getBiteForce(), dino1GrowthState.getWeight(), dino2GrowthState.getWeight())*10)/10.0;
+        double actualDino2Damage = Math.round(actualDamage(dino2GrowthState.getBiteForce(), dino2GrowthState.getWeight(), dino1GrowthState.getWeight())*10)/10.0;
 
-        double actualDino1SDamage = actualDamage(dino1GrowthState.getSpecial(), dino1GrowthState.getWeight(), dino2GrowthState.getWeight());
-        double actualDino2SDamage = actualDamage(dino2GrowthState.getSpecial(), dino2GrowthState.getWeight(), dino1GrowthState.getWeight());
+        double actualDino1SDamage = Math.round(actualDamage(dino1GrowthState.getSpecial(), dino1GrowthState.getWeight(), dino2GrowthState.getWeight())*10)/10.0;
+        double actualDino2SDamage = Math.round(actualDamage(dino2GrowthState.getSpecial(), dino2GrowthState.getWeight(), dino1GrowthState.getWeight())*10)/10.0;;
 
         double actualDino1Bleed = actualDamage(dino1GrowthState.getBleed(), dino1GrowthState.getWeight(), dino2GrowthState.getWeight());
         double actualDino2Bleed = actualDamage(dino2GrowthState.getBleed(), dino2GrowthState.getWeight(), dino1GrowthState.getWeight());
@@ -119,7 +119,7 @@ public class FightSimulator {
         int numberOfSpecials1 = ((int) (Math.ceil(dino2GrowthState.getHealth() / actualDino1SDamage)));
         int numberOfSpecials2 = ((int) (Math.ceil(dino1GrowthState.getHealth() / actualDino2SDamage)));
 
-        view.showOutCome(chosenDino1, dino1GrowthState, numberOfBites1, numberOfSpecials1, chosenDino2, dino2GrowthState, numberOfBites2, numberOfSpecials2);
+        view.showOutCome(chosenDino1, dino1GrowthState, actualDino1Damage,actualDino1SDamage, numberOfBites1, numberOfSpecials1, chosenDino2, dino2GrowthState, actualDino2Damage,actualDino2SDamage, numberOfBites2, numberOfSpecials2);
 
     }
 
