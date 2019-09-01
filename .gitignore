@@ -12,3 +12,6 @@
 
 # Java
 **/*.class
+
+# Build
+**/build/

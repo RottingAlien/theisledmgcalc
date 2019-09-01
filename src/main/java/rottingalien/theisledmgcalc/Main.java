@@ -10,6 +10,7 @@ public class Main {
         fightSimulator.init();
 
 
+
     }
 
 }

@@ -85,6 +85,10 @@ public abstract class Dino {
         this.growthDurationAdult = growthDurationAdult;
     }
 
+    public boolean hasJuviGrowth(){
+        return growthDurationJuvi!=0;
+    }
+
     public boolean hasSubGrowth() {
         return growthDurationSub!=0;
     }
