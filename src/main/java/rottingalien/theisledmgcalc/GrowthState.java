@@ -19,24 +19,9 @@ public class GrowthState {
 
     private double special;
     private double specialBleed;
+    private double trample;
 
-    private boolean hasTrample;
-
-    public GrowthState(String name, double speed, double ambush, double bleedStandResist, double bleedSitResist, double bleedWalkResist, double bleedRunResist, double weight, double health, double biteForce, double bleed) {
-        this.name = name;
-        this.speed = speed;
-        this.ambush = ambush;
-        this.bleedStandResist = bleedStandResist;
-        this.bleedSitResist = bleedSitResist;
-        this.bleedWalkResist = bleedWalkResist;
-        this.bleedRunResist = bleedRunResist;
-        this.weight = weight;
-        this.health = health;
-        this.biteForce = biteForce;
-        this.bleed = bleed;
-    }
-
-    public GrowthState(String name, double speed, double ambush, double bleedStandResist, double bleedSitResist, double bleedWalkResist, double bleedRunResist, double weight, double health, double biteForce, double bleed, double special, double specialBleed) {
+    public GrowthState(String name, double speed, double ambush, double bleedStandResist, double bleedSitResist, double bleedWalkResist, double bleedRunResist, double weight, double health, double biteForce, double bleed, double special, double specialBleed, double trample) {
         this.name = name;
         this.speed = speed;
         this.ambush = ambush;
@@ -50,6 +35,7 @@ public class GrowthState {
         this.bleed = bleed;
         this.special = special;
         this.specialBleed = specialBleed;
+        this.trample = trample;
     }
 
     public String getName() {
@@ -104,6 +90,10 @@ public class GrowthState {
         return specialBleed;
     }
 
+    public double getTrample() {
+        return trample;
+    }
+
     public boolean hasSpecial() {
         return special!=0;
     }
@@ -113,10 +103,7 @@ public class GrowthState {
     }
 
     public boolean hasTrample() {
-        return hasTrample;
+        return trample!=0;
     }
 
-    public void setHasTrample(boolean hasTrample) {
-        this.hasTrample = hasTrample;
-    }
 }

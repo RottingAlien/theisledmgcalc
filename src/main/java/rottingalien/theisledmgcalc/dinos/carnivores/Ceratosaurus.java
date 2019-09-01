@@ -21,7 +21,7 @@ public class Ceratosaurus extends Dino {
 
         //----- JUVENILE
 
-        getGrowthStates().put("Fresh Juvenile", new GrowthState(
+        GrowthState freshJuvi = new GrowthState(
                 "Fresh Juvenile",
                 36.6,
                 0,
@@ -32,9 +32,12 @@ public class Ceratosaurus extends Dino {
                 150,
                 150,
                 60,
-                8));
+                8,
+                0,
+                0,
+                0);
 
-        getGrowthStates().put("Full Juvenile", new GrowthState(
+        GrowthState fullJuvi = new GrowthState(
                 "Full Juvenile",
                 36.6,
                 0,
@@ -45,44 +48,14 @@ public class Ceratosaurus extends Dino {
                 1900,
                 1900,
                 140,
-                8));
-
-        getGrowthStates().put("Mid Juvenile", new GrowthState(
-                "Mid Juvenile",
-                FindMidValues.findMidValue(getGrowthStates().get("Fresh Juvenile").getSpeed(),
-                        getGrowthStates().get("Full Juvenile").getSpeed(),
-                        50),
-                FindMidValues.findMidValue(getGrowthStates().get("Fresh Juvenile").getAmbush(),
-                        getGrowthStates().get("Full Juvenile").getAmbush(),
-                        50),
-                FindMidValues.findMidValue(getGrowthStates().get("Fresh Juvenile").getBleedStandResist(),
-                        getGrowthStates().get("Full Juvenile").getBleedStandResist(),
-                        50),
-                FindMidValues.findMidValue(getGrowthStates().get("Fresh Juvenile").getBleedSitResist(),
-                        getGrowthStates().get("Full Juvenile").getBleedSitResist(),
-                        50),
-                FindMidValues.findMidValue(getGrowthStates().get("Fresh Juvenile").getBleedWalkResist(),
-                        getGrowthStates().get("Full Juvenile").getBleedWalkResist(),
-                        50),
-                FindMidValues.findMidValue(getGrowthStates().get("Fresh Juvenile").getBleedRunResist(),
-                        getGrowthStates().get("Full Juvenile").getBleedRunResist(),
-                        50),
-                FindMidValues.findMidValue(getGrowthStates().get("Fresh Juvenile").getWeight(),
-                        getGrowthStates().get("Full Juvenile").getWeight(),
-                        50),
-                FindMidValues.findMidValue(getGrowthStates().get("Fresh Juvenile").getHealth(),
-                        getGrowthStates().get("Full Juvenile").getHealth(),
-                        50),
-                FindMidValues.findMidValue(getGrowthStates().get("Fresh Juvenile").getBiteForce(),
-                        getGrowthStates().get("Full Juvenile").getBiteForce(),
-                        50),
-                FindMidValues.findMidValue(getGrowthStates().get("Fresh Juvenile").getBleed(),
-                        getGrowthStates().get("Full Juvenile").getBleed(),
-                        50)));
+                8,
+                0,
+                0,
+                0);
 
         //----- ADULT
 
-        getGrowthStates().put("Fresh Adult", new GrowthState(
+        GrowthState freshAdult = new GrowthState(
                 "Fresh Adult",
                 36.6,
                 40.3,
@@ -93,9 +66,12 @@ public class Ceratosaurus extends Dino {
                 1900,
                 1900,
                 225,
-                8));
+                8,
+                0,
+                0,
+                0);
 
-        getGrowthStates().put("Full Adult", new GrowthState(
+        GrowthState fullAdult = new GrowthState(
                 "Full Adult",
                 36.6,
                 40.3,
@@ -106,40 +82,19 @@ public class Ceratosaurus extends Dino {
                 2250,
                 2250,
                 350,
-                8));
+                8,
+                0,
+                0,
+                0);
 
-        getGrowthStates().put("Mid Adult", new GrowthState(
-                "Mid Adult",
-                FindMidValues.findMidValue(getGrowthStates().get("Fresh Adult").getSpeed(),
-                        getGrowthStates().get("Full Adult").getSpeed(),
-                        50),
-                FindMidValues.findMidValue(getGrowthStates().get("Fresh Adult").getAmbush(),
-                        getGrowthStates().get("Full Adult").getAmbush(),
-                        50),
-                FindMidValues.findMidValue(getGrowthStates().get("Fresh Adult").getBleedStandResist(),
-                        getGrowthStates().get("Full Adult").getBleedStandResist(),
-                        50),
-                FindMidValues.findMidValue(getGrowthStates().get("Fresh Adult").getBleedSitResist(),
-                        getGrowthStates().get("Full Adult").getBleedSitResist(),
-                        50),
-                FindMidValues.findMidValue(getGrowthStates().get("Fresh Adult").getBleedWalkResist(),
-                        getGrowthStates().get("Full Adult").getBleedWalkResist(),
-                        50),
-                FindMidValues.findMidValue(getGrowthStates().get("Fresh Adult").getBleedRunResist(),
-                        getGrowthStates().get("Full Adult").getBleedRunResist(),
-                        50),
-                FindMidValues.findMidValue(getGrowthStates().get("Fresh Adult").getWeight(),
-                        getGrowthStates().get("Full Adult").getWeight(),
-                        50),
-                FindMidValues.findMidValue(getGrowthStates().get("Fresh Adult").getHealth(),
-                        getGrowthStates().get("Full Adult").getHealth(),
-                        50),
-                FindMidValues.findMidValue(getGrowthStates().get("Fresh Adult").getBiteForce(),
-                        getGrowthStates().get("Full Adult").getBiteForce(),
-                        50),
-                FindMidValues.findMidValue(getGrowthStates().get("Fresh Adult").getBleed(),
-                        getGrowthStates().get("Full Adult").getBleed(),
-                        50)));
+
+        getGrowthStates().put("Fresh Juvenile", freshJuvi);
+        getGrowthStates().put("Mid Juvenile", getMidGrowth("Mid Juvenile", freshJuvi, fullJuvi));
+        getGrowthStates().put("Full Juvenile", fullJuvi);
+
+        getGrowthStates().put("Fresh Adult", freshAdult);
+        getGrowthStates().put("Mid Adult", getMidGrowth("Mid Adult", freshAdult, fullAdult));
+        getGrowthStates().put("Full Adult", fullAdult);
 
     }
 

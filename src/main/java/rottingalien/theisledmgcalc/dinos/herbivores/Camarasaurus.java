@@ -22,7 +22,7 @@ public class Camarasaurus extends Dino {
 
         //----- ADULT
 
-        getGrowthStates().put("Full Adult", new GrowthState(
+        GrowthState fullAdult = new GrowthState(
                 "Full Adult",
                 20.7,
                 0,
@@ -35,7 +35,10 @@ public class Camarasaurus extends Dino {
                 750,
                 0,
                 5150,
-                0));
+                0,
+                150);
+
+        getGrowthStates().put("Full Adult", fullAdult);
 
     }
 }

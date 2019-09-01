@@ -1,5 +1,7 @@
 package rottingalien.theisledmgcalc;
 
+import rottingalien.utils.Maths.FindMidValues;
+
 import java.util.*;
 
 public abstract class Dino {
@@ -20,6 +22,24 @@ public abstract class Dino {
 
     public Dino(){
         growthStates = new LinkedHashMap<>();
+    }
+
+    public GrowthState getMidGrowth(String name, GrowthState fresh, GrowthState full){
+        return new GrowthState(
+                name,
+                FindMidValues.findMidValue(fresh.getSpeed(), full.getSpeed(), 50),
+                FindMidValues.findMidValue(fresh.getAmbush(), full.getAmbush(), 50),
+                FindMidValues.findMidValue(fresh.getBleedStandResist(), full.getBleedStandResist(), 50),
+                FindMidValues.findMidValue(fresh.getBleedSitResist(), full.getBleedSitResist(), 50),
+                FindMidValues.findMidValue(fresh.getBleedWalkResist(), full.getBleedWalkResist(), 50),
+                FindMidValues.findMidValue(fresh.getBleedRunResist(), full.getBleedRunResist(), 50),
+                FindMidValues.findMidValue(fresh.getWeight(), full.getWeight(), 50),
+                FindMidValues.findMidValue(fresh.getHealth(), full.getHealth(), 50),
+                FindMidValues.findMidValue(fresh.getBiteForce(), full.getBiteForce(), 50),
+                FindMidValues.findMidValue(fresh.getBleed(), full.getBleed(), 50),
+                FindMidValues.findMidValue(fresh.getSpecial(), full.getSpecial(), 50),
+                FindMidValues.findMidValue(fresh.getSpecialBleed(), full.getSpecialBleed(), 50),
+                FindMidValues.findMidValue(fresh.getTrample(), full.getTrample(), 50));
     }
 
     public void setName(String name) {
