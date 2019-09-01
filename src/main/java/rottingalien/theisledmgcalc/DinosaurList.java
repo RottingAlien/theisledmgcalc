@@ -41,7 +41,7 @@ public class DinosaurList {
         dinoMap.put("Stegosaurus" , new Stegosaurus());
         dinoMap.put("Therizinosaurus", new Therizinosaurus());
 
-        dinoMap.put("DINOSAUR", new DINOSAUR());
+        //dinoMap.put("DINOSAUR", new DINOSAUR());
 
     }
 

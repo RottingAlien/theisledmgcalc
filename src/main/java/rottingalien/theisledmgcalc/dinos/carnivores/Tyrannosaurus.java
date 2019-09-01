@@ -128,6 +128,10 @@ public class Tyrannosaurus extends Dino {
         getGrowthStates().put("Mid Juvenile", getMidGrowth("Mid Juvenile", freshJuvi, fullJuvi));
         getGrowthStates().put("Full Juvenile", fullJuvi);
 
+        getGrowthStates().put("Fresh Sub-Adult", freshSubAdult);
+        getGrowthStates().put("Mid Sub-Adult", getMidGrowth("Mid Sub-Adult", freshSubAdult, fullSubAdult));
+        getGrowthStates().put("Full Sub-Adult", fullSubAdult);
+
         getGrowthStates().put("Fresh Adult", freshAdult);
         getGrowthStates().put("Mid Adult", getMidGrowth("Mid Adult", freshAdult, fullAdult));
         getGrowthStates().put("Full Adult", fullAdult);

@@ -9,7 +9,6 @@ public abstract class Dino {
     private String name;
 
     private boolean isCarnivore;
-
     private double growthDurationJuvi;
     private double growthDurationSub;
     private double growthDurationAdult;
