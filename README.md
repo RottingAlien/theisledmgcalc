@@ -1,2 +1,2 @@
-# theisledmgcalc
-The Isle Damage Calculator (Java Version)
+# The Isle Damage Calculator
+(Java Version)
