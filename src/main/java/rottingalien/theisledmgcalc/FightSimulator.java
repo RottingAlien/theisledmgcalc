@@ -1,130 +1,179 @@
 package rottingalien.theisledmgcalc;
 
+import org.springframework.stereotype.Component;
 import rottingalien.utils.Terminal.Terminal;
 
+import java.util.LinkedList;
+import java.util.List;
+
+@Component
 public class FightSimulator {
+
+    private List<String> outcome = new LinkedList<>();
+    private List<String> dinoInfo = new LinkedList<>();
 
     private DinosaurList dinosaurList;
     private Dino chosenDino1;
     private Dino chosenDino2;
     private GrowthState dino1GrowthState;
     private GrowthState dino2GrowthState;
-    private int userInput1;
-    private int userInput2;
-    private View view;
-    private String[] dinoStringArr;
-    private String[] growStringArr;
+    private double actualDino1Damage;
+    private double actualDino2Damage;
+    private double actualDino1SDamage;
+    private double actualDino2SDamage;
+    private double actualDino1Bleed;
+    private double actualDino2Bleed;
+
+
+
+    private int numberOfBites1;
+    private int numberOfBites2;
+    private int numberOfSpecials1;
+    private int numberOfSpecials2;
 
 
     public FightSimulator() {
         this.dinosaurList = new DinosaurList();
-        dinosaurList.makeList();
-        dinoStringArr = new String[dinosaurList.getDinoMap().size()];
-        //init();
+    }
+    public void fight(String dino1, String dino1Growth, String dino2, String dino2Growth) {
 
+        chosenDino1 = dinosaurList.getDinoMap().get(dino1);
+        dino1GrowthState = chosenDino1.getGrowthStates().get(dino1Growth);
+        chosenDino2 = dinosaurList.getDinoMap().get(dino2);
+        dino2GrowthState = chosenDino2.getGrowthStates().get(dino2Growth);
+
+        actualDino1Damage = Math.round(actualDamage(dino1GrowthState.getBiteForce(), dino1GrowthState.getWeight(), dino2GrowthState.getWeight())*10)/10.0;
+        actualDino2Damage = Math.round(actualDamage(dino2GrowthState.getBiteForce(), dino2GrowthState.getWeight(), dino1GrowthState.getWeight())*10)/10.0;
+
+        actualDino1SDamage = Math.round(actualDamage(dino1GrowthState.getSpecial(), dino1GrowthState.getWeight(), dino2GrowthState.getWeight())*10)/10.0;
+        actualDino2SDamage = Math.round(actualDamage(dino2GrowthState.getSpecial(), dino2GrowthState.getWeight(), dino1GrowthState.getWeight())*10)/10.0;;
+
+        actualDino1Bleed = actualDamage(dino1GrowthState.getBleed(), dino1GrowthState.getWeight(), dino2GrowthState.getWeight());
+        actualDino2Bleed = actualDamage(dino2GrowthState.getBleed(), dino2GrowthState.getWeight(), dino1GrowthState.getWeight());
+
+        numberOfBites1 = ((int) (Math.ceil(dino2GrowthState.getHealth() / actualDino1Damage)));
+        numberOfBites2 = ((int) (Math.ceil(dino1GrowthState.getHealth() / actualDino2Damage)));
+
+        numberOfSpecials1 = ((int) (Math.ceil(dino2GrowthState.getHealth() / actualDino1SDamage)));
+        numberOfSpecials2 = ((int) (Math.ceil(dino1GrowthState.getHealth() / actualDino2SDamage)));
     }
 
-    public int askDino(String dinoNumber) {
-        int dinoArrIndex = 0;
-        for (Dino dino : dinosaurList.getDinoMap().values()) {
-            dinoStringArr[dinoArrIndex] = dino.getName();
-            dinoArrIndex++;
+    public void prepareOutcome() {
+        outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " (" + dino1GrowthState.getHealth() + " Health)" + " VS " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " (" + dino2GrowthState.getHealth() + " Health)");
+        outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " Kills " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " with " + numberOfBites1 + " Basic Attacks. (" + actualDino1Damage + " Damage/hit)");
+        if (numberOfSpecials1 <= 1000000) {
+            outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " Kills " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " with " + numberOfSpecials1 + " Special Attacks. (" + actualDino1SDamage + " Damage/hit)");
         }
-        view = new View(dinoStringArr, "Choose " + dinoNumber + " Dino:");
-        return view.getUserInput();
-    }
-
-    public int askGrowState(Dino dino) {
-        growStringArr = new String[dino.getGrowthStates().size()];
-        int growArrIndex = 0;
-        for (GrowthState growthState : dino.getGrowthStates().values()) {
-            growStringArr[growArrIndex] = growthState.getName();
-            growArrIndex++;
+        outcome.add(chosenDino2.getName() + " " + dino2GrowthState.getName() + " Kills " + chosenDino1.getName() + " " + dino1GrowthState.getName() + " with " + numberOfBites2 + " Basic Attacks. (" + actualDino2Damage + " Damage/hit)");
+        if (numberOfSpecials2 <= 1000000) {
+            outcome.add(chosenDino2.getName() + " " + dino2GrowthState.getName() + " Kills " + chosenDino1.getName() + " " + dino1GrowthState.getName() + " with " + numberOfSpecials2 + " Special Attacks. (" + actualDino2SDamage + " Damage/hit)");
         }
-        view = new View(growStringArr, "Choose " + dino.getName() + " growth:");
-        return view.getUserInput();
-    }
-
-    public void init() {
-        chosenDino1 = dinosaurList.getDinoMap().get(dinoStringArr[askDino("1st") - 1]);
-        Terminal.clearScreen();
-        userInput1 = askGrowState(chosenDino1) - 1;
-        dino1GrowthState = chosenDino1.getGrowthStates().get(growStringArr[userInput1]);
-        Terminal.clearScreen();
-        chosenDino2 = dinosaurList.getDinoMap().get(dinoStringArr[askDino("2nd") - 1]);
-        Terminal.clearScreen();
-        userInput2 = askGrowState(chosenDino2) - 1;
-        dino2GrowthState = chosenDino2.getGrowthStates().get(growStringArr[userInput2]);
-        Terminal.clearScreen();
-
-        while (true) {
-            fight();
-
-            view = new View(new String[]{"Change Dino 1", "Change Dino 2", "Change Both", "Show Dino 1 Info", "Show Dino 2 Info", "Exit"}, "Choose an option");
-            switch (view.getUserInput()) {
-                case 1:
-                    chosenDino1 = dinosaurList.getDinoMap().get(dinoStringArr[askDino("1st") - 1]);
-                    Terminal.clearScreen();
-                    userInput1 = askGrowState(chosenDino1) - 1;
-                    dino1GrowthState = chosenDino1.getGrowthStates().get(growStringArr[userInput1]);
-                    Terminal.clearScreen();
-                    break;
-                case 2:
-                    chosenDino2 = dinosaurList.getDinoMap().get(dinoStringArr[askDino("2nd") - 1]);
-                    Terminal.clearScreen();
-                    userInput2 = askGrowState(chosenDino2) - 1;
-                    dino2GrowthState = chosenDino2.getGrowthStates().get(growStringArr[userInput2]);
-                    Terminal.clearScreen();
-                    break;
-                case 3:
-                    chosenDino1 = dinosaurList.getDinoMap().get(dinoStringArr[askDino("1st") - 1]);
-                    Terminal.clearScreen();
-                    userInput1 = askGrowState(chosenDino1) - 1;
-                    dino1GrowthState = chosenDino1.getGrowthStates().get(growStringArr[userInput1]);
-                    Terminal.clearScreen();
-                    chosenDino2 = dinosaurList.getDinoMap().get(dinoStringArr[askDino("2nd") - 1]);
-                    Terminal.clearScreen();
-                    userInput2 = askGrowState(chosenDino2) - 1;
-                    dino2GrowthState = chosenDino2.getGrowthStates().get(growStringArr[userInput2]);
-                    Terminal.clearScreen();
-                    break;
-                case 4:
-                    view.showDinoInfo(chosenDino1, dino1GrowthState);
-                    break;
-                case 5:
-                    view.showDinoInfo(chosenDino2, dino2GrowthState);
-                    break;
-                case 6:
-                    System.exit(0);
-            }
+        if (dino1GrowthState.getSpeed() == dino2GrowthState.getSpeed()) {
+            outcome.add("Both dinos have the same speed");
         }
-
+        if (dino1GrowthState.getSpeed() > dino2GrowthState.getSpeed()) {
+            outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " can outrun the " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " in speed.");
+        }
+        if (dino1GrowthState.getSpeed() < dino2GrowthState.getSpeed()) {
+            outcome.add(chosenDino2.getName() + " " + dino2GrowthState.getName() + " can outrun the " + chosenDino1.getName() + " " + dino1GrowthState.getName() + " in speed.");
+        }
+        if (dino1GrowthState.getAmbush() > dino2GrowthState.getSpeed()) {
+            outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " can outrun the " + chosenDino2.getName() + " " + dino2GrowthState.getName() + "'s normal speed in ambush.");
+        }
+        if (dino1GrowthState.getSpeed() < dino2GrowthState.getAmbush() && dino2GrowthState.hasAmbush()) {
+            outcome.add(chosenDino2.getName() + " " + dino2GrowthState.getName() + " can outrun the " + chosenDino1.getName() + " " + dino1GrowthState.getName() + "'s normal speed in ambush.");
+        }
     }
 
-    public void fight() {
-
-
-        double actualDino1Damage = Math.round(actualDamage(dino1GrowthState.getBiteForce(), dino1GrowthState.getWeight(), dino2GrowthState.getWeight())*10)/10.0;
-        double actualDino2Damage = Math.round(actualDamage(dino2GrowthState.getBiteForce(), dino2GrowthState.getWeight(), dino1GrowthState.getWeight())*10)/10.0;
-
-        double actualDino1SDamage = Math.round(actualDamage(dino1GrowthState.getSpecial(), dino1GrowthState.getWeight(), dino2GrowthState.getWeight())*10)/10.0;
-        double actualDino2SDamage = Math.round(actualDamage(dino2GrowthState.getSpecial(), dino2GrowthState.getWeight(), dino1GrowthState.getWeight())*10)/10.0;;
-
-        double actualDino1Bleed = actualDamage(dino1GrowthState.getBleed(), dino1GrowthState.getWeight(), dino2GrowthState.getWeight());
-        double actualDino2Bleed = actualDamage(dino2GrowthState.getBleed(), dino2GrowthState.getWeight(), dino1GrowthState.getWeight());
-
-        int numberOfBites1 = ((int) (Math.ceil(dino2GrowthState.getHealth() / actualDino1Damage)));
-        int numberOfBites2 = ((int) (Math.ceil(dino1GrowthState.getHealth() / actualDino2Damage)));
-
-        int numberOfSpecials1 = ((int) (Math.ceil(dino2GrowthState.getHealth() / actualDino1SDamage)));
-        int numberOfSpecials2 = ((int) (Math.ceil(dino1GrowthState.getHealth() / actualDino2SDamage)));
-
-        view.showOutCome(chosenDino1, dino1GrowthState, actualDino1Damage,actualDino1SDamage, numberOfBites1, numberOfSpecials1, chosenDino2, dino2GrowthState, actualDino2Damage,actualDino2SDamage, numberOfBites2, numberOfSpecials2);
-
+    public void prepareDinoInfo(String dinoName, String growthName) {
+        Dino dino = dinosaurList.getDinoMap().get(dinoName);
+        GrowthState growth = dino.getGrowthStates().get(growthName);
+        dinoInfo.add(dino.getName() + " " + growth.getName() + ":");
+        dinoInfo.add("Tier: " + dino.getTier());
+        dinoInfo.add("Total growth duration: " + dino.getGrowthDurationTotal());
+        if (dino.hasJuviGrowth()) {
+            dinoInfo.add("Juvi Growth Duration: " + dino.getGrowthDurationJuvi());
+        }
+        if (dino.hasSubGrowth()) {
+            dinoInfo.add("Sub Growth Duration: " + dino.getGrowthDurationSub());
+        }
+        dinoInfo.add("Adult Growth duration: " + dino.getGrowthDurationAdult());
+        dinoInfo.add("Speed: " + growth.getSpeed());
+        if (growth.hasAmbush()) {
+            dinoInfo.add("Ambush: " + growth.getAmbush());
+        }
     }
 
 
     private double actualDamage(double damage, double weight1, double weight2) {
         return damage * (weight1 / weight2);
+    }
+
+    public List<String> getDinoInfo() {
+        return dinoInfo;
+    }
+
+    public List<String> getOutcome() {
+        return outcome;
+    }
+
+    public DinosaurList getDinosaurList() {
+        return dinosaurList;
+    }
+
+    public Dino getChosenDino1() {
+        return chosenDino1;
+    }
+
+    public Dino getChosenDino2() {
+        return chosenDino2;
+    }
+
+    public GrowthState getDino1GrowthState() {
+        return dino1GrowthState;
+    }
+
+    public GrowthState getDino2GrowthState() {
+        return dino2GrowthState;
+    }
+
+    public double getActualDino1Damage() {
+        return actualDino1Damage;
+    }
+
+    public double getActualDino2Damage() {
+        return actualDino2Damage;
+    }
+
+    public double getActualDino1SDamage() {
+        return actualDino1SDamage;
+    }
+
+    public double getActualDino2SDamage() {
+        return actualDino2SDamage;
+    }
+
+    public double getActualDino1Bleed() {
+        return actualDino1Bleed;
+    }
+
+    public double getActualDino2Bleed() {
+        return actualDino2Bleed;
+    }
+
+    public int getNumberOfBites1() {
+        return numberOfBites1;
+    }
+
+    public int getNumberOfBites2() {
+        return numberOfBites2;
+    }
+
+    public int getNumberOfSpecials1() {
+        return numberOfSpecials1;
+    }
+
+    public int getNumberOfSpecials2() {
+        return numberOfSpecials2;
     }
 }

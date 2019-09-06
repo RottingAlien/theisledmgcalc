@@ -1,5 +1,7 @@
 package rottingalien.theisledmgcalc;
 
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import rottingalien.theisledmgcalc.dinos.DINOSAUR;
 import rottingalien.theisledmgcalc.dinos.carnivores.*;
 import rottingalien.theisledmgcalc.dinos.herbivores.*;
@@ -9,9 +11,14 @@ import java.util.Map;
 
 public class DinosaurList {
 
+    public String testText = "Test Success";
     private Map<String, Dino> dinoMap = new LinkedHashMap<>();
 
-    public void makeList() {
+    public DinosaurList(){
+        makeList();
+    }
+
+    void makeList() {
         dinoMap.put("Carnotaurus", new Carnotaurus());
         dinoMap.put("Dilophosaurus", new Dilophosaurus());
         dinoMap.put("Utahraptor", new Utahraptor());

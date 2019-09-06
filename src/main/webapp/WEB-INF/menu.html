@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <title>The Isle Damage Calculator</title>
+</head>
+<body>
+<!--/*@thymesVar id="dinoMap" type="rottingalien.theisledmgcalc.DinosaurList"*/-->
+<form th:action="@{/fight}">
+    <table>
+        <thead>
+        <tr>
+            <th>First Dino</th>
+        </tr>
+        <tr>
+            <th>First Dinossaur</th>
+            <th>Second Dinossaur</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:each="dino : ${dinoMap.getDinoMap().values()}">
+            <td>
+                <label>
+                    <input th:type="radio" th:name="dino1" th:value="${dino.getName()}">
+                    [(${dino.getName()})] </label>
+            </td>
+            <td>
+                <label>
+                    <input th:type="radio" th:name="dino2" th:value="${dino.getName()}">
+                    [(${dino.getName()})] </label>
+            </td>
+        </tr>
+        <tr th:each="growth : ${dinoMap.getDinoMap().get('Triceratops').getGrowthStates().values()}">
+            <td>
+                <label>
+                    <input th:type="radio" th:name="dino1Growth" th:value="${growth.getName()}">
+                    [(${growth.getName()})] </label>
+            </td>
+            <td>
+                <label>
+                    <input th:type="radio" th:name="dino2Growth" th:value="${growth.getName()}">
+                    [(${growth.getName()})] </label>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

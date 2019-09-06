@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <title>The Isle Damage Calculator</title>
+</head>
+<body>
+<h1>The Isle Damage Calculator!</h1>
+
+<!--/*@thymesVar id="fightResults" type="java.util.List"*/-->
+<!--/*@thymesVar id="dino2" type="java.lang.String"*/-->
+<!--/*@thymesVar id="dino1" type="java.lang.String"*/-->
+
+<p th:each="info : ${fightResults}" th:text="${info}"></p>
+<input type="button" th:value="${dino1} + ' Details'" th:onclick="'window.location.href =\'' + @{'/'+${dino1}+'/'+${growth1}}+'\''" />
+<input type="button" th:value="${dino2} + ' Details'" th:onclick="'window.location.href =\'' + @{'/'+${dino2}+'/'+${growth2}}+'\''" />
+<button type="button" onclick="history.back()">Back</button>
+<input type="button" th:value="'Reset'" th:onclick="'window.location.href =' + @{'/'}" />
+
+</body>
+</html>
