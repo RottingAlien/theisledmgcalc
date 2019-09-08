@@ -7,12 +7,16 @@ import rottingalien.theisledmgcalc.dinos.carnivores.*;
 import rottingalien.theisledmgcalc.dinos.herbivores.*;
 
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 public class DinosaurList {
 
     public String testText = "Test Success";
     private Map<String, Dino> dinoMap = new LinkedHashMap<>();
+    List<Dino> carnivoresList = new LinkedList<>();
+    List<Dino> herbivoresList = new LinkedList<>();
 
     public DinosaurList(){
         makeList();
@@ -48,12 +52,30 @@ public class DinosaurList {
         dinoMap.put("Stegosaurus" , new Stegosaurus());
         dinoMap.put("Therizinosaurus", new Therizinosaurus());
 
+        splitDinos();
         //dinoMap.put("DINOSAUR", new DINOSAUR());
 
+    }
+
+    public void splitDinos(){
+        for (Dino dino:dinoMap.values()){
+            if (dino.isCarnivore()){
+                carnivoresList.add(dino);
+                continue;
+            }
+            herbivoresList.add(dino);
+        }
     }
 
     public Map<String, Dino> getDinoMap() {
         return dinoMap;
     }
 
+    public List<Dino> getCarnivoresList() {
+        return carnivoresList;
+    }
+
+    public List<Dino> getHerbivoresList() {
+        return herbivoresList;
+    }
 }

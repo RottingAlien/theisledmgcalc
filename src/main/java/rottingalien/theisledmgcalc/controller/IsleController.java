@@ -3,14 +3,9 @@ package rottingalien.theisledmgcalc.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import rottingalien.theisledmgcalc.DinosaurList;
 import rottingalien.theisledmgcalc.FightSimulator;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.LinkedList;
-import java.util.List;
 
 @Controller
 public class IsleController {
@@ -49,7 +44,10 @@ public class IsleController {
 
     @GetMapping("/")
     public String home(Model model) {
+
         model.addAttribute("dinoMap",fightSimulator.getDinosaurList());
+        model.addAttribute("carnieList", fightSimulator.getDinosaurList().getCarnivoresList());
+        model.addAttribute("herbieList",fightSimulator.getDinosaurList().getHerbivoresList());
         return "index";
     }
 

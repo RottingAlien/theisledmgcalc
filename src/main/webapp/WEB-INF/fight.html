@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-
+    <link rel="stylesheet" type="text/css" href="style.css"/>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>The Isle Damage Calculator</title>
 </head>
 <body>
@@ -14,34 +15,34 @@
 <h2>Fight Result:</h2>
 <table>
     <tbody>
-        <tr th:each="info : ${fightResults}">
-            <td th:text="${info}"></td>
-        </tr>
+    <tr th:each="info : ${fightResults}">
+        <td th:text="${info}"></td>
+    </tr>
     </tbody>
 </table>
 <br>
 <input type="button" th:value="'Reset'" th:onclick="|window.location.href='@{/}'|"/>
 
 <h1>More details:</h1>
-<table>
-    <tbody>
-    <tr th:each="info1 : ${dino1Info}">
-        <td>
-            <label th:text="${info1}"></label>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <br>
-        </td>
-    </tr>
-    <tr th:each="info2 : ${dino2Info}">
-        <td>
-            <label th:text="${info2}"></label>
-        </td>
-    </tr>
-    </tbody>
-</table>
-
+<div>
+    <table style="float: left">
+        <tbody>
+            <tr th:each="info1 : ${dino1Info}">
+                <td>
+                    <label th:text="${info1}"></label>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table style="float: left">
+        <tbody>
+            <tr th:each="info2 : ${dino2Info}">
+                <td>
+                    <label th:text="${info2}"></label>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
