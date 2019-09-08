@@ -1,7 +1,5 @@
 package rottingalien.theisledmgcalc;
 
-import org.academiadecodigo.bootcamp.Prompt;
-import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
 import rottingalien.utils.Terminal.Terminal;
 
 import java.util.LinkedList;

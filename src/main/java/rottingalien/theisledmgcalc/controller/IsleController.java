@@ -9,6 +9,8 @@ import rottingalien.theisledmgcalc.DinosaurList;
 import rottingalien.theisledmgcalc.FightSimulator;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.LinkedList;
+import java.util.List;
 
 @Controller
 public class IsleController {
@@ -18,7 +20,7 @@ public class IsleController {
     private FightSimulator fightSimulator;
 
     @Autowired
-    public void setDinosaurList(FightSimulator fightSimulator) {
+    public void setFightSimulator(FightSimulator fightSimulator) {
         this.fightSimulator = fightSimulator;
     }
 
@@ -39,21 +41,16 @@ public class IsleController {
         model.addAttribute("dino2",dino2);
         model.addAttribute("growth1",dino1Growth);
         model.addAttribute("growth2",dino2Growth);
-        return "fight";
-    }
 
-    @GetMapping("/{dino}/{growth}")
-    public String details( Model model, @PathVariable String dino,@PathVariable String growth) {
-        fightSimulator.getDinoInfo().clear();
-        fightSimulator.prepareDinoInfo(dino,growth);
-        model.addAttribute("dino",fightSimulator.getDinoInfo());
-        return "details";
+        model.addAttribute("dino1Info",fightSimulator.prepareDinoInfo(dino1,dino1Growth));
+        model.addAttribute("dino2Info", fightSimulator.prepareDinoInfo(dino2, dino2Growth));
+        return "fight";
     }
 
     @GetMapping("/")
     public String home(Model model) {
         model.addAttribute("dinoMap",fightSimulator.getDinosaurList());
-        return "menu";
+        return "index";
     }
 
 }

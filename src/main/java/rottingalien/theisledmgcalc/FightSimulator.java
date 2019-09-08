@@ -10,7 +10,6 @@ import java.util.List;
 public class FightSimulator {
 
     private List<String> outcome = new LinkedList<>();
-    private List<String> dinoInfo = new LinkedList<>();
 
     private DinosaurList dinosaurList;
     private Dino chosenDino1;
@@ -85,7 +84,9 @@ public class FightSimulator {
         }
     }
 
-    public void prepareDinoInfo(String dinoName, String growthName) {
+    public List<String> prepareDinoInfo(String dinoName, String growthName) {
+        List<String> dinoInfo = new LinkedList<>();
+        dinoInfo.clear();
         Dino dino = dinosaurList.getDinoMap().get(dinoName);
         GrowthState growth = dino.getGrowthStates().get(growthName);
         dinoInfo.add(dino.getName() + " " + growth.getName() + ":");
@@ -102,15 +103,13 @@ public class FightSimulator {
         if (growth.hasAmbush()) {
             dinoInfo.add("Ambush: " + growth.getAmbush());
         }
+
+        return dinoInfo;
     }
 
 
     private double actualDamage(double damage, double weight1, double weight2) {
         return damage * (weight1 / weight2);
-    }
-
-    public List<String> getDinoInfo() {
-        return dinoInfo;
     }
 
     public List<String> getOutcome() {

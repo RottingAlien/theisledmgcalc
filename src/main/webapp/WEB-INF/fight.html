@@ -11,12 +11,37 @@
 <!--/*@thymesVar id="fightResults" type="java.util.List"*/-->
 <!--/*@thymesVar id="dino2" type="java.lang.String"*/-->
 <!--/*@thymesVar id="dino1" type="java.lang.String"*/-->
+<h2>Fight Result:</h2>
+<table>
+    <tbody>
+        <tr th:each="info : ${fightResults}">
+            <td th:text="${info}"></td>
+        </tr>
+    </tbody>
+</table>
+<br>
+<input type="button" th:value="'Reset'" th:onclick="|window.location.href='@{/}'|"/>
 
-<p th:each="info : ${fightResults}" th:text="${info}"></p>
-<input type="button" th:value="${dino1} + ' Details'" th:onclick="'window.location.href =\'' + @{'/'+${dino1}+'/'+${growth1}}+'\''" />
-<input type="button" th:value="${dino2} + ' Details'" th:onclick="'window.location.href =\'' + @{'/'+${dino2}+'/'+${growth2}}+'\''" />
-<button type="button" onclick="history.back()">Back</button>
-<input type="button" th:value="'Reset'" th:onclick="'window.location.href =' + @{'/'}" />
+<h1>More details:</h1>
+<table>
+    <tbody>
+    <tr th:each="info1 : ${dino1Info}">
+        <td>
+            <label th:text="${info1}"></label>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <br>
+        </td>
+    </tr>
+    <tr th:each="info2 : ${dino2Info}">
+        <td>
+            <label th:text="${info2}"></label>
+        </td>
+    </tr>
+    </tbody>
+</table>
 
 </body>
 </html>
