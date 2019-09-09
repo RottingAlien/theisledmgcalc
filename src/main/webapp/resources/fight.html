@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+
     <link th:rel="stylesheet" type="text/css" th:href="@{/resources/style.css}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>The Isle Damage Calculator</title>
 </head>
-<body style="font-family: 'Open Sans Condensed', sans-serif;">
+<body class="body">
 <h1>The Isle Damage Calculator!</h1>
 
 <!--/*@thymesVar id="fightResults" type="java.util.List"*/-->
@@ -25,7 +26,8 @@
 
 <h1>More details:</h1>
 <div>
-    <table style="float: left">
+    <div class="details1">
+    <table class="details1table">
         <tbody>
         <tr th:each="info1 : ${dino1Info}">
             <td>
@@ -34,7 +36,9 @@
         </tr>
         </tbody>
     </table>
-    <table style="float: left">
+    </div>
+    <div class="details2div">
+        <table class="details2table">
         <tbody>
         <tr th:each="info2 : ${dino2Info}">
             <td>
@@ -43,6 +47,7 @@
         </tr>
         </tbody>
     </table>
+    </div>
 </div>
 </body>
 </html>

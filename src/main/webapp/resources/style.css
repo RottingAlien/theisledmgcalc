@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+.selector-for-some-widget {
+    box-sizing: content-box;
+}
+.body{
+    padding-left: 0.1rem;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+    background-image: url("topography.png");
+    background-repeat: repeat;
+}
+
+.details1table{
+    float: left;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+}
+.details2table{
+    float: left;
+}
+
+th{
+    text-align: left;
+}
