@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel = "stylesheet" type = "text/css" href = "style.css" />
+    <link th:rel="stylesheet" type="text/css" th:href="@{/resources/style.css}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>The Isle Damage Calculator</title>
 
 </head>
-<body>
+<body style="font-family: 'Open Sans Condensed', sans-serif;">
 <!--/*@thymesVar id="dinoMap" type="rottingalien.theisledmgcalc.DinosaurList"*/-->
 <h1>The Isle Damage Calculator</h1>
 <form th:action="@{/fight}">
@@ -44,7 +44,7 @@
         <tr th:each="growth : ${dinoMap.getDinoMap().get('Triceratops').getGrowthStates().values()}">
             <td>
                 <label class>
-                    <input th:autocomplete="off" th:type="radio" th:name="dino1Growth" th:value="${growth.getName()}" th:id="${growth.getName()}+'1'">
+                    <input th:type="radio" th:name="dino1Growth" th:value="${growth.getName()}" th:id="${growth.getName()}+'1'">
                     [(${growth.getName()})] </label>
             </td>
             <td>

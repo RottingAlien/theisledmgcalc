@@ -14,7 +14,7 @@ public class Parasaurolophus extends Dino {
 
         setName("Parasaurolophus");
         setCarnivore(false);
-        setTier(0);
+        setTier(4);
         setGrowthDurationJuvi(60);
         setGrowthDurationSub(0);
         setGrowthDurationAdult(120);

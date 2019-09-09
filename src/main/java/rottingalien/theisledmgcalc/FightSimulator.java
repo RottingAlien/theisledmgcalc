@@ -24,7 +24,6 @@ public class FightSimulator {
     private double actualDino2Bleed;
 
 
-
     private int numberOfBites1;
     private int numberOfBites2;
     private int numberOfSpecials1;
@@ -34,6 +33,7 @@ public class FightSimulator {
     public FightSimulator() {
         this.dinosaurList = new DinosaurList();
     }
+
     public void fight(String dino1, String dino1Growth, String dino2, String dino2Growth) {
 
         chosenDino1 = dinosaurList.getDinoMap().get(dino1);
@@ -41,11 +41,12 @@ public class FightSimulator {
         chosenDino2 = dinosaurList.getDinoMap().get(dino2);
         dino2GrowthState = chosenDino2.getGrowthStates().get(dino2Growth);
 
-        actualDino1Damage = Math.round(actualDamage(dino1GrowthState.getBiteForce(), dino1GrowthState.getWeight(), dino2GrowthState.getWeight())*10)/10.0;
-        actualDino2Damage = Math.round(actualDamage(dino2GrowthState.getBiteForce(), dino2GrowthState.getWeight(), dino1GrowthState.getWeight())*10)/10.0;
+        actualDino1Damage = Math.round(actualDamage(dino1GrowthState.getBiteForce(), dino1GrowthState.getWeight(), dino2GrowthState.getWeight()) * 10) / 10.0;
+        actualDino2Damage = Math.round(actualDamage(dino2GrowthState.getBiteForce(), dino2GrowthState.getWeight(), dino1GrowthState.getWeight()) * 10) / 10.0;
 
-        actualDino1SDamage = Math.round(actualDamage(dino1GrowthState.getSpecial(), dino1GrowthState.getWeight(), dino2GrowthState.getWeight())*10)/10.0;
-        actualDino2SDamage = Math.round(actualDamage(dino2GrowthState.getSpecial(), dino2GrowthState.getWeight(), dino1GrowthState.getWeight())*10)/10.0;;
+        actualDino1SDamage = Math.round(actualDamage(dino1GrowthState.getSpecial(), dino1GrowthState.getWeight(), dino2GrowthState.getWeight()) * 10) / 10.0;
+        actualDino2SDamage = Math.round(actualDamage(dino2GrowthState.getSpecial(), dino2GrowthState.getWeight(), dino1GrowthState.getWeight()) * 10) / 10.0;
+        ;
 
         actualDino1Bleed = actualDamage(dino1GrowthState.getBleed(), dino1GrowthState.getWeight(), dino2GrowthState.getWeight());
         actualDino2Bleed = actualDamage(dino2GrowthState.getBleed(), dino2GrowthState.getWeight(), dino1GrowthState.getWeight());
@@ -58,7 +59,17 @@ public class FightSimulator {
     }
 
     public void prepareOutcome() {
+        if (chosenDino1 == chosenDino2 && dino1GrowthState == dino2GrowthState) {
+            outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " (" + dino1GrowthState.getHealth() + " Health)" + " VS " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " (" + dino2GrowthState.getHealth() + " Health)");
+            outcome.add("Damage:");
+            outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " Kills " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " with " + numberOfBites1 + " Basic Attacks. (" + actualDino1Damage + " Damage/hit)");
+            if (numberOfSpecials1 <= 1000000) {
+                outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " Kills " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " with " + numberOfSpecials1 + " Special Attacks. (" + actualDino1SDamage + " Damage/hit)");
+            }
+            return;
+        }
         outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " (" + dino1GrowthState.getHealth() + " Health)" + " VS " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " (" + dino2GrowthState.getHealth() + " Health)");
+        outcome.add("Damage:");
         outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " Kills " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " with " + numberOfBites1 + " Basic Attacks. (" + actualDino1Damage + " Damage/hit)");
         if (numberOfSpecials1 <= 1000000) {
             outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " Kills " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " with " + numberOfSpecials1 + " Special Attacks. (" + actualDino1SDamage + " Damage/hit)");
@@ -67,6 +78,7 @@ public class FightSimulator {
         if (numberOfSpecials2 <= 1000000) {
             outcome.add(chosenDino2.getName() + " " + dino2GrowthState.getName() + " Kills " + chosenDino1.getName() + " " + dino1GrowthState.getName() + " with " + numberOfSpecials2 + " Special Attacks. (" + actualDino2SDamage + " Damage/hit)");
         }
+        outcome.add("Speed:");
         if (dino1GrowthState.getSpeed() == dino2GrowthState.getSpeed()) {
             outcome.add("Both dinos have the same speed");
         }
@@ -79,8 +91,14 @@ public class FightSimulator {
         if (dino1GrowthState.getAmbush() > dino2GrowthState.getSpeed()) {
             outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " can outrun the " + chosenDino2.getName() + " " + dino2GrowthState.getName() + "'s normal speed in ambush.");
         }
-        if (dino1GrowthState.getSpeed() < dino2GrowthState.getAmbush() && dino2GrowthState.hasAmbush()) {
+        if (dino1GrowthState.getSpeed() < dino2GrowthState.getAmbush()) {
             outcome.add(chosenDino2.getName() + " " + dino2GrowthState.getName() + " can outrun the " + chosenDino1.getName() + " " + dino1GrowthState.getName() + "'s normal speed in ambush.");
+        }
+        if (dino1GrowthState.getAmbush() > dino2GrowthState.getAmbush() && (dino1GrowthState.hasAmbush() && dino2GrowthState.hasAmbush())){
+            outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " can outrun the " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " if they are both in ambush.");
+        }
+        if (dino1GrowthState.getAmbush() < dino2GrowthState.getAmbush() && (dino1GrowthState.hasAmbush() && dino2GrowthState.hasAmbush())){
+            outcome.add(chosenDino2.getName() + " " + dino2GrowthState.getName() + " can outrun the " + chosenDino1.getName() + " " + dino1GrowthState.getName() + " if they are both in ambush.");
         }
     }
 

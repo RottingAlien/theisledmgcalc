@@ -8,7 +8,6 @@
     <mvc:default-servlet-handler/>
     <mvc:annotation-driven/>
     <context:component-scan base-package="rottingalien.theisledmgcalc"/>
-
     <import resource="presentation.xml"/>
 
 </beans>
