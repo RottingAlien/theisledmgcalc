@@ -32,11 +32,11 @@ public class Camarasaurus extends Dino {
                 100,
                 12000,
                 12000,
-                750,
+                650,
                 0,
-                5150,
+                4420,
                 0,
-                150);
+                130);
 
         getGrowthStates().put("Full Adult", fullAdult);
 
