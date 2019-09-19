@@ -11,6 +11,24 @@
 <!--/*@thymesVar id="dinoMap" type="rottingalien.theisledmgcalc.DinosaurList"*/-->
 <h1>The Isle Damage Calculator</h1>
 <form th:action="@{/fight}">
+
+    <div>
+        <div th:each="dino : ${dinoMap.getDinoMap().values()}">
+            <label>
+                <input th:type="radio" th:name="dino1" th:value="${dino.getName()}" th:id="${dino.getName()}+'1'">
+                [(${dino.getName()})] </label>
+        </div>
+    </div>
+    <div>
+
+    </div>
+    <div>
+
+    </div>
+    <div>
+
+    </div>
+
     <table>
         <thead>
         <tr>
