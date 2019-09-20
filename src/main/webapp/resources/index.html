@@ -21,7 +21,7 @@
         </div>
         <div th:each="dino : ${carnieList}" class="carnielist1">
             <label>
-                <input th:type="radio" th:name="dino1" th:value="${dino.getName()}" th:id="${dino.getName()}+'1'">
+                <input th:type="radio" th:name="dino1" th:value="${dino.getName()}" th:id="${dino.getName()}+'1'" th:onclick="showDino1Growths([[${dino.getGrowthStatesArray()}]])">
                 [(${dino.getName()})] </label>
         </div>
         <div>
@@ -29,7 +29,7 @@
         </div>
         <div th:each="dino : ${herbieList}" class="herbielist1">
             <label>
-                <input th:type="radio" th:name="dino1" th:value="${dino.getName()}" th:id="${dino.getName()}+'1'">
+                <input th:type="radio" th:name="dino1" th:value="${dino.getName()}" th:id="${dino.getName()}+'1'" th:onclick="showDino1Growths([[${dino.getGrowthStatesArray()}]])">
                 [(${dino.getName()})] </label>
         </div>
     </div>
@@ -42,7 +42,7 @@
         </div>
         <div th:each="dino : ${carnieList}" class="herbielist2">
             <label>
-                <input th:type="radio" th:name="dino2" th:value="${dino.getName()}" th:id="${dino.getName()}+'2'">
+                <input th:type="radio" th:name="dino2" th:value="${dino.getName()}" th:id="${dino.getName()}+'2'" th:onclick="showDino2Growths([[${dino.getGrowthStatesArray()}]])">
                 [(${dino.getName()})] </label>
         </div>
         <div>
@@ -50,7 +50,7 @@
         </div>
         <div th:each="dino : ${herbieList}">
             <label>
-                <input th:type="radio" th:name="dino2" th:value="${dino.getName()}" th:id="${dino.getName()}+'2'">
+                <input th:type="radio" th:name="dino2" th:value="${dino.getName()}" th:id="${dino.getName()}+'2'" th:onclick="showDino2Growths([[${dino.getGrowthStatesArray()}]])">
                 [(${dino.getName()})] </label>
         </div>
     </div>
@@ -64,23 +64,36 @@
             <div>
                 <h3>Growth 1</h3>
             </div>
-            <div th:each="growth : ${dinoMap.getDinoMap().get('Triceratops').getGrowthStates().values()}">
-                <label class>
-                    <input th:type="radio" th:name="dino1Growth" th:value="${growth.getName()}" th:id="${growth.getName()}+'1'">
-                    [(${growth.getName()})] </label>
+            <div id="growthStates1" class="growthStates1">
+
             </div>
         </div>
         <div id="growthlist2" class="growthlist2">
             <div>
                 <h3>Growth 2</h3>
             </div>
-            <div th:each="growth : ${dinoMap.getDinoMap().get('Triceratops').getGrowthStates().values()}">
-                <label class>
-                    <input th:type="radio" th:name="dino2Growth" th:value="${growth.getName()}" th:id="${growth.getName()}+'2'">
-                    [(${growth.getName()})] </label>
+            <div id="growthStates2" class="growthStates2">
+
             </div>
         </div>
     </div>
+    <script th:inline="javascript">
+        function showDino1Growths(dinoArray) {
+            document.getElementById("growthlist1").style.display = "inline-block";
+            document.getElementById("growthStates1").innerHTML = ''
+            for (var i = 0; i<dinoArray.length;i++){
+                document.getElementById("growthStates1").innerHTML += '<label> <input type="radio" name="dino1Growth" value="'+ dinoArray[i] + '" id="' + dinoArray[i]+1 + '"> ' + dinoArray[i] + '</label><br>'
+            }
+        }
+        function showDino2Growths(dinoArray) {
+            document.getElementById("growthlist2").style.display = "inline-block";
+            document.getElementById("growthStates2").innerHTML = ''
+            for (var i = 0; i<dinoArray.length;i++){
+                document.getElementById("growthStates2").innerHTML += '<label> <input type="radio" name="dino2Growth" value="'+ dinoArray[i] + '" id="' + dinoArray[i]+2 + '"> ' + dinoArray[i] + '</label><br>'
+            }
+        }
+
+    </script>
 
 </form>
 </body>

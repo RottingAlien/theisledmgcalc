@@ -33,15 +33,17 @@ th{
     display: inline-block;
 }
 
-.growthlists {
-    display: none;
-}
+
 .growthlist1 {
-    display: inline-block;
+    display: none;
     float: left;
     padding-right: 1.6rem;
 }
 
 .growthlist2 {
-    display: inline-block;
+    display: none;
+}
+
+.growthRadio {
+    float: left;
 }

@@ -16,14 +16,14 @@ public abstract class Dino {
 
     private double tier;
 
-    private Map<String,GrowthState> growthStates;
+    private Map<String, GrowthState> growthStates;
 
 
-    public Dino(){
+    public Dino() {
         growthStates = new LinkedHashMap<>();
     }
 
-    public GrowthState getMidGrowth(String name, GrowthState fresh, GrowthState full){
+    public GrowthState getMidGrowth(String name, GrowthState fresh, GrowthState full) {
         return new GrowthState(
                 name,
                 FindMidValues.findMidValue(fresh.getSpeed(), full.getSpeed(), 50),
@@ -45,8 +45,19 @@ public abstract class Dino {
         this.name = name;
     }
 
-    public Map<String,GrowthState> getGrowthStates() {
+    public Map<String, GrowthState> getGrowthStates() {
         return growthStates;
+    }
+
+    public String[] getGrowthStatesArray() {
+        String[] growArray = new String[getGrowthStates().values().size()];
+        int index = 0;
+        for (GrowthState grow : getGrowthStates().values()) {
+            growArray[index] = grow.getName();
+            index += 1;
+        }
+
+        return growArray;
     }
 
     public String getName() {
@@ -85,12 +96,12 @@ public abstract class Dino {
         this.growthDurationAdult = growthDurationAdult;
     }
 
-    public boolean hasJuviGrowth(){
-        return growthDurationJuvi!=0;
+    public boolean hasJuviGrowth() {
+        return growthDurationJuvi != 0;
     }
 
     public boolean hasSubGrowth() {
-        return growthDurationSub!=0;
+        return growthDurationSub != 0;
     }
 
     public double getTier() {
@@ -101,11 +112,11 @@ public abstract class Dino {
         this.tier = tier;
     }
 
-    public boolean isCarnivore(){
+    public boolean isCarnivore() {
         return isCarnivore;
     }
 
-    public void setCarnivore(boolean isCarnivore){
+    public void setCarnivore(boolean isCarnivore) {
         this.isCarnivore = isCarnivore;
     }
 
