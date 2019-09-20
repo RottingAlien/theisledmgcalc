@@ -82,6 +82,10 @@
             document.getElementById("growthlist1").style.display = "inline-block";
             document.getElementById("growthStates1").innerHTML = ''
             for (var i = 0; i<dinoArray.length;i++){
+                if (dinoArray[i] == "Full Adult"){
+                    document.getElementById("growthStates1").innerHTML += '<label> <input type="radio" name="dino1Growth" value="'+ dinoArray[i] + '" id="' + dinoArray[i]+1 + '" checked> ' + dinoArray[i] + '</label><br>'
+                    continue;
+                }
                 document.getElementById("growthStates1").innerHTML += '<label> <input type="radio" name="dino1Growth" value="'+ dinoArray[i] + '" id="' + dinoArray[i]+1 + '"> ' + dinoArray[i] + '</label><br>'
             }
         }
@@ -89,6 +93,10 @@
             document.getElementById("growthlist2").style.display = "inline-block";
             document.getElementById("growthStates2").innerHTML = ''
             for (var i = 0; i<dinoArray.length;i++){
+                if (dinoArray[i] == "Full Adult"){
+                    document.getElementById("growthStates2").innerHTML += '<label> <input type="radio" name="dino2Growth" value="'+ dinoArray[i] + '" id="' + dinoArray[i]+2 + '" checked> ' + dinoArray[i] + '</label><br>'
+                    continue;
+                }
                 document.getElementById("growthStates2").innerHTML += '<label> <input type="radio" name="dino2Growth" value="'+ dinoArray[i] + '" id="' + dinoArray[i]+2 + '"> ' + dinoArray[i] + '</label><br>'
             }
         }
