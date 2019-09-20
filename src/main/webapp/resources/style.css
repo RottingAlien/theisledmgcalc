@@ -23,3 +23,25 @@
 th{
     text-align: left;
 }
+
+.dinolist1 {
+    display: inline-block;
+    float: left;
+}
+
+.dinolist2 {
+    display: inline-block;
+}
+
+.growthlists {
+    display: none;
+}
+.growthlist1 {
+    display: inline-block;
+    float: left;
+    padding-right: 1.6rem;
+}
+
+.growthlist2 {
+    display: inline-block;
+}

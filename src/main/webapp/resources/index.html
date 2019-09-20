@@ -11,68 +11,77 @@
 <!--/*@thymesVar id="dinoMap" type="rottingalien.theisledmgcalc.DinosaurList"*/-->
 <h1>The Isle Damage Calculator</h1>
 <form th:action="@{/fight}">
-
-    <div>
-        <div th:each="dino : ${dinoMap.getDinoMap().values()}">
+<div id="dinolists" class="dinolists">
+    <div id="dinolist1" class="dinolist1">
+        <div>
+            <h2>First Dino:</h2>
+        </div>
+        <div>
+            <h3>Carnivores:</h3>
+        </div>
+        <div th:each="dino : ${carnieList}" class="carnielist1">
+            <label>
+                <input th:type="radio" th:name="dino1" th:value="${dino.getName()}" th:id="${dino.getName()}+'1'">
+                [(${dino.getName()})] </label>
+        </div>
+        <div>
+            <h3>Herbivores:</h3>
+        </div>
+        <div th:each="dino : ${herbieList}" class="herbielist1">
             <label>
                 <input th:type="radio" th:name="dino1" th:value="${dino.getName()}" th:id="${dino.getName()}+'1'">
                 [(${dino.getName()})] </label>
         </div>
     </div>
-    <div>
-
+    <div id="dinolist2" class="dinolist2">
+        <div>
+            <h2>Second Dino:</h2>
+        </div>
+        <div>
+            <h3>Carnivores:</h3>
+        </div>
+        <div th:each="dino : ${carnieList}" class="herbielist2">
+            <label>
+                <input th:type="radio" th:name="dino2" th:value="${dino.getName()}" th:id="${dino.getName()}+'2'">
+                [(${dino.getName()})] </label>
+        </div>
+        <div>
+            <h3>Herbivores:</h3>
+        </div>
+        <div th:each="dino : ${herbieList}">
+            <label>
+                <input th:type="radio" th:name="dino2" th:value="${dino.getName()}" th:id="${dino.getName()}+'2'">
+                [(${dino.getName()})] </label>
+        </div>
     </div>
-    <div>
-
+</div>
+    <div class="button">
+        <br>
+    <input type="submit" value="Submit">
     </div>
-    <div>
-
-    </div>
-
-    <table>
-        <thead>
-        <tr>
-            <th>First Dinossaur</th>
-            <th>Second Dinossaur</th>
-        </tr>
-        </thead>
-        <tbody>
-
-        <tr th:each="dino : ${dinoMap.getDinoMap().values()}">
-            <td>
-                <label>
-                    <input th:type="radio" th:name="dino1" th:value="${dino.getName()}" th:id="${dino.getName()}+'1'">
-                    [(${dino.getName()})] </label>
-            </td>
-            <td>
-                <label>
-                    <input th:type="radio" th:name="dino2" th:value="${dino.getName()}" th:id="${dino.getName()}+'2'">
-                    [(${dino.getName()})] </label>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input type="submit" value="Submit">
-            </td>
-        </tr>
-        <tr>
-            <th> Growth 1 </th>
-            <th> Growth 2 </th>
-        </tr>
-        <tr th:each="growth : ${dinoMap.getDinoMap().get('Triceratops').getGrowthStates().values()}">
-            <td>
+    <div id="growthlists" class="growthlists">
+        <div id="growthlist1" class="growthlist1">
+            <div>
+                <h3>Growth 1</h3>
+            </div>
+            <div th:each="growth : ${dinoMap.getDinoMap().get('Triceratops').getGrowthStates().values()}">
                 <label class>
                     <input th:type="radio" th:name="dino1Growth" th:value="${growth.getName()}" th:id="${growth.getName()}+'1'">
                     [(${growth.getName()})] </label>
-            </td>
-            <td>
-                <label>
+            </div>
+        </div>
+        <div id="growthlist2" class="growthlist2">
+            <div>
+                <h3>Growth 2</h3>
+            </div>
+            <div th:each="growth : ${dinoMap.getDinoMap().get('Triceratops').getGrowthStates().values()}">
+                <label class>
                     <input th:type="radio" th:name="dino2Growth" th:value="${growth.getName()}" th:id="${growth.getName()}+'2'">
                     [(${growth.getName()})] </label>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+            </div>
+        </div>
+    </div>
+
 </form>
 </body>
 </html>
