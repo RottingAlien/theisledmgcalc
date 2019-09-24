@@ -20,8 +20,32 @@ public class FightSimulator {
     private double actualDino2Damage;
     private double actualDino1SDamage;
     private double actualDino2SDamage;
+
+    private double actualDino1TrampleDamage;
+    private double actualDino2TrampleDamage;
+
     private double actualDino1Bleed;
     private double actualDino2Bleed;
+    private double actualDino1SpecialBleed;
+    private double actualDino2SpecialBleed;
+
+    private double actualDino1StandBleed;
+    private double actualDino2StandBleed;
+    private double actualDino1SitBleed;
+    private double actualDino2SitBleed;
+    private double actualDino1WalkBleed;
+    private double actualDino2WalkBleed;
+    private double actualDino1RunBleed;
+    private double actualDino2RunBleed;
+
+    private double actualDino1SpecialStandBleed;
+    private double actualDino2SpecialStandBleed;
+    private double actualDino1SpecialSitBleed;
+    private double actualDino2SpecialSitBleed;
+    private double actualDino1SpecialWalkBleed;
+    private double actualDino2SpecialWalkBleed;
+    private double actualDino1SpecialRunBleed;
+    private double actualDino2SpecialRunBleed;
 
 
     private int numberOfBites1;
@@ -46,10 +70,36 @@ public class FightSimulator {
 
         actualDino1SDamage = Math.round(actualDamage(dino1GrowthState.getSpecial(), dino1GrowthState.getWeight(), dino2GrowthState.getWeight()) * 10) / 10.0;
         actualDino2SDamage = Math.round(actualDamage(dino2GrowthState.getSpecial(), dino2GrowthState.getWeight(), dino1GrowthState.getWeight()) * 10) / 10.0;
-        ;
+
+        actualDino1TrampleDamage = Math.round(actualDamage(dino1GrowthState.getTrample(), dino1GrowthState.getWeight(), dino2GrowthState.getWeight()) * 10) / 10.0;
+        actualDino2TrampleDamage = Math.round(actualDamage(dino2GrowthState.getTrample(), dino2GrowthState.getWeight(), dino1GrowthState.getWeight()) * 10) / 10.0;
 
         actualDino1Bleed = actualDamage(dino1GrowthState.getBleed(), dino1GrowthState.getWeight(), dino2GrowthState.getWeight());
         actualDino2Bleed = actualDamage(dino2GrowthState.getBleed(), dino2GrowthState.getWeight(), dino1GrowthState.getWeight());
+
+        actualDino1SpecialBleed = actualDamage(dino1GrowthState.getSpecialBleed(), dino1GrowthState.getWeight(), dino2GrowthState.getWeight());
+        actualDino2SpecialBleed = actualDamage(dino2GrowthState.getSpecialBleed(), dino2GrowthState.getWeight(), dino1GrowthState.getWeight());
+
+
+        actualDino1SitBleed = Math.round(((dino1GrowthState.getBleedSitResist()/100)*actualDino2Bleed)*10)/10.0;
+        actualDino1StandBleed = Math.round(((dino1GrowthState.getBleedStandResist()/100)*actualDino2Bleed)*10)/10.0;
+        actualDino1WalkBleed = Math.round(((dino1GrowthState.getBleedWalkResist()/100)*actualDino2Bleed)*10)/10.0;
+        actualDino1RunBleed = Math.round(((dino1GrowthState.getBleedRunResist()/100)*actualDino2Bleed)*10)/10.0;
+        actualDino2SitBleed = Math.round(((dino2GrowthState.getBleedSitResist()/100)*actualDino1Bleed)*10)/10.0;
+        actualDino2StandBleed = Math.round(((dino2GrowthState.getBleedStandResist()/100)*actualDino1Bleed)*10)/10.0;
+        actualDino2WalkBleed = Math.round(((dino2GrowthState.getBleedWalkResist()/100)*actualDino1Bleed)*10)/10.0;
+        actualDino2RunBleed = Math.round(((dino2GrowthState.getBleedRunResist()/100)*actualDino1Bleed)*10)/10.0;
+
+        actualDino1SpecialSitBleed = Math.round(((dino1GrowthState.getBleedSitResist()/100)*actualDino2SpecialBleed)*10)/10.0;
+        actualDino1SpecialStandBleed = Math.round(((dino1GrowthState.getBleedStandResist()/100)*actualDino2SpecialBleed)*10)/10.0;
+        actualDino1SpecialWalkBleed = Math.round(((dino1GrowthState.getBleedWalkResist()/100)*actualDino2SpecialBleed)*10)/10.0;
+        actualDino1SpecialRunBleed = Math.round(((dino1GrowthState.getBleedRunResist()/100)*actualDino2SpecialBleed)*10)/10.0;
+        actualDino2SpecialSitBleed = Math.round(((dino2GrowthState.getBleedSitResist()/100)*actualDino1SpecialBleed)*10)/10.0;
+        actualDino2SpecialStandBleed = Math.round(((dino2GrowthState.getBleedStandResist()/100)*actualDino1SpecialBleed)*10)/10.0;
+        actualDino2SpecialWalkBleed = Math.round(((dino2GrowthState.getBleedWalkResist()/100)*actualDino1SpecialBleed)*10)/10.0;
+        actualDino2SpecialRunBleed = Math.round(((dino2GrowthState.getBleedRunResist()/100)*actualDino1SpecialBleed)*10)/10.0;
+
+
 
         numberOfBites1 = ((int) (Math.ceil(dino2GrowthState.getHealth() / actualDino1Damage)));
         numberOfBites2 = ((int) (Math.ceil(dino1GrowthState.getHealth() / actualDino2Damage)));
@@ -61,14 +111,31 @@ public class FightSimulator {
     public void prepareOutcome() {
         if (chosenDino1 == chosenDino2 && dino1GrowthState == dino2GrowthState) {
             outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " (" + dino1GrowthState.getHealth() + " Health)" + " VS " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " (" + dino2GrowthState.getHealth() + " Health)");
+            outcome.add("____________________________________________");
             outcome.add("Damage:");
             outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " Kills " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " with " + numberOfBites1 + " Basic Attacks. (" + actualDino1Damage + " Damage/hit)");
+
             if (numberOfSpecials1 <= 1000000) {
                 outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " Kills " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " with " + numberOfSpecials1 + " Special Attacks. (" + actualDino1SDamage + " Damage/hit)");
+            }
+            if (dino1GrowthState.hasTrample()){
+                outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " does " + actualDino1TrampleDamage + " trample damage to " + chosenDino2.getName() + " " + dino2GrowthState.getName());
+            }
+
+            if (dino1GrowthState.hasBleed()) {
+                outcome.add("____________________________________________");
+                outcome.add("Bleed (this is not accurate but might be useful to get an estimate):");
+                if (dino1GrowthState.hasBleed() && actualDino2StandBleed > 0) {
+                    outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " inflicts " + actualDino2StandBleed + " bleed to " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " per bite with the basic attack. (" + actualDino2SitBleed + " Sitting)");
+                }
+                if (dino1GrowthState.hasSpecialBleed() && actualDino2SpecialStandBleed > 0) {
+                    outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " inflicts " + actualDino2SpecialStandBleed + " bleed to " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " per bite with the special attack. (" + actualDino2SpecialSitBleed + " Sitting)");
+                }
             }
             return;
         }
         outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " (" + dino1GrowthState.getHealth() + " Health)" + " VS " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " (" + dino2GrowthState.getHealth() + " Health)");
+        outcome.add("____________________________________________");
         outcome.add("Damage:");
         outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " Kills " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " with " + numberOfBites1 + " Basic Attacks. (" + actualDino1Damage + " Damage/hit)");
         if (numberOfSpecials1 <= 1000000) {
@@ -78,6 +145,30 @@ public class FightSimulator {
         if (numberOfSpecials2 <= 1000000) {
             outcome.add(chosenDino2.getName() + " " + dino2GrowthState.getName() + " Kills " + chosenDino1.getName() + " " + dino1GrowthState.getName() + " with " + numberOfSpecials2 + " Special Attacks. (" + actualDino2SDamage + " Damage/hit)");
         }
+        if (dino1GrowthState.hasTrample()){
+            outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " does " + actualDino1TrampleDamage + " trample damage to " + chosenDino2.getName() + " " + dino2GrowthState.getName());
+        }
+        if (dino2GrowthState.hasTrample()){
+            outcome.add(chosenDino2.getName() + " " + dino2GrowthState.getName() + " does " + actualDino2TrampleDamage + " trample damage to " + chosenDino1.getName() + " " + dino1GrowthState.getName());
+        }
+        if (dino1GrowthState.hasBleed() || dino2GrowthState.hasBleed()) {
+            outcome.add("____________________________________________");
+            outcome.add("Bleed (this is not accurate but might be useful to get an estimate):");
+            if (dino1GrowthState.hasBleed() && actualDino2StandBleed > 0) {
+                outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " inflicts " + actualDino2StandBleed + " bleed to " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " per bite with the basic attack. (" + actualDino2SitBleed + " Sitting)");
+            }
+            if (dino2GrowthState.hasBleed() && actualDino1StandBleed > 0) {
+                outcome.add(chosenDino2.getName() + " " + dino2GrowthState.getName() + " inflicts " + actualDino1StandBleed + " bleed to " + chosenDino1.getName() + " " + dino1GrowthState.getName() + " per bite with the basic attack. (" + actualDino1SitBleed + " Sitting)");
+            }
+            if (dino1GrowthState.hasSpecialBleed() && actualDino2SpecialStandBleed > 0) {
+                outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " inflicts " + actualDino2SpecialStandBleed + " bleed to " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " per bite with the special attack. (" + actualDino2SpecialSitBleed + " Sitting)");
+            }
+            if (dino2GrowthState.hasSpecialBleed() && actualDino1SpecialStandBleed > 0) {
+                outcome.add(chosenDino2.getName() + " " + dino2GrowthState.getName() + " inflicts " + actualDino1SpecialStandBleed + " bleed to " + chosenDino1.getName() + " " + dino1GrowthState.getName() + " per bite with the special attack. (" + actualDino1SpecialSitBleed + " Sitting)");
+            }
+
+        }
+        outcome.add("____________________________________________");
         outcome.add("Speed:");
         if (dino1GrowthState.getSpeed() == dino2GrowthState.getSpeed()) {
             outcome.add("Both dinos have the same speed");

@@ -106,4 +106,10 @@ public class GrowthState {
         return trample!=0;
     }
 
+    public boolean hasBleed(){
+        return getBleed() > 0;
+    }
+    public boolean hasSpecialBleed(){
+        return getSpecialBleed() > 0;
+    }
 }

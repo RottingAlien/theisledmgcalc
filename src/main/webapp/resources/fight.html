@@ -14,39 +14,35 @@
 <!--/*@thymesVar id="dino2" type="java.lang.String"*/-->
 <!--/*@thymesVar id="dino1" type="java.lang.String"*/-->
 <h2>Fight Result:</h2>
-<table>
-    <tbody>
-    <tr th:each="info : ${fightResults}">
-        <td th:text="${info}"></td>
-    </tr>
-    </tbody>
-</table>
+<div id="fightresults" class="fightresults">
+    <div th:each="info : ${fightResults}">
+        <div th:text="${info}"></div>
+    </div>
+</div>
 <br>
 <input type="button" th:value="'Reset'" th:onclick="|window.location.href='@{/}'|"/>
 
 <h1>More details:</h1>
 <div>
     <div class="details1">
-    <table class="details1table">
-        <tbody>
-        <tr th:each="info1 : ${dino1Info}">
-            <td>
+    <div class="details1table">
+        <div th:each="info1 : ${dino1Info}">
+            <div>
                 <label th:text="${info1}"></label>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+            </div>
+        </div>
+    </div>
     </div>
     <div class="details2div">
-        <table class="details2table">
-        <tbody>
-        <tr th:each="info2 : ${dino2Info}">
-            <td>
+        <div class="details2table">
+
+        <div th:each="info2 : ${dino2Info}">
+            <div>
                 <label th:text="${info2}"></label>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+            </div>
+        </div>
+
+    </div>
     </div>
 </div>
 </body>

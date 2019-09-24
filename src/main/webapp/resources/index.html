@@ -14,44 +14,40 @@
 <div id="dinolists" class="dinolists">
     <div id="dinolist1" class="dinolist1">
         <div>
-            <h2>First Dino:</h2>
+            <h2 id="firstdinoheader">First Dino:</h2>
         </div>
         <div>
-            <h3>Carnivores:</h3>
+            <h3 id="carnivoresheader1">Carnivores:</h3>
         </div>
         <div th:each="dino : ${carnieList}" class="carnielist1">
-            <label>
-                <input th:type="radio" th:name="dino1" th:value="${dino.getName()}" th:id="${dino.getName()}+'1'" th:onclick="showDino1Growths([[${dino.getGrowthStatesArray()}]])">
-                [(${dino.getName()})] </label>
+            <input th:type="radio" th:name="dino1" th:value="${dino.getName()}" th:id="${dino.getName()}+'1'" th:onclick="showDino1Growths([[${dino.getGrowthStatesArray()}]])">
+            <label>[(${dino.getName()})]</label>
         </div>
         <div>
-            <h3>Herbivores:</h3>
+            <h3 id="herbivoresheader1">Herbivores:</h3>
         </div>
         <div th:each="dino : ${herbieList}" class="herbielist1">
-            <label>
-                <input th:type="radio" th:name="dino1" th:value="${dino.getName()}" th:id="${dino.getName()}+'1'" th:onclick="showDino1Growths([[${dino.getGrowthStatesArray()}]])">
-                [(${dino.getName()})] </label>
+            <input th:type="radio" th:name="dino1" th:value="${dino.getName()}" th:id="${dino.getName()}+'1'" th:onclick="showDino1Growths([[${dino.getGrowthStatesArray()}]])">
+            <label>[(${dino.getName()})]</label>
         </div>
     </div>
     <div id="dinolist2" class="dinolist2">
         <div>
-            <h2>Second Dino:</h2>
+            <h2 id="seconddinoheader">Second Dino:</h2>
         </div>
         <div>
-            <h3>Carnivores:</h3>
+            <h3 id="carnivoresheader2">Carnivores:</h3>
         </div>
         <div th:each="dino : ${carnieList}" class="herbielist2">
-            <label>
-                <input th:type="radio" th:name="dino2" th:value="${dino.getName()}" th:id="${dino.getName()}+'2'" th:onclick="showDino2Growths([[${dino.getGrowthStatesArray()}]])">
-                [(${dino.getName()})] </label>
+            <input th:type="radio" th:name="dino2" th:value="${dino.getName()}" th:id="${dino.getName()}+'2'" th:onclick="showDino2Growths([[${dino.getGrowthStatesArray()}]])">
+            <label>[(${dino.getName()})]</label>
         </div>
         <div>
-            <h3>Herbivores:</h3>
+            <h3 id="herbivoresheader2">Herbivores:</h3>
         </div>
         <div th:each="dino : ${herbieList}">
-            <label>
-                <input th:type="radio" th:name="dino2" th:value="${dino.getName()}" th:id="${dino.getName()}+'2'" th:onclick="showDino2Growths([[${dino.getGrowthStatesArray()}]])">
-                [(${dino.getName()})] </label>
+            <input th:type="radio" th:name="dino2" th:value="${dino.getName()}" th:id="${dino.getName()}+'2'" th:onclick="showDino2Growths([[${dino.getGrowthStatesArray()}]])">
+            <label>[(${dino.getName()})] </label>
         </div>
     </div>
 </div>
@@ -62,7 +58,7 @@
     <div id="growthlists" class="growthlists">
         <div id="growthlist1" class="growthlist1">
             <div>
-                <h3>Growth 1</h3>
+                <h3 id="growthheader1">Growth 1</h3>
             </div>
             <div id="growthStates1" class="growthStates1">
 
@@ -70,39 +66,42 @@
         </div>
         <div id="growthlist2" class="growthlist2">
             <div>
-                <h3>Growth 2</h3>
+                <h3 id="growthheader2">Growth 2</h3>
             </div>
             <div id="growthStates2" class="growthStates2">
 
             </div>
         </div>
     </div>
-    <script th:inline="javascript">
-        function showDino1Growths(dinoArray) {
-            document.getElementById("growthlist1").style.display = "inline-block";
-            document.getElementById("growthStates1").innerHTML = ''
-            for (var i = 0; i<dinoArray.length;i++){
-                if (dinoArray[i] == "Full Adult"){
-                    document.getElementById("growthStates1").innerHTML += '<label> <input type="radio" name="dino1Growth" value="'+ dinoArray[i] + '" id="' + dinoArray[i]+1 + '" checked> ' + dinoArray[i] + '</label><br>'
-                    continue;
-                }
-                document.getElementById("growthStates1").innerHTML += '<label> <input type="radio" name="dino1Growth" value="'+ dinoArray[i] + '" id="' + dinoArray[i]+1 + '"> ' + dinoArray[i] + '</label><br>'
-            }
-        }
-        function showDino2Growths(dinoArray) {
-            document.getElementById("growthlist2").style.display = "inline-block";
-            document.getElementById("growthStates2").innerHTML = ''
-            for (var i = 0; i<dinoArray.length;i++){
-                if (dinoArray[i] == "Full Adult"){
-                    document.getElementById("growthStates2").innerHTML += '<label> <input type="radio" name="dino2Growth" value="'+ dinoArray[i] + '" id="' + dinoArray[i]+2 + '" checked> ' + dinoArray[i] + '</label><br>'
-                    continue;
-                }
-                document.getElementById("growthStates2").innerHTML += '<label> <input type="radio" name="dino2Growth" value="'+ dinoArray[i] + '" id="' + dinoArray[i]+2 + '"> ' + dinoArray[i] + '</label><br>'
-            }
-        }
-
-    </script>
-
 </form>
 </body>
+<script th:inline="javascript">
+    function showDino1Growths(dinoArray) {
+        document.getElementById("growthlist1").style.display = "inline-block";
+        document.getElementById("growthStates1").innerHTML = ''
+        for (var i = 0; i<dinoArray.length;i++){
+            if (dinoArray[i] == "Full Adult"){
+                document.getElementById("growthStates1").innerHTML += '<input type="radio" name="dino1Growth" value="'+ dinoArray[i] + '" id="' + dinoArray[i]+1+'" checked>'
+                document.getElementById("growthStates1").innerHTML += '<label>' + dinoArray[i] + '</label><br>'
+                continue;
+            }
+            document.getElementById("growthStates1").innerHTML += '<input type="radio" name="dino1Growth" value="'+ dinoArray[i] + '" id="' + dinoArray[i]+1+'">'
+            document.getElementById("growthStates1").innerHTML += '<label>' + dinoArray[i] + '</label><br>'
+        }
+    }
+    function showDino2Growths(dinoArray) {
+        document.getElementById("growthlist2").style.display = "inline-block";
+        document.getElementById("growthStates2").innerHTML = ''
+        for (var i = 0; i<dinoArray.length;i++){
+            if (dinoArray[i] == "Full Adult"){
+                document.getElementById("growthStates2").innerHTML += '<input type="radio" name="dino2Growth" value="'+ dinoArray[i] + '" id="' + dinoArray[i]+2+'" checked>'
+                document.getElementById("growthStates2").innerHTML += '<label> ' + dinoArray[i] + '</label><br>'
+                continue;
+            }
+            document.getElementById("growthStates2").innerHTML += '<input type="radio" name="dino2Growth" value="'+ dinoArray[i] + '" id="' + dinoArray[i]+2+'">'
+            document.getElementById("growthStates2").innerHTML += '<label>' + dinoArray[i] + '</label><br>'
+        }
+    }
+
+</script>
 </html>
