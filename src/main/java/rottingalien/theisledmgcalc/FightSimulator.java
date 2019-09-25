@@ -121,7 +121,9 @@ public class FightSimulator {
             if (dino1GrowthState.hasTrample()){
                 damageOutcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " does " + actualDino1TrampleDamage + " trample damage to " + chosenDino2.getName() + " " + dino2GrowthState.getName());
             }
-
+            if (!dino1GrowthState.hasBleed() && !dino2GrowthState.hasBleed()){
+                bleedOutcome.add("There is no bleed in this fight");
+            }
             if (dino1GrowthState.hasBleed()) {
                 if (dino1GrowthState.hasBleed() && actualDino2StandBleed > 0) {
                     bleedOutcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " inflicts " + actualDino2StandBleed + " bleed to " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " per bite with the basic attack. (" + actualDino2SitBleed + " Sitting)");
