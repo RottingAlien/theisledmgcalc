@@ -9,45 +9,33 @@
 </head>
 <body class="body">
 <!--/*@thymesVar id="dinoMap" type="rottingalien.theisledmgcalc.DinosaurList"*/-->
-<h1>The Isle Damage Calculator</h1>
+<h1 id="title1">The Isle Damage Calculator</h1>
 <form th:action="@{/fight}">
 <div id="dinolists" class="dinolists">
     <div id="dinolist1" class="dinolist1">
-        <div>
-            <h2 id="firstdinoheader">First Dino:</h2>
-        </div>
-        <div>
-            <h3 id="carnivoresheader1">Carnivores:</h3>
-        </div>
+        <h2 id="firstdinoheader">First Dino:</h2>
+        <h3 id="carnivoresheader1">Carnivores:</h3>
         <div th:each="dino : ${carnieList}" class="carnielist1">
             <input th:type="radio" th:name="dino1" th:value="${dino.getName()}" th:id="${dino.getName()}+'1'" th:onclick="showDino1Growths([[${dino.getGrowthStatesArray()}]])">
-            <label>[(${dino.getName()})]</label>
+            <label th:for="${dino.getName()}+'1'">[(${dino.getName()})]</label>
         </div>
-        <div>
-            <h3 id="herbivoresheader1">Herbivores:</h3>
-        </div>
+        <h3 id="herbivoresheader1">Herbivores:</h3>
         <div th:each="dino : ${herbieList}" class="herbielist1">
             <input th:type="radio" th:name="dino1" th:value="${dino.getName()}" th:id="${dino.getName()}+'1'" th:onclick="showDino1Growths([[${dino.getGrowthStatesArray()}]])">
-            <label>[(${dino.getName()})]</label>
+            <label th:for="${dino.getName()}+'1'">[(${dino.getName()})]</label>
         </div>
     </div>
     <div id="dinolist2" class="dinolist2">
-        <div>
-            <h2 id="seconddinoheader">Second Dino:</h2>
-        </div>
-        <div>
-            <h3 id="carnivoresheader2">Carnivores:</h3>
-        </div>
+        <h2 id="seconddinoheader">Second Dino:</h2>
+        <h3 id="carnivoresheader2">Carnivores:</h3>
         <div th:each="dino : ${carnieList}" class="herbielist2">
             <input th:type="radio" th:name="dino2" th:value="${dino.getName()}" th:id="${dino.getName()}+'2'" th:onclick="showDino2Growths([[${dino.getGrowthStatesArray()}]])">
-            <label>[(${dino.getName()})]</label>
+            <label th:for="${dino.getName()}+'2'">[(${dino.getName()})]</label>
         </div>
-        <div>
-            <h3 id="herbivoresheader2">Herbivores:</h3>
-        </div>
+        <h3 id="herbivoresheader2">Herbivores:</h3>
         <div th:each="dino : ${herbieList}">
             <input th:type="radio" th:name="dino2" th:value="${dino.getName()}" th:id="${dino.getName()}+'2'" th:onclick="showDino2Growths([[${dino.getGrowthStatesArray()}]])">
-            <label>[(${dino.getName()})] </label>
+            <label th:for="${dino.getName()}+'2'">[(${dino.getName()})] </label>
         </div>
     </div>
 </div>
@@ -57,19 +45,13 @@
     </div>
     <div id="growthlists" class="growthlists">
         <div id="growthlist1" class="growthlist1">
-            <div>
-                <h3 id="growthheader1">Growth 1</h3>
-            </div>
+            <h3 id="growthheader1">Growth 1</h3>
             <div id="growthStates1" class="growthStates1">
-
             </div>
         </div>
         <div id="growthlist2" class="growthlist2">
-            <div>
-                <h3 id="growthheader2">Growth 2</h3>
-            </div>
+            <h3 id="growthheader2">Growth 2</h3>
             <div id="growthStates2" class="growthStates2">
-
             </div>
         </div>
     </div>
@@ -82,11 +64,11 @@
         for (var i = 0; i<dinoArray.length;i++){
             if (dinoArray[i] == "Full Adult"){
                 document.getElementById("growthStates1").innerHTML += '<input type="radio" name="dino1Growth" value="'+ dinoArray[i] + '" id="' + dinoArray[i]+1+'" checked>'
-                document.getElementById("growthStates1").innerHTML += '<label>' + dinoArray[i] + '</label><br>'
+                document.getElementById("growthStates1").innerHTML += '<label for="' + dinoArray[i]+1+'">' + dinoArray[i] + '</label><br>'
                 continue;
             }
             document.getElementById("growthStates1").innerHTML += '<input type="radio" name="dino1Growth" value="'+ dinoArray[i] + '" id="' + dinoArray[i]+1+'">'
-            document.getElementById("growthStates1").innerHTML += '<label>' + dinoArray[i] + '</label><br>'
+            document.getElementById("growthStates1").innerHTML += '<label for="' + dinoArray[i]+1+'">' + dinoArray[i] + '</label><br>'
         }
     }
     function showDino2Growths(dinoArray) {
@@ -95,11 +77,11 @@
         for (var i = 0; i<dinoArray.length;i++){
             if (dinoArray[i] == "Full Adult"){
                 document.getElementById("growthStates2").innerHTML += '<input type="radio" name="dino2Growth" value="'+ dinoArray[i] + '" id="' + dinoArray[i]+2+'" checked>'
-                document.getElementById("growthStates2").innerHTML += '<label> ' + dinoArray[i] + '</label><br>'
+                document.getElementById("growthStates2").innerHTML += '<label for="' + dinoArray[i]+2+'"> ' + dinoArray[i] + '</label><br>'
                 continue;
             }
             document.getElementById("growthStates2").innerHTML += '<input type="radio" name="dino2Growth" value="'+ dinoArray[i] + '" id="' + dinoArray[i]+2+'">'
-            document.getElementById("growthStates2").innerHTML += '<label>' + dinoArray[i] + '</label><br>'
+            document.getElementById("growthStates2").innerHTML += '<label for="' + dinoArray[i]+2+'">' + dinoArray[i] + '</label><br>'
         }
     }
 

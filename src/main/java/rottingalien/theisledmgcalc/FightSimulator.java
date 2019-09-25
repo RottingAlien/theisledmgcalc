@@ -1,7 +1,6 @@
 package rottingalien.theisledmgcalc;
 
 import org.springframework.stereotype.Component;
-import rottingalien.utils.Terminal.Terminal;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -9,7 +8,10 @@ import java.util.List;
 @Component
 public class FightSimulator {
 
-    private List<String> outcome = new LinkedList<>();
+    private String fighters;
+    private List<String> damageOutcome = new LinkedList<>();
+    private List<String> bleedOutcome = new LinkedList<>();
+    private List<String> speedOutcome = new LinkedList<>();
 
     private DinosaurList dinosaurList;
     private Dino chosenDino1;
@@ -109,87 +111,82 @@ public class FightSimulator {
     }
 
     public void prepareOutcome() {
+        fighters = chosenDino1.getName() + " " + dino1GrowthState.getName() + " (" + dino1GrowthState.getHealth() + " Health)" + " VS " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " (" + dino2GrowthState.getHealth() + " Health)";
         if (chosenDino1 == chosenDino2 && dino1GrowthState == dino2GrowthState) {
-            outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " (" + dino1GrowthState.getHealth() + " Health)" + " VS " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " (" + dino2GrowthState.getHealth() + " Health)");
-            outcome.add("____________________________________________");
-            outcome.add("Damage:");
-            outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " Kills " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " with " + numberOfBites1 + " Basic Attacks. (" + actualDino1Damage + " Damage/hit)");
+            damageOutcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " Kills " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " with " + numberOfBites1 + " Basic Attacks. (" + actualDino1Damage + " Damage/hit)");
 
             if (numberOfSpecials1 <= 1000000) {
-                outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " Kills " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " with " + numberOfSpecials1 + " Special Attacks. (" + actualDino1SDamage + " Damage/hit)");
+                damageOutcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " Kills " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " with " + numberOfSpecials1 + " Special Attacks. (" + actualDino1SDamage + " Damage/hit)");
             }
             if (dino1GrowthState.hasTrample()){
-                outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " does " + actualDino1TrampleDamage + " trample damage to " + chosenDino2.getName() + " " + dino2GrowthState.getName());
+                damageOutcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " does " + actualDino1TrampleDamage + " trample damage to " + chosenDino2.getName() + " " + dino2GrowthState.getName());
             }
 
             if (dino1GrowthState.hasBleed()) {
-                outcome.add("____________________________________________");
-                outcome.add("Bleed (this is not accurate but might be useful to get an estimate):");
                 if (dino1GrowthState.hasBleed() && actualDino2StandBleed > 0) {
-                    outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " inflicts " + actualDino2StandBleed + " bleed to " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " per bite with the basic attack. (" + actualDino2SitBleed + " Sitting)");
+                    bleedOutcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " inflicts " + actualDino2StandBleed + " bleed to " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " per bite with the basic attack. (" + actualDino2SitBleed + " Sitting)");
                 }
                 if (dino1GrowthState.hasSpecialBleed() && actualDino2SpecialStandBleed > 0) {
-                    outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " inflicts " + actualDino2SpecialStandBleed + " bleed to " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " per bite with the special attack. (" + actualDino2SpecialSitBleed + " Sitting)");
+                    bleedOutcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " inflicts " + actualDino2SpecialStandBleed + " bleed to " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " per bite with the special attack. (" + actualDino2SpecialSitBleed + " Sitting)");
                 }
+            }
+            if (dino1GrowthState.getSpeed() == dino2GrowthState.getSpeed()) {
+                speedOutcome.add("Both dinos have the same speed");
             }
             return;
         }
-        outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " (" + dino1GrowthState.getHealth() + " Health)" + " VS " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " (" + dino2GrowthState.getHealth() + " Health)");
-        outcome.add("____________________________________________");
-        outcome.add("Damage:");
-        outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " Kills " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " with " + numberOfBites1 + " Basic Attacks. (" + actualDino1Damage + " Damage/hit)");
+        damageOutcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " Kills " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " with " + numberOfBites1 + " Basic Attacks. (" + actualDino1Damage + " Damage/hit)");
         if (numberOfSpecials1 <= 1000000) {
-            outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " Kills " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " with " + numberOfSpecials1 + " Special Attacks. (" + actualDino1SDamage + " Damage/hit)");
+            damageOutcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " Kills " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " with " + numberOfSpecials1 + " Special Attacks. (" + actualDino1SDamage + " Damage/hit)");
         }
-        outcome.add(chosenDino2.getName() + " " + dino2GrowthState.getName() + " Kills " + chosenDino1.getName() + " " + dino1GrowthState.getName() + " with " + numberOfBites2 + " Basic Attacks. (" + actualDino2Damage + " Damage/hit)");
+        damageOutcome.add(chosenDino2.getName() + " " + dino2GrowthState.getName() + " Kills " + chosenDino1.getName() + " " + dino1GrowthState.getName() + " with " + numberOfBites2 + " Basic Attacks. (" + actualDino2Damage + " Damage/hit)");
         if (numberOfSpecials2 <= 1000000) {
-            outcome.add(chosenDino2.getName() + " " + dino2GrowthState.getName() + " Kills " + chosenDino1.getName() + " " + dino1GrowthState.getName() + " with " + numberOfSpecials2 + " Special Attacks. (" + actualDino2SDamage + " Damage/hit)");
+            damageOutcome.add(chosenDino2.getName() + " " + dino2GrowthState.getName() + " Kills " + chosenDino1.getName() + " " + dino1GrowthState.getName() + " with " + numberOfSpecials2 + " Special Attacks. (" + actualDino2SDamage + " Damage/hit)");
         }
         if (dino1GrowthState.hasTrample()){
-            outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " does " + actualDino1TrampleDamage + " trample damage to " + chosenDino2.getName() + " " + dino2GrowthState.getName());
+            damageOutcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " does " + actualDino1TrampleDamage + " trample damage to " + chosenDino2.getName() + " " + dino2GrowthState.getName());
         }
         if (dino2GrowthState.hasTrample()){
-            outcome.add(chosenDino2.getName() + " " + dino2GrowthState.getName() + " does " + actualDino2TrampleDamage + " trample damage to " + chosenDino1.getName() + " " + dino1GrowthState.getName());
+            damageOutcome.add(chosenDino2.getName() + " " + dino2GrowthState.getName() + " does " + actualDino2TrampleDamage + " trample damage to " + chosenDino1.getName() + " " + dino1GrowthState.getName());
+        }
+        if (!dino1GrowthState.hasBleed() && !dino2GrowthState.hasBleed()){
+            bleedOutcome.add("There is no bleed in this fight");
         }
         if (dino1GrowthState.hasBleed() || dino2GrowthState.hasBleed()) {
-            outcome.add("____________________________________________");
-            outcome.add("Bleed (this is not accurate but might be useful to get an estimate):");
             if (dino1GrowthState.hasBleed() && actualDino2StandBleed > 0) {
-                outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " inflicts " + actualDino2StandBleed + " bleed to " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " per bite with the basic attack. (" + actualDino2SitBleed + " Sitting)");
+                bleedOutcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " inflicts " + actualDino2StandBleed + " bleed to " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " per bite with the basic attack. (" + actualDino2SitBleed + " Sitting)");
             }
             if (dino2GrowthState.hasBleed() && actualDino1StandBleed > 0) {
-                outcome.add(chosenDino2.getName() + " " + dino2GrowthState.getName() + " inflicts " + actualDino1StandBleed + " bleed to " + chosenDino1.getName() + " " + dino1GrowthState.getName() + " per bite with the basic attack. (" + actualDino1SitBleed + " Sitting)");
+                bleedOutcome.add(chosenDino2.getName() + " " + dino2GrowthState.getName() + " inflicts " + actualDino1StandBleed + " bleed to " + chosenDino1.getName() + " " + dino1GrowthState.getName() + " per bite with the basic attack. (" + actualDino1SitBleed + " Sitting)");
             }
             if (dino1GrowthState.hasSpecialBleed() && actualDino2SpecialStandBleed > 0) {
-                outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " inflicts " + actualDino2SpecialStandBleed + " bleed to " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " per bite with the special attack. (" + actualDino2SpecialSitBleed + " Sitting)");
+                bleedOutcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " inflicts " + actualDino2SpecialStandBleed + " bleed to " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " per bite with the special attack. (" + actualDino2SpecialSitBleed + " Sitting)");
             }
             if (dino2GrowthState.hasSpecialBleed() && actualDino1SpecialStandBleed > 0) {
-                outcome.add(chosenDino2.getName() + " " + dino2GrowthState.getName() + " inflicts " + actualDino1SpecialStandBleed + " bleed to " + chosenDino1.getName() + " " + dino1GrowthState.getName() + " per bite with the special attack. (" + actualDino1SpecialSitBleed + " Sitting)");
+                bleedOutcome.add(chosenDino2.getName() + " " + dino2GrowthState.getName() + " inflicts " + actualDino1SpecialStandBleed + " bleed to " + chosenDino1.getName() + " " + dino1GrowthState.getName() + " per bite with the special attack. (" + actualDino1SpecialSitBleed + " Sitting)");
             }
 
         }
-        outcome.add("____________________________________________");
-        outcome.add("Speed:");
         if (dino1GrowthState.getSpeed() == dino2GrowthState.getSpeed()) {
-            outcome.add("Both dinos have the same speed");
+            speedOutcome.add("Both dinos have the same speed");
         }
         if (dino1GrowthState.getSpeed() > dino2GrowthState.getSpeed()) {
-            outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " can outrun the " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " in speed.");
+            speedOutcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " can outrun the " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " in speed.");
         }
         if (dino1GrowthState.getSpeed() < dino2GrowthState.getSpeed()) {
-            outcome.add(chosenDino2.getName() + " " + dino2GrowthState.getName() + " can outrun the " + chosenDino1.getName() + " " + dino1GrowthState.getName() + " in speed.");
+            speedOutcome.add(chosenDino2.getName() + " " + dino2GrowthState.getName() + " can outrun the " + chosenDino1.getName() + " " + dino1GrowthState.getName() + " in speed.");
         }
         if (dino1GrowthState.getAmbush() > dino2GrowthState.getSpeed()) {
-            outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " can outrun the " + chosenDino2.getName() + " " + dino2GrowthState.getName() + "'s normal speed in ambush.");
+            speedOutcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " can outrun the " + chosenDino2.getName() + " " + dino2GrowthState.getName() + "'s running speed in ambush.");
         }
         if (dino1GrowthState.getSpeed() < dino2GrowthState.getAmbush()) {
-            outcome.add(chosenDino2.getName() + " " + dino2GrowthState.getName() + " can outrun the " + chosenDino1.getName() + " " + dino1GrowthState.getName() + "'s normal speed in ambush.");
+            speedOutcome.add(chosenDino2.getName() + " " + dino2GrowthState.getName() + " can outrun the " + chosenDino1.getName() + " " + dino1GrowthState.getName() + "'s running speed in ambush.");
         }
         if (dino1GrowthState.getAmbush() > dino2GrowthState.getAmbush() && (dino1GrowthState.hasAmbush() && dino2GrowthState.hasAmbush())){
-            outcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " can outrun the " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " if they are both in ambush.");
+            speedOutcome.add(chosenDino1.getName() + " " + dino1GrowthState.getName() + " can outrun the " + chosenDino2.getName() + " " + dino2GrowthState.getName() + " if they are both in ambush.");
         }
         if (dino1GrowthState.getAmbush() < dino2GrowthState.getAmbush() && (dino1GrowthState.hasAmbush() && dino2GrowthState.hasAmbush())){
-            outcome.add(chosenDino2.getName() + " " + dino2GrowthState.getName() + " can outrun the " + chosenDino1.getName() + " " + dino1GrowthState.getName() + " if they are both in ambush.");
+            speedOutcome.add(chosenDino2.getName() + " " + dino2GrowthState.getName() + " can outrun the " + chosenDino1.getName() + " " + dino1GrowthState.getName() + " if they are both in ambush.");
         }
     }
 
@@ -221,8 +218,23 @@ public class FightSimulator {
         return damage * (weight1 / weight2);
     }
 
-    public List<String> getOutcome() {
-        return outcome;
+    public String getFighters() {
+        return fighters;
+    }
+    public void resetFighters(){
+        fighters = "";
+    }
+
+    public List<String> getDamageOutcome() {
+        return damageOutcome;
+    }
+
+    public List<String> getBleedOutcome() {
+        return bleedOutcome;
+    }
+
+    public List<String> getSpeedOutcome() {
+        return speedOutcome;
     }
 
     public DinosaurList getDinosaurList() {

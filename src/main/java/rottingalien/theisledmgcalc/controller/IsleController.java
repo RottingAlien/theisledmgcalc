@@ -28,10 +28,16 @@ public class IsleController {
 
     @GetMapping("/fight")
     public String home( Model model, @RequestParam("dino1") String dino1, @RequestParam(value = "dino1Growth",defaultValue = "Full Adult") String dino1Growth,@RequestParam("dino2") String dino2, @RequestParam(value = "dino2Growth",defaultValue = "Full Adult") String dino2Growth) {
-        fightSimulator.getOutcome().clear();
+        fightSimulator.resetFighters();
+        fightSimulator.getDamageOutcome().clear();
+        fightSimulator.getBleedOutcome().clear();
+        fightSimulator.getSpeedOutcome().clear();
         fightSimulator.fight(dino1,dino1Growth,dino2,dino2Growth);
         fightSimulator.prepareOutcome();
-        model.addAttribute("fightResults",fightSimulator.getOutcome());
+        model.addAttribute("fighters",fightSimulator.getFighters());
+        model.addAttribute("damageResults", fightSimulator.getDamageOutcome());
+        model.addAttribute("bleedResults", fightSimulator.getBleedOutcome());
+        model.addAttribute("speedResults", fightSimulator.getSpeedOutcome());
         model.addAttribute("dino1",dino1);
         model.addAttribute("dino2",dino2);
         model.addAttribute("growth1",dino1Growth);

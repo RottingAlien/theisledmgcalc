@@ -32,7 +32,7 @@ public class Camarasaurus extends Dino {
                 100,
                 12000,
                 12000,
-                650,
+                520,
                 0,
                 4420,
                 0,

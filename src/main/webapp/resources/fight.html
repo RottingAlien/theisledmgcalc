@@ -8,21 +8,32 @@
     <title>The Isle Damage Calculator</title>
 </head>
 <body class="body">
-<h1>The Isle Damage Calculator</h1>
+<h1 id="title1">The Isle Damage Calculator</h1>
 
 <!--/*@thymesVar id="fightResults" type="java.util.List"*/-->
 <!--/*@thymesVar id="dino2" type="java.lang.String"*/-->
 <!--/*@thymesVar id="dino1" type="java.lang.String"*/-->
-<h2>Fight Result:</h2>
+<h2 id="fightresultsheader">Fight Result:</h2>
 <div id="fightresults" class="fightresults">
-    <div th:each="info : ${fightResults}">
-        <div th:text="${info}"></div>
+    <h3 id="fightersheader" th:text="${fighters}"></h3>
+
+    <h4 id="damageheader">Damage:</h4>
+    <div th:each="info : ${damageResults}">
+        <div id="damageinfo" th:text="${info}"></div>
+    </div>
+    <h4 id="bleedheader">Bleed (this is not accurate but might be useful to get an estimate):</h4>
+    <div th:each="info : ${bleedResults}">
+        <div id="bleedinfo" th:text="${info}"></div>
+    </div>
+    <h4 id="speedheader">Speed:</h4>
+    <div th:each="info : ${speedResults}">
+        <div id="speedinfo" th:text="${info}"></div>
     </div>
 </div>
 <br>
 <input type="button" th:value="'Reset'" th:onclick="|window.location.href='@{/}'|"/>
 
-<h1>More details:</h1>
+<h1 id="moredetailsheader">More details:</h1>
 <div>
     <div class="details1">
     <div class="details1table">
