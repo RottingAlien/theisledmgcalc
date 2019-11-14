@@ -4,6 +4,8 @@ public class GrowthState {
 
     private String name;
 
+    private String image;
+
     private double speed;
     private double ambush;
 
@@ -21,7 +23,7 @@ public class GrowthState {
     private double specialBleed;
     private double trample;
 
-    public GrowthState(String name, double speed, double ambush, double bleedStandResist, double bleedSitResist, double bleedWalkResist, double bleedRunResist, double weight, double health, double biteForce, double bleed, double special, double specialBleed, double trample) {
+    public GrowthState(String name, double speed, double ambush, double bleedStandResist, double bleedSitResist, double bleedWalkResist, double bleedRunResist, double weight, double health, double biteForce, double bleed, double special, double specialBleed, double trample, String image) {
         this.name = name;
         this.speed = speed;
         this.ambush = ambush;
@@ -36,10 +38,15 @@ public class GrowthState {
         this.special = special;
         this.specialBleed = specialBleed;
         this.trample = trample;
+        this.image = image;
     }
 
     public String getName() {
         return name;
+    }
+
+    public String getImage() {
+        return image;
     }
 
     public double getSpeed() {

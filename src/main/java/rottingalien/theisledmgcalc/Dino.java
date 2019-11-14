@@ -38,7 +38,8 @@ public abstract class Dino {
                 FindMidValues.findMidValue(fresh.getBleed(), full.getBleed(), 50),
                 FindMidValues.findMidValue(fresh.getSpecial(), full.getSpecial(), 50),
                 FindMidValues.findMidValue(fresh.getSpecialBleed(), full.getSpecialBleed(), 50),
-                FindMidValues.findMidValue(fresh.getTrample(), full.getTrample(), 50));
+                FindMidValues.findMidValue(fresh.getTrample(), full.getTrample(), 50),
+        fresh.getImage());
     }
 
     public void setName(String name) {

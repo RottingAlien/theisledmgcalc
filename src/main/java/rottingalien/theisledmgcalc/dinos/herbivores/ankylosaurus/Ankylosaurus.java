@@ -1,144 +1,101 @@
-package rottingalien.theisledmgcalc.dinos;
+package rottingalien.theisledmgcalc.dinos.herbivores.ankylosaurus;
 
 import rottingalien.theisledmgcalc.Dino;
 import rottingalien.theisledmgcalc.GrowthState;
-import rottingalien.utils.Maths.FindMidValues;
 
-public class DINOSAUR extends Dino {
+public class Ankylosaurus extends Dino {
 
-    public DINOSAUR() {
+    public Ankylosaurus() {
         wire();
     }
 
     public void wire() {
 
-        setName("DINOSAUR");
-        setCarnivore(true);
-        setTier(0);
-        setGrowthDurationJuvi(0);
+        setName("Ankylosaurus");
+        setCarnivore(false);
+        setTier(4);
+        setGrowthDurationJuvi(120);
         setGrowthDurationSub(0);
-        setGrowthDurationAdult(0);
+        setGrowthDurationAdult(120);
         setGrowthDurationTotal(getGrowthDurationJuvi() + getGrowthDurationSub() + getGrowthDurationAdult());
 
         //----- JUVENILE
 
         GrowthState freshJuvi = new GrowthState(
                 "Fresh Juvenile",
+                23.9,
                 0,
                 0,
                 0,
                 0,
                 0,
+                20,
+                20,
+                3,
                 0,
                 0,
                 0,
                 0,
-                0,
-                0,
-                0,
-                0,
-                "");
+                "anky");
 
         GrowthState fullJuvi = new GrowthState(
                 "Full Juvenile",
+                23.9,
                 0,
                 0,
                 0,
                 0,
                 0,
+                3048,
+                3048,
+                420,
                 0,
                 0,
                 0,
                 0,
-                0,
-                0,
-                0,
-                0,
-                "");
-
-
-        //----- SUB-ADULT
-
-        GrowthState freshSubAdult = new GrowthState(
-                "Fresh Sub-Adult",
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                "");
-
-        GrowthState fullSubAdult = new GrowthState(
-                "Full Sub-Adult",
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                "");
-
+                "anky");
 
 
         //----- ADULT
 
         GrowthState freshAdult = new GrowthState(
                 "Fresh Adult",
+                19.3,
                 0,
                 0,
                 0,
                 0,
                 0,
+                3048,
+                3048,
+                570,
                 0,
                 0,
                 0,
                 0,
-                0,
-                0,
-                0,
-                0,
-                "");
+                "anky");
 
         GrowthState fullAdult = new GrowthState(
                 "Full Adult",
+                19.3,
                 0,
                 0,
                 0,
                 0,
                 0,
+                5443,
+                5443,
+                1260,
                 0,
                 0,
                 0,
                 0,
-                0,
-                0,
-                0,
-                0,
-                "");
+                "anky");
 
 
         getGrowthStates().put("Fresh Juvenile", freshJuvi);
         getGrowthStates().put("Mid Juvenile", getMidGrowth("Mid Juvenile", freshJuvi, fullJuvi));
         getGrowthStates().put("Full Juvenile", fullJuvi);
-
-        getGrowthStates().put("Fresh Sub-Adult", freshSubAdult);
-        getGrowthStates().put("Mid Sub-Adult", getMidGrowth("Mid Sub-Adult", freshSubAdult, fullSubAdult));
-        getGrowthStates().put("Full Sub-Adult", fullSubAdult);
 
         getGrowthStates().put("Fresh Adult", freshAdult);
         getGrowthStates().put("Mid Adult", getMidGrowth("Mid Adult", freshAdult, fullAdult));

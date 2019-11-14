@@ -1,10 +1,32 @@
 package rottingalien.theisledmgcalc;
 
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-import rottingalien.theisledmgcalc.dinos.DINOSAUR;
-import rottingalien.theisledmgcalc.dinos.carnivores.*;
-import rottingalien.theisledmgcalc.dinos.herbivores.*;
+import rottingalien.theisledmgcalc.dinos.carnivores.acrocanthosaurus.Acrocanthosaurus;
+import rottingalien.theisledmgcalc.dinos.carnivores.albertosaurus.Albertosaurus;
+import rottingalien.theisledmgcalc.dinos.carnivores.allosaurus.Allosaurus;
+import rottingalien.theisledmgcalc.dinos.carnivores.austroraptor.Austroraptor;
+import rottingalien.theisledmgcalc.dinos.carnivores.baryonyx.Baryonyx;
+import rottingalien.theisledmgcalc.dinos.carnivores.carnotaurus.Carnotaurus;
+import rottingalien.theisledmgcalc.dinos.carnivores.ceratosaurus.Ceratosaurus;
+import rottingalien.theisledmgcalc.dinos.carnivores.dilophosaurus.Dilophosaurus;
+import rottingalien.theisledmgcalc.dinos.carnivores.giganotosaurus.Giganotosaurus;
+import rottingalien.theisledmgcalc.dinos.carnivores.herrerasaurus.Herrerasaurus;
+import rottingalien.theisledmgcalc.dinos.carnivores.spinosaurus.Spinosaurus;
+import rottingalien.theisledmgcalc.dinos.carnivores.suchomimus.Suchomimus;
+import rottingalien.theisledmgcalc.dinos.carnivores.tyrannosaurus.Tyrannosaurus;
+import rottingalien.theisledmgcalc.dinos.carnivores.utahraptor.Utahraptor;
+import rottingalien.theisledmgcalc.dinos.herbivores.ankylosaurus.Ankylosaurus;
+import rottingalien.theisledmgcalc.dinos.herbivores.camarasaurus.Camarasaurus;
+import rottingalien.theisledmgcalc.dinos.herbivores.diabloceratops.Diabloceratops;
+import rottingalien.theisledmgcalc.dinos.herbivores.dryosaurus.Dryosaurus;
+import rottingalien.theisledmgcalc.dinos.herbivores.gallimimus.Gallimimus;
+import rottingalien.theisledmgcalc.dinos.herbivores.maiasaura.Maiasaura;
+import rottingalien.theisledmgcalc.dinos.herbivores.pachycephalosaurus.Pachycephalosaurus;
+import rottingalien.theisledmgcalc.dinos.herbivores.parasaurolophus.Parasaurolophus;
+import rottingalien.theisledmgcalc.dinos.herbivores.puertasaurus.Puertasaurus;
+import rottingalien.theisledmgcalc.dinos.herbivores.shantungosaurus.Shantungosaurus;
+import rottingalien.theisledmgcalc.dinos.herbivores.stegosaurus.Stegosaurus;
+import rottingalien.theisledmgcalc.dinos.herbivores.therizinosaurus.Therizinosaurus;
+import rottingalien.theisledmgcalc.dinos.herbivores.triceratops.Triceratops;
 
 import java.util.LinkedHashMap;
 import java.util.LinkedList;

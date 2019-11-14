@@ -37,6 +37,10 @@
 <div>
     <div class="details1">
     <div class="details1table">
+        <!--/*@thymesVar id="growth1" type="rottingalien.theisledmgcalc.GrowthState"*/-->
+        <div>
+            <img th:src="@{${'/resources/dinopics/' + dino1pic + '.png'}}" alt="No pic found" class="dinopic1"/>
+        </div>
         <div th:each="info1 : ${dino1Info}">
             <div>
                 <label th:text="${info1}"></label>
@@ -46,6 +50,11 @@
     </div>
     <div class="details2div">
         <div class="details2table">
+
+            <!--/*@thymesVar id="growth2" type="rottingalien.theisledmgcalc.GrowthState"*/-->
+            <div>
+                <img th:src="@{${'/resources/dinopics/' + dino2pic + '.png'}}" alt="No pic found" class="dinopic2"/>
+            </div>
 
         <div th:each="info2 : ${dino2Info}">
             <div>
