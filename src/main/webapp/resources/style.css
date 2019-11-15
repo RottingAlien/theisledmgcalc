@@ -48,9 +48,14 @@ th{
     float: left;
 }
 
-.dinopic1{
-    max-width: 150px;
-}
-.dinopic2{
-    max-width: 150px;
-}
+#dino1pic {width: 175px}
+#dino1pic img {width: 100%; height: auto; cursor: zoom-in; border-radius: 5px; left: 50%; top: 50%; transform: translateX(-0%) translateY(-0%); transition: 0.5s;}
+
+#dino1pic.open {width: 100%; height: 100%; position: fixed; left: 0; top: 0; background-color: rgba(0, 0, 0, 0.80); z-index: 100;}
+#dino1pic.open img {width: calc(100% - 500px); height: auto; cursor: zoom-out; position: absolute; top: 50%; transform: translateX(-50%) translateY(-50%); border-radius: 10px; box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.50)}
+
+#dino2pic {width: 175px}
+#dino2pic img {width: 100%; height: auto; cursor: zoom-in; border-radius: 5px; left: 50%; top: 50%; transform: translateX(-0%) translateY(-0%); transition: 0.5s;}
+
+#dino2pic.open {width: 100%; height: 100%; position: fixed; left: 0; top: 0; background-color: rgba(0, 0, 0, 0.80); z-index: 100;}
+#dino2pic.open img {width: calc(100% - 500px); height: auto; cursor: zoom-out; position: absolute; top: 50%; transform: translateX(-50%) translateY(-50%); border-radius: 10px; box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.50)}
